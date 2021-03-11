@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PixelAdventure
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class NinjaFrogController : MonoBehaviour, IControllable
+    public class NinjaFrogController : MonoBehaviour
     {
         private readonly int INT_STATE = Animator.StringToHash("State");
 
@@ -26,11 +26,6 @@ namespace PixelAdventure
         private NinjaBaseState currentState;
         private Dictionary<StatesEnum, NinjaBaseState> dictionaryOfStates;
         private StatesEnum state;
-        #endregion
-
-        #region Contact Filters
-        public List<Collider2D> contacts;
-        private ContactFilter2D contactFilterGround;
         #endregion
 
         #region Properties
@@ -79,9 +74,6 @@ namespace PixelAdventure
             frogBoxCollider2D = GetComponent<BoxCollider2D>();
             frogSpriteRenderer = GetComponent<SpriteRenderer>();
 
-            contacts = new List<Collider2D>();
-
-            SetUpContacts();
         }
 
         void Start()
@@ -105,11 +97,5 @@ namespace PixelAdventure
             currentState.EntryState(this);
         }
 
-        private void SetUpContacts()
-        {
-            contactFilterGround.SetNormalAngle(85, 95);
-            contactFilterGround.useNormalAngle = true;
-
-        }
     }
 }
