@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PixelAdventure
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class NinjaFrogController : MonoBehaviour
+    public class NinjaFrogController : MonoBehaviour, IControllable
     {
         private readonly int INT_STATE = Animator.StringToHash("State");
 
@@ -76,8 +76,19 @@ namespace PixelAdventure
 
         }
 
+        private void OnEnable()
+        {
+            EventBrocker.CallOnPlayerEnable(transform);
+        }
+
+        private void OnDisable()
+        {
+
+        }
+
         void Start()
         {
+
             TransitionToState(DictionaryOfStates[StatesEnum.Idle]);
         }
 

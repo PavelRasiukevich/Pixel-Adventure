@@ -6,7 +6,7 @@ using UnityEngine;
 namespace PixelAdventure
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PinkManController : MonoBehaviour
+    public class PinkManController : MonoBehaviour, IControllable
     {
         private readonly int INT_STATE = Animator.StringToHash("State");
 
@@ -73,6 +73,11 @@ namespace PixelAdventure
 
         }
 
+        private void OnEnable()
+        {
+            EventBrocker.CallOnPlayerEnable(transform);
+        }
+
         void Start()
         {
             TransitionToState(DictionaryOfStates[StatesEnum.Idle]);
@@ -93,6 +98,6 @@ namespace PixelAdventure
             currentState = state;
             currentState.EntryState(this);
         }
-               
+
     }
 }
