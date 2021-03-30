@@ -31,10 +31,8 @@ namespace PixelAdventure
 
                 if (characterRigidBody.velocity.x > 0)
                     transform.root.localScale = new Vector2(1, 1);
-                //frogSpriteRenderer.flipX = false;
                 else if (characterRigidBody.velocity.x < 0)
                     transform.root.localScale = new Vector2(-1, 1);
-                //frogSpriteRenderer.flipX = true;
             }
             else
             {
