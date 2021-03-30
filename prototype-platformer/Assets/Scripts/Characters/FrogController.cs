@@ -17,7 +17,7 @@ namespace PixelAdventure
         private void Awake()
         {
             frogRigidBody = GetComponent<Rigidbody2D>();
-            frogBoxCollider = GetComponent<BoxCollider2D>();
+            frogBoxCollider = GetComponentInChildren<BoxCollider2D>();
             frogAnimator = GetComponentInChildren<Animator>();
             frogSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 

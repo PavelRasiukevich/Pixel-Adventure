@@ -5,6 +5,10 @@ namespace PixelAdventure
         Idle,
         Move, 
         Jump,
-        Fall 
+        Fall,
+        FastFall,
+        DoubleJump,
+        WallJump,
+        Dash
     }
 }

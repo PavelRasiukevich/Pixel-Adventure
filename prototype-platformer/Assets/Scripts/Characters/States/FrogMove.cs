@@ -30,14 +30,15 @@ namespace PixelAdventure
                 }
 
                 if (frogRigidBody.velocity.x > 0)
-                    frogSpriteRenderer.flipX = false;
+                    transform.root.localScale = new Vector2(1, 1);
+                //frogSpriteRenderer.flipX = false;
                 else if (frogRigidBody.velocity.x < 0)
-                    frogSpriteRenderer.flipX = true;
+                    transform.root.localScale = new Vector2(-1, 1);
+                //frogSpriteRenderer.flipX = true;
             }
             else
             {
-                Debug.Log("Falling");
-               NextStateAction.Invoke(StatesEnum.Fall);
+                NextStateAction.Invoke(StatesEnum.Fall);
             }
 
         }

@@ -33,7 +33,6 @@ namespace PixelAdventure
                 return Physics2D.BoxCast(frogBoxCollider.bounds.center, frogBoxCollider.bounds.size,
                     0, Vector2.down, .1f, groundLayerMask);
             }
-
         }
         #endregion
 
@@ -58,7 +57,7 @@ namespace PixelAdventure
 
         public virtual void  OnCollision(Collision2D collision)
         {
-            Debug.Log("Collision Detected");
+           
         }
     }
 }
