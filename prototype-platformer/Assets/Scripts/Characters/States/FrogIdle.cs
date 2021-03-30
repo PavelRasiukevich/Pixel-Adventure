@@ -30,7 +30,7 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
-            frogRigidBody.velocity = Vector2.zero;
+            characterRigidBody.velocity = Vector2.zero;
         }
     }
 }

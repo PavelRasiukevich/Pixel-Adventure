@@ -19,7 +19,7 @@ namespace PixelAdventure
 
         private void FixedUpdate()
         {
-            var _velocity_Y = frogRigidBody.velocity.y;
+            var _velocity_Y = characterRigidBody.velocity.y;
 
             if (_velocity_Y < 1)
                 NextStateAction.Invoke(StatesEnum.Fall);
@@ -57,7 +57,7 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
-            frogRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            characterRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 }

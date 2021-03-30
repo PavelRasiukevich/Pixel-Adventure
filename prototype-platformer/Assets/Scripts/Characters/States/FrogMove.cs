@@ -19,7 +19,7 @@ namespace PixelAdventure
 
                 if (Mathf.Abs(_h) > 0)
                 {
-                    frogRigidBody.velocity = new Vector2(_h * speed, frogRigidBody.velocity.y);
+                    characterRigidBody.velocity = new Vector2(_h * speed, characterRigidBody.velocity.y);
 
                     if (_jump > Mathf.Epsilon)
                         NextStateAction.Invoke(StatesEnum.Jump);
@@ -29,10 +29,10 @@ namespace PixelAdventure
                     NextStateAction.Invoke(StatesEnum.Idle);
                 }
 
-                if (frogRigidBody.velocity.x > 0)
+                if (characterRigidBody.velocity.x > 0)
                     transform.root.localScale = new Vector2(1, 1);
                 //frogSpriteRenderer.flipX = false;
-                else if (frogRigidBody.velocity.x < 0)
+                else if (characterRigidBody.velocity.x < 0)
                     transform.root.localScale = new Vector2(-1, 1);
                 //frogSpriteRenderer.flipX = true;
             }

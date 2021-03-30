@@ -18,10 +18,10 @@ namespace PixelAdventure
         #endregion
 
         #region Components
-        protected Rigidbody2D frogRigidBody;
-        protected Animator frogAnimator;
-        protected SpriteRenderer frogSpriteRenderer;
-        protected BoxCollider2D frogBoxCollider;
+        protected Rigidbody2D characterRigidBody;
+        protected Animator characterAnimator;
+        protected SpriteRenderer characterSpriteRenderer;
+        protected BoxCollider2D characterBoxCollider;
         #endregion
 
         #region Properties
@@ -30,29 +30,35 @@ namespace PixelAdventure
         {
             get
             {
-                return Physics2D.BoxCast(frogBoxCollider.bounds.center, frogBoxCollider.bounds.size,
+                return Physics2D.BoxCast(characterBoxCollider.bounds.center, characterBoxCollider.bounds.size,
                     0, Vector2.down, .1f, groundLayerMask);
             }
         }
         #endregion
 
-        public void Setup(Rigidbody2D _frogRb, Animator _frogAnimator, SpriteRenderer _frogSpriteRenderer, BoxCollider2D _boxCollider)
+        public void Setup(Rigidbody2D _charRb, Animator _charAnim, SpriteRenderer _charSr, BoxCollider2D _charBoxCollider)
         {
-            frogRigidBody = _frogRb;
-            frogBoxCollider = _boxCollider;
-            frogAnimator = _frogAnimator;
-            frogSpriteRenderer = _frogSpriteRenderer;
+            characterRigidBody = _charRb;
+            characterBoxCollider = _charBoxCollider;
+            characterAnimator = _charAnim;
+            characterSpriteRenderer = _charSr;
+        }
+
+        public void SetupRb(Rigidbody2D _charRb)
+        {
+            characterRigidBody = _charRb;
         }
 
         public virtual void ActivateState()
         {
             gameObject.SetActive(true);
-            frogAnimator.SetInteger(INT_STATE, (int)State);
+            characterAnimator.SetInteger(INT_STATE, (int)State);
         }
 
         public virtual void DeactivateState()
         {
             gameObject.SetActive(false);
+           
         }
 
         public virtual void  OnCollision(Collision2D collision)

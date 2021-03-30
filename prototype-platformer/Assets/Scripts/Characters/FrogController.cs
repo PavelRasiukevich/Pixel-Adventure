@@ -23,6 +23,11 @@ namespace PixelAdventure
 
             listOfStates = new List<BaseState>(transform.GetComponentsInChildren<BaseState>(true));
 
+            
+        }
+
+        private void OnEnable()
+        {
             listOfStates.ForEach(_state =>
             {
                 _state.Setup(frogRigidBody, frogAnimator, frogSpriteRenderer, frogBoxCollider);
@@ -31,6 +36,17 @@ namespace PixelAdventure
 
             currentState = listOfStates.Find(_s => _s.State.Equals(StatesEnum.Idle));
             currentState.ActivateState();
+        }
+
+        private void OnDisable()
+        {
+            frogRigidBody.velocity = Vector2.zero;
+
+            listOfStates.ForEach(_state =>
+            {
+                _state.SetupRb(frogRigidBody);
+                _state.NextStateAction -= OnNextStateRequest;
+            });
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

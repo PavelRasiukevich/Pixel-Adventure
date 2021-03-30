@@ -30,9 +30,9 @@ namespace PixelAdventure
         {
             base.ActivateState();
 
-            frogRigidBody.velocity = Vector2.zero;
+            characterRigidBody.velocity = Vector2.zero;
 
-            frogRigidBody.AddForce(Vector2.down * fallForce, ForceMode2D.Impulse);
+            characterRigidBody.AddForce(Vector2.down * fallForce, ForceMode2D.Impulse);
         }
     }
 }
