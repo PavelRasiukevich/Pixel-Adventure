@@ -8,15 +8,27 @@ namespace PixelAdventure
     {
         public override StatesEnum State => StatesEnum.Fall;
 
+        [SerializeField] float floatingSpeed;
+
+        float h;
+
         public void FixedUpdate()
         {
+            if (Mathf.Abs(h) > Mathf.Epsilon)
+                characterRigidBody.velocity = new Vector2(h * floatingSpeed, -2.5f);
+
             if (IsGrounded)
             {
-                if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
+                if (Mathf.Abs(h) > Mathf.Epsilon)
                     NextStateAction.Invoke(StatesEnum.Move);
                 else
                     NextStateAction.Invoke(StatesEnum.Idle);
             }
+        }
+
+        private void Update()
+        {
+            h = Input.GetAxis("Horizontal");
         }
     }
 }

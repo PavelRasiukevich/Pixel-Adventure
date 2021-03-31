@@ -23,7 +23,7 @@ namespace PixelAdventure
             }
             else
             {
-                NextStateAction.Invoke(StatesEnum.Fall);
+                NextStateAction.Invoke(StatesEnum.Float);
             }
         }
 

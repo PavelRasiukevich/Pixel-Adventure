@@ -7,6 +7,7 @@ namespace PixelAdventure
     public class PinkyJump : BaseState
     {
         [SerializeField] float jumpForce;
+        [SerializeField] float gravityMultiplyer;
 
         private void OnEnable()
         {
@@ -18,8 +19,8 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
-            if (_velocity_Y < 1)
-                NextStateAction.Invoke(StatesEnum.Fall);
+            if (_velocity_Y < 0)
+                NextStateAction.Invoke(StatesEnum.Float);
 
             if (IsGrounded)
             {
@@ -32,9 +33,10 @@ namespace PixelAdventure
 
         private void Update()
         {
-            
+            if (characterRigidBody.velocity.y > 0 && Input.GetAxis("Jump") <= 0)
+                characterRigidBody.velocity += Vector2.up * Physics2D.gravity.y * gravityMultiplyer * Time.deltaTime;
         }
-      
+
         public override void ActivateState()
         {
             base.ActivateState();
