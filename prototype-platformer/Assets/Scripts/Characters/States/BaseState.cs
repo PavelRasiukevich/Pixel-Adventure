@@ -7,6 +7,9 @@ namespace PixelAdventure
 {
     public abstract class BaseState : MonoBehaviour
     {
+
+        public static int direction;
+
         #region Abstract Members
         public abstract StatesEnum State { get; }
         #endregion
@@ -58,12 +61,12 @@ namespace PixelAdventure
         public virtual void DeactivateState()
         {
             gameObject.SetActive(false);
-           
+
         }
 
-        public virtual void  OnCollision(Collision2D collision)
+        public virtual void OnCollision(Collision2D collision)
         {
-           
+
         }
     }
 }

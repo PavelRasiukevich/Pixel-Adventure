@@ -33,7 +33,6 @@ namespace PixelAdventure
         public void SetTargetToFollow(Transform transform)
         {
             target = transform;
-            Debug.Log("Target setted.");
         }
 
         private void OnDestroy()

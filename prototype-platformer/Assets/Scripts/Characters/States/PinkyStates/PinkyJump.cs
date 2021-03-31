@@ -9,10 +9,6 @@ namespace PixelAdventure
         [SerializeField] float jumpForce;
         [SerializeField] float gravityMultiplyer;
 
-        private void OnEnable()
-        {
-        }
-
         public override StatesEnum State => StatesEnum.Jump;
 
         private void FixedUpdate()

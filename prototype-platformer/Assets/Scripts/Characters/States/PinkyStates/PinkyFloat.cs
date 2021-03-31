@@ -13,13 +13,18 @@ namespace PixelAdventure
         private float h;
 
         public override StatesEnum State => StatesEnum.Float;
-       
+
         private void FixedUpdate()
         {
+            if (h > 0)
+                direction = 1;
+            else if (h < 0)
+                direction = -1;
+
             if (Mathf.Abs(h) > Mathf.Epsilon)
                 characterRigidBody.velocity = new Vector2(h * Mathf.Abs(speed), -floatingSpeed);
             else
-                characterRigidBody.velocity = Vector2.up * -floatingSpeed * floatingSpeedMultiplyer;
+                characterRigidBody.velocity = new Vector2(speed * direction, -floatingSpeed * floatingSpeedMultiplyer);
 
             if (IsGrounded)
             {
@@ -28,21 +33,16 @@ namespace PixelAdventure
                 else
                     NextStateAction.Invoke(StatesEnum.Idle);
             }
-
-            if (characterRigidBody.velocity.x > 0)
-                transform.root.localScale = new Vector2(1, 1);
-            else if (characterRigidBody.velocity.x < 0)
-                transform.root.localScale = new Vector2(-1, 1);
         }
 
         private void Update()
         {
             h = Input.GetAxis("Horizontal");
-        }
 
-        public override void ActivateState()
-        {
-            base.ActivateState();
+            if (characterRigidBody.velocity.x > 0)
+                transform.root.localScale = new Vector2(direction, 1);
+            else if (characterRigidBody.velocity.x < 0)
+                transform.root.localScale = new Vector2(direction, 1);
         }
     }
 }

@@ -17,6 +17,11 @@ namespace PixelAdventure
                 float _h = Input.GetAxis("Horizontal");
                 float _jump = Input.GetAxis("Jump");
 
+                if (_h > 0)
+                    direction = 1;
+                else if (_h < 0)
+                    direction = -1;
+
                 if (Mathf.Abs(_h) > 0)
                 {
                     characterRigidBody.velocity = new Vector2(_h * speed, characterRigidBody.velocity.y);
@@ -30,9 +35,9 @@ namespace PixelAdventure
                 }
 
                 if (characterRigidBody.velocity.x > 0)
-                    transform.root.localScale = new Vector2(1, 1);
+                    transform.root.localScale = new Vector2(direction, 1);
                 else if (characterRigidBody.velocity.x < 0)
-                    transform.root.localScale = new Vector2(-1, 1);
+                    transform.root.localScale = new Vector2(direction, 1);
 
             }
             else

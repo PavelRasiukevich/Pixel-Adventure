@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelAdventure.Interfaces;
 
 namespace PixelAdventure
 {
-    public class PinkyController : MonoBehaviour
+    public class PinkyController : MonoBehaviour, IControllable
     {
         private Rigidbody2D pinkyRigidBody;
         private Animator pinkyAnimator;
@@ -15,6 +16,8 @@ namespace PixelAdventure
         private List<BaseState> listOfStates;
         private BaseState currentState;
 
+        public Action<Transform> OnChangePosition { get; set; }
+
         private void Awake()
         {
             pinkyRigidBody = GetComponent<Rigidbody2D>();
@@ -23,13 +26,19 @@ namespace PixelAdventure
             pinkyBoxCollider = GetComponentInChildren<BoxCollider2D>();
 
             listOfStates = new List<BaseState>(transform.GetComponentsInChildren<BaseState>(true));
+
+            listOfStates.ForEach(_state =>
+            {
+                _state.Setup(pinkyRigidBody, pinkyAnimator, pinkySpriteRenderer, pinkyBoxCollider);
+            });
         }
 
         private void OnEnable()
         {
+            EventBrocker.CallOnPlayerEnable(transform);
+
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(pinkyRigidBody, pinkyAnimator, pinkySpriteRenderer, pinkyBoxCollider);
                 _state.NextStateAction += OnNextStateRequest;
             });
 
@@ -40,12 +49,18 @@ namespace PixelAdventure
         private void OnDisable()
         {
             pinkyRigidBody.velocity = Vector2.zero;
+            currentState.DeactivateState();
 
             listOfStates.ForEach(_state =>
             {
                 _state.SetupRb(pinkyRigidBody);
                 _state.NextStateAction -= OnNextStateRequest;
             });
+        }
+
+        void FixedUpdate()
+        {
+            OnChangePosition?.Invoke(transform);
         }
 
         private void OnNextStateRequest(StatesEnum state)

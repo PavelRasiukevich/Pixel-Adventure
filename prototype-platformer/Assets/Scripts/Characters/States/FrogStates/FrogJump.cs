@@ -8,6 +8,7 @@ namespace PixelAdventure
     {
         [SerializeField] float jumpForce;
         [SerializeField] float doubleJumpCountDown;
+      
         private float timer;
 
         private void OnEnable()
@@ -21,7 +22,7 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
-            if (_velocity_Y < 1)
+            if (_velocity_Y < 0)
                 NextStateAction.Invoke(StatesEnum.Fall);
 
             if (IsGrounded)
@@ -35,6 +36,7 @@ namespace PixelAdventure
 
         private void Update()
         {
+           
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(StatesEnum.FastFall);
 
