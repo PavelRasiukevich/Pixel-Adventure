@@ -5,6 +5,7 @@ namespace PixelAdventure.Interfaces
 {
     public interface IControllable
     {
-       Action<Transform> OnChangePosition { get; set; }
+        Action<Transform> OnChangePosition { get; set; }
+        Action<Transform> OnPlayerEnable { get; set; }
     }
 }

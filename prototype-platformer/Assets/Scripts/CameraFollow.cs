@@ -13,16 +13,6 @@ namespace PixelAdventure
 
         public Transform target;
 
-        private void Awake()
-        {
-            EventBrocker.OnPlayerEnable += SetTargetToFollow;
-        }
-
-        private void Start()
-        {
-
-        }
-
         private void LateUpdate()
         {
             Vector3 smoothPosition = Vector3.Lerp(transform.position, target.position + offset, followSpeed * Time.deltaTime);
@@ -34,11 +24,5 @@ namespace PixelAdventure
         {
             target = transform;
         }
-
-        private void OnDestroy()
-        {
-            EventBrocker.OnPlayerEnable -= SetTargetToFollow;
-        }
-
     }
 }

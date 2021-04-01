@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using PixelAdventure.Interfaces;
-using System;
 
 namespace PixelAdventure
 {
@@ -11,26 +8,29 @@ namespace PixelAdventure
     {
         [SerializeField] FrogController frog;
         [SerializeField] PinkyController pinky;
+        [SerializeField] ShamanController sham;
         [SerializeField] Vector2 characterTrackedPosition;
+        [SerializeField] new CameraFollow camera;
 
-        [SerializeField] List<IControllable> listOfCharacters;
+        [SerializeField] List<BaseController> listOfCharacters;
 
         private void Awake()
         {
-            listOfCharacters = new List<IControllable>
+            listOfCharacters = new List<BaseController>
             {
                 frog,
-                pinky
+                pinky,
+                sham
             };
         }
-        
+
         private void OnEnable()
         {
-            EventBrocker.OnPlayerEnable += OnPlayerEnableHandler;
 
             listOfCharacters.ForEach(_char =>
             {
-                _char.OnChangePosition += TrackCharacterPosition;
+                _char.OnChangePosition += OnTrackPositionHandler;
+                _char.OnPlayerEnable += OnPlayerEnableHandler;
             });
         }
 
@@ -38,45 +38,41 @@ namespace PixelAdventure
         {
             listOfCharacters.ForEach(_char =>
             {
-                _char.OnChangePosition -= TrackCharacterPosition;
+                _char.OnChangePosition -= OnTrackPositionHandler;
+                _char.OnPlayerEnable -= OnPlayerEnableHandler;
             });
         }
 
         private void OnPlayerEnableHandler(Transform transform)
         {
             transform.position = characterTrackedPosition;
+            camera.SetTargetToFollow(transform);
         }
 
-        private void TrackCharacterPosition(Transform transform)
+        private void OnTrackPositionHandler(Transform transform)
         {
             characterTrackedPosition = transform.position;
         }
 
-       
-
         private void Update()
         {
-            
-            if (Input.GetKeyDown(KeyCode.F))
+            switch (Input.inputString)
             {
-                frog.gameObject.SetActive(true);
-                pinky.gameObject.SetActive(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                frog.gameObject.SetActive(false);
-                pinky.gameObject.SetActive(true);
-            }
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                frog.gameObject.SetActive(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                frog.gameObject.SetActive(true);
+                case "i":
+                    frog.gameObject.SetActive(true);
+                    pinky.gameObject.SetActive(false);
+                    sham.gameObject.SetActive(false);
+                    break;
+                case "o":
+                    frog.gameObject.SetActive(false);
+                    pinky.gameObject.SetActive(true);
+                    sham.gameObject.SetActive(false);
+                    break;
+                case "p":
+                    frog.gameObject.SetActive(false);
+                    pinky.gameObject.SetActive(false);
+                    sham.gameObject.SetActive(true);
+                    break;
             }
 
             if (Input.GetKeyDown(KeyCode.R))
