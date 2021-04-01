@@ -632,6 +632,7 @@ MonoBehaviour:
   pinky: {fileID: 1021412565}
   sham: {fileID: 1407902961}
   characterTrackedPosition: {x: 0, y: 0}
+  camera: {fileID: 519420030}
   listOfCharacters: []
 --- !u!1 &593113535
 GameObject:

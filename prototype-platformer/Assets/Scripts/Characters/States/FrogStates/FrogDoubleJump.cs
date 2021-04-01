@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -14,7 +12,7 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
-            if (_velocity_Y < 1)
+            if (_velocity_Y < 0)
                 NextStateAction.Invoke(StatesEnum.Fall);
         }
 

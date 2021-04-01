@@ -21,17 +21,10 @@ namespace PixelAdventure
             }
         }
 
-        private void Update()
-        {
-
-        }
-
         public override void ActivateState()
         {
             base.ActivateState();
-
             characterRigidBody.velocity = Vector2.zero;
-
             characterRigidBody.AddForce(Vector2.down * fallForce, ForceMode2D.Impulse);
         }
     }

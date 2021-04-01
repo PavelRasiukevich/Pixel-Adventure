@@ -1,20 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
 {
     public abstract class BaseState : MonoBehaviour
     {
-
         public static int direction;
+
+        static readonly int INT_STATE = Animator.StringToHash("State");
 
         #region Abstract Members
         public abstract StatesEnum State { get; }
         #endregion
-
-        static readonly int INT_STATE = Animator.StringToHash("State");
 
         #region SerializeFields
         [SerializeField] protected LayerMask groundLayerMask;
@@ -61,12 +58,10 @@ namespace PixelAdventure
         public virtual void DeactivateState()
         {
             gameObject.SetActive(false);
-
         }
 
         public virtual void OnCollision(Collision2D collision)
         {
-
         }
     }
 }

@@ -7,16 +7,22 @@ namespace PixelAdventure
 {
     public abstract class BaseController : MonoBehaviour, IControllable
     {
+        #region Components
         protected Rigidbody2D charRb;
         protected Animator charAnim;
         protected SpriteRenderer charSr;
         protected BoxCollider2D charBoxCollider;
+        #endregion
 
+        #region States
         protected List<BaseState> listOfStates;
         protected BaseState currentState;
+        #endregion
 
+        #region Events
         public Action<Transform> OnChangePosition { get; set; }
         public Action<Transform> OnPlayerEnable { get; set; }
+        #endregion
 
         private void Awake()
         {
@@ -44,7 +50,6 @@ namespace PixelAdventure
 
             currentState = listOfStates.Find(_s => _s.State.Equals(StatesEnum.Idle));
             currentState.ActivateState();
-
         }
 
         private void OnDisable()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -35,7 +33,6 @@ namespace PixelAdventure
             {
                 NextStateAction.Invoke(StatesEnum.Fall);
             }
-
         }
     }
 }

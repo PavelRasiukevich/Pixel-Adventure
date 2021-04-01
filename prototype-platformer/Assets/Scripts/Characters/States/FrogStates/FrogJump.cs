@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -8,7 +6,7 @@ namespace PixelAdventure
     {
         [SerializeField] float jumpForce;
         [SerializeField] float doubleJumpCountDown;
-      
+
         private float timer;
 
         private void OnEnable()
@@ -36,14 +34,12 @@ namespace PixelAdventure
 
         private void Update()
         {
-           
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(StatesEnum.FastFall);
 
             if (IsSecondJumpAvaliable())
                 if (Input.GetKeyDown(KeyCode.Space))
                     NextStateAction.Invoke(StatesEnum.DoubleJump);
-
         }
 
         private bool IsSecondJumpAvaliable()

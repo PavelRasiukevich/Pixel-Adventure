@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -12,6 +10,9 @@ namespace PixelAdventure
 
         public void FixedUpdate()
         {
+            if (characterRigidBody.velocity.y < 0)
+                characterRigidBody.velocity += Vector2.up * Physics2D.gravity * gravityMultiplyer * Time.deltaTime;
+
             if (IsGrounded)
             {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
@@ -25,9 +26,6 @@ namespace PixelAdventure
         {
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(StatesEnum.FastFall);
-
-            if (characterRigidBody.velocity.y < 0)
-                characterRigidBody.velocity += Vector2.up * Physics2D.gravity * gravityMultiplyer * Time.deltaTime;
         }
     }
 }

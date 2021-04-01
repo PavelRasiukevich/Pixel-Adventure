@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -16,11 +14,6 @@ namespace PixelAdventure
 
         private void FixedUpdate()
         {
-            if (h > 0)
-                direction = 1;
-            else if (h < 0)
-                direction = -1;
-
             if (Mathf.Abs(h) > Mathf.Epsilon)
                 characterRigidBody.velocity = new Vector2(h * Mathf.Abs(speed), -floatingSpeed);
             else
@@ -38,6 +31,11 @@ namespace PixelAdventure
         private void Update()
         {
             h = Input.GetAxis("Horizontal");
+
+            if (h > 0)
+                direction = 1;
+            else if (h < 0)
+                direction = -1;
 
             if (characterRigidBody.velocity.x > 0)
                 transform.root.localScale = new Vector2(direction, 1);

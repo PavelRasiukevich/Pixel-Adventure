@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -23,13 +21,14 @@ namespace PixelAdventure
             }
             else
             {
-              NextStateAction.Invoke(StatesEnum.Fall);
+                NextStateAction.Invoke(StatesEnum.Fall);
             }
         }
 
         public override void ActivateState()
         {
             base.ActivateState();
+            direction = 0;
             characterRigidBody.velocity = Vector2.zero;
         }
     }

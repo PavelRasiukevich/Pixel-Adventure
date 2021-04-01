@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -38,13 +36,11 @@ namespace PixelAdventure
                     transform.root.localScale = new Vector2(direction, 1);
                 else if (characterRigidBody.velocity.x < 0)
                     transform.root.localScale = new Vector2(direction, 1);
-
             }
             else
             {
                 NextStateAction.Invoke(StatesEnum.Float);
             }
-
         }
     }
 }

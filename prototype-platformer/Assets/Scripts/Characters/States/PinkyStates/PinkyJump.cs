@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -18,6 +16,9 @@ namespace PixelAdventure
             if (_velocity_Y < 0)
                 NextStateAction.Invoke(StatesEnum.Float);
 
+            if (characterRigidBody.velocity.y > 0 && Input.GetAxis("Jump") <= 0)
+                characterRigidBody.velocity += Vector2.up * Physics2D.gravity.y * gravityMultiplyer * Time.deltaTime;
+
             if (IsGrounded)
             {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
@@ -25,12 +26,6 @@ namespace PixelAdventure
                 else
                     NextStateAction.Invoke(StatesEnum.Idle);
             }
-        }
-
-        private void Update()
-        {
-            if (characterRigidBody.velocity.y > 0 && Input.GetAxis("Jump") <= 0)
-                characterRigidBody.velocity += Vector2.up * Physics2D.gravity.y * gravityMultiplyer * Time.deltaTime;
         }
 
         public override void ActivateState()

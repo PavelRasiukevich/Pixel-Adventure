@@ -6,9 +6,11 @@ namespace PixelAdventure
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("Characters")]
         [SerializeField] FrogController frog;
         [SerializeField] PinkyController pinky;
         [SerializeField] ShamanController sham;
+
         [SerializeField] Vector2 characterTrackedPosition;
         [SerializeField] new CameraFollow camera;
 
@@ -26,7 +28,6 @@ namespace PixelAdventure
 
         private void OnEnable()
         {
-
             listOfCharacters.ForEach(_char =>
             {
                 _char.OnChangePosition += OnTrackPositionHandler;
