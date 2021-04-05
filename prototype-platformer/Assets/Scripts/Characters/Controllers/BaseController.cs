@@ -64,6 +64,7 @@ namespace PixelAdventure
         {
             OnNextStateRequest(StatesEnum.Idle);
             transform.position = spawn.position;
+            charRb.bodyType = RigidbodyType2D.Dynamic;
         }
 
         private void OnDisable()
@@ -84,6 +85,16 @@ namespace PixelAdventure
             OnChangePosition?.Invoke(transform);
         }
 
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            IDamaging trap = collider.gameObject.GetComponent<IDamaging>();
+
+            if (trap != null)
+            {
+                OnNextStateRequest(StatesEnum.Die);
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             IDamaging trap = collision.gameObject.GetComponent<IDamaging>();
@@ -100,6 +111,5 @@ namespace PixelAdventure
             currentState = listOfStates.Find(_s => _s.State.Equals(state));
             currentState.ActivateState();
         }
-
     }
 }
