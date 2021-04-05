@@ -48,10 +48,8 @@ namespace PixelAdventure
                 {
                     buttons[0].Select();
                     mousePressed = false;
-
                 }
             }
-
         }
     }
 }

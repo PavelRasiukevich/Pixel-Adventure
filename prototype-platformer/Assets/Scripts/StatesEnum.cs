@@ -10,6 +10,7 @@ namespace PixelAdventure
         DoubleJump,
         WallJump,
         Dash,
-        Float
+        Float,
+        Die
     }
 }

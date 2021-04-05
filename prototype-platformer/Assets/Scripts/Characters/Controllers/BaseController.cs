@@ -7,6 +7,10 @@ namespace PixelAdventure
 {
     public abstract class BaseController : MonoBehaviour, IControllable
     {
+        #region
+        [SerializeField] protected Transform spawn;
+        #endregion
+
         #region Components
         protected Rigidbody2D charRb;
         protected Animator charAnim;
@@ -22,9 +26,10 @@ namespace PixelAdventure
         #region Events
         public Action<Transform> OnChangePosition { get; set; }
         public Action<Transform> OnPlayerEnable { get; set; }
+        public Action OnDieActive { get; set; }
         #endregion
 
-        private void Awake()
+        protected void Awake()
         {
             charRb = GetComponent<Rigidbody2D>();
             charBoxCollider = GetComponentInChildren<BoxCollider2D>();
@@ -39,8 +44,11 @@ namespace PixelAdventure
             });
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
+
+            charAnim.GetBehaviour<DieBhv>().OnDied += OnDieHandler;
+
             OnPlayerEnable?.Invoke(transform);
 
             listOfStates.ForEach(_state =>
@@ -52,8 +60,15 @@ namespace PixelAdventure
             currentState.ActivateState();
         }
 
+        private void OnDieHandler()
+        {
+            OnNextStateRequest(StatesEnum.Idle);
+            transform.position = spawn.position;
+        }
+
         private void OnDisable()
         {
+
             charRb.velocity = Vector2.zero;
             currentState.DeactivateState();
 
@@ -71,10 +86,15 @@ namespace PixelAdventure
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            currentState.OnCollision(collision);
+            IDamaging trap = collision.gameObject.GetComponent<IDamaging>();
+
+            if (trap != null)
+            {
+                OnNextStateRequest(StatesEnum.Die);
+            }
         }
 
-        void OnNextStateRequest(StatesEnum state)
+        protected void OnNextStateRequest(StatesEnum state)
         {
             currentState.DeactivateState();
             currentState = listOfStates.Find(_s => _s.State.Equals(state));
