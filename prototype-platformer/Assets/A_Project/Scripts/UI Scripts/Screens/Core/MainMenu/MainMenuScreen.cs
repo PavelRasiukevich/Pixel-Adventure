@@ -5,6 +5,7 @@ namespace PixelAdventure
         public const string EXIT_TO_OPTIONS = "EXIT_TO_OPTIONS";
         public const string EXIT_TO_GAME = "EXIT_TO_GAME";
         public const string EXIT_TO_CREDITS = "EXIT_TO_CREDITS";
+        public const string EXIT_FROM_APP = "EXIT_FROM_APP";
 
         public override void ShowScreen()
         {
@@ -24,6 +25,11 @@ namespace PixelAdventure
         public void OnCreditsPressed()
         {
             Exit(EXIT_TO_CREDITS);
+        }
+
+        public void OnExitPressed()
+        {
+            Exit(EXIT_FROM_APP);
         }
 
     }

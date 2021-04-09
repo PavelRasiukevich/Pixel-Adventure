@@ -1,32 +1,25 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace PixelAdventure
 {
-    public class StartGameManager : BaseScreenManager
+    public class ToBeScreenManager : BaseScreenManager
     {
-        private void Awake()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
         protected override void Start()
         {
             base.Start();
-
-            SetCurrentScreen<StartGameScreen>().ShowScreen();
+            SetCurrentScreen<ToBeScreen>().ShowScreen();
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
         {
-            if (_screenType == typeof(StartGameScreen))
+            if (_screenType == typeof(ToBeScreen))
             {
-                if (_exitCode.Equals(StartGameScreen.EXIT_TO_MENU))
+                if (_exitCode.Equals(ToBeScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
-                else if (_exitCode.Equals(StartGameScreen.EXIT_TO_NEXT_LVL))
-                    SceneManager.LoadScene(SceneID.LVL_1_ID);
             }
             else if (_screenType == typeof(InGameMenuScreen))
             {

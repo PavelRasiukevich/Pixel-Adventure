@@ -29,6 +29,8 @@ namespace PixelAdventure
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_CREDITS))
                     SetCurrentScreen<CreditsScreen>().ShowScreen();
+                else if (_exitCode.Equals(MainMenuScreen.EXIT_FROM_APP))
+                    Application.Quit();
             }
             else if (_screenType == typeof(OptionsScreen))
             {

@@ -11,8 +11,6 @@ namespace PixelAdventure
     {
         private readonly int LEV_STATE = Animator.StringToHash("Leveler_State");
 
-        [SerializeField] TextMeshProUGUI pressE;
-
         public Action OnLevelerActivated { get; set; }
 
         private Animator levelerAnim;

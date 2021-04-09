@@ -5,6 +5,7 @@ namespace PixelAdventure
         public const string EXIT_TO_MAIN_MENU = "EXIT_TO_MAIN_MENU";
         public const string EXIT_TO_OPTIONS = "EXIT_TO_OPTIONS";
         public const string EXIT_TO_BACK_SCREEN = "EXIT_TO_BACK_SCREEN";
+        public const string EXIT_FROM_APP = "EXIT_FROM_APP";
 
         public override void ShowScreen()
         {
@@ -24,6 +25,11 @@ namespace PixelAdventure
         public void OnBackPressed()
         {
             Exit(EXIT_TO_BACK_SCREEN);
+        }
+
+        public void OnExitPressed()
+        {
+            Exit(EXIT_FROM_APP);
         }
     }
 }

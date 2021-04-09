@@ -9,5 +9,6 @@ namespace PixelAdventure
         public const string MAIN_MENU_ID = "MainMenu";
         public const string START_GAME_ID = "StartGame";
         public const string LVL_1_ID = "Level_1";
+        public const string LVL_999 = "ToBeContinued";
     }
 }

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/A_Project/Scenes/Dungeon/Level_1.unity
     guid: d75e79566a5869b4e9c6a8bc587814af
+  - enabled: 1
+    path: Assets/A_Project/Scenes/ToBeContinued.unity
+    guid: 93126154a3a88734fba395d6c5136915
   m_configObjects: {}
