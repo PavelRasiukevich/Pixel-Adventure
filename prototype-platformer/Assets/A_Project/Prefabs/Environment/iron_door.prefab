@@ -98,8 +98,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.41906404, y: -0.16703093}
-  m_Size: {x: 0.6960993, y: 2.1136186}
+  m_Offset: {x: -0.00058074296, y: -0.6895365}
+  m_Size: {x: 0.022823006, y: 1.1295782}
   m_Direction: 0
 --- !u!95 &1688041954793928890
 Animator:
@@ -133,4 +133,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leveler: {fileID: 0}
-  sceneToEnterName: 

@@ -33,7 +33,7 @@ namespace PixelAdventure
         {
             charRb = GetComponent<Rigidbody2D>();
             charBoxCollider = GetComponentInChildren<BoxCollider2D>();
-            charAnim = GetComponentInChildren<Animator>();
+            charAnim = GetComponent<Animator>();
             charSr = GetComponentInChildren<SpriteRenderer>();
 
             listOfStates = new List<BaseState>(transform.GetComponentsInChildren<BaseState>(true));

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PixelAdventure
 {
     public class InGameMenuScreen : BaseScreen
@@ -24,6 +26,7 @@ namespace PixelAdventure
 
         public void OnBackPressed()
         {
+            Time.timeScale = 1;
             Exit(EXIT_TO_BACK_SCREEN);
         }
 

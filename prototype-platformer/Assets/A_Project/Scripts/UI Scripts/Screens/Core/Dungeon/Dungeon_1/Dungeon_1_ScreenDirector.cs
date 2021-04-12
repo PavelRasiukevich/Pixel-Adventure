@@ -4,29 +4,20 @@ using UnityEngine.SceneManagement;
 
 namespace PixelAdventure
 {
-    public class StartGameManager : BaseScreenManager
+    public class Dungeon_1_ScreenDirector : SceneDirector
     {
-        private void Awake()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
         protected override void Start()
         {
             base.Start();
-
-            SetCurrentScreen<StartGameScreen>().ShowScreen();
+            SetCurrentScreen<DungeonGameScreen>().ShowScreen();
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
         {
-            if (_screenType == typeof(StartGameScreen))
+            if (_screenType == typeof(DungeonGameScreen))
             {
-                if (_exitCode.Equals(StartGameScreen.EXIT_TO_MENU))
+                if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
-                else if (_exitCode.Equals(StartGameScreen.EXIT_TO_NEXT_LVL))
-                    SceneManager.LoadScene(SceneID.LVL_1_ID);
             }
             else if (_screenType == typeof(InGameMenuScreen))
             {
@@ -42,7 +33,7 @@ namespace PixelAdventure
             else if (_screenType == typeof(OptionsScreen))
             {
                 if (_exitCode.Equals(OptionsScreen.EXIT_TO_BACK_SCREEN))
-                    ToBackScreen();
+                    SetCurrentScreen<DungeonGameScreen>().ShowScreen();
             }
         }
     }

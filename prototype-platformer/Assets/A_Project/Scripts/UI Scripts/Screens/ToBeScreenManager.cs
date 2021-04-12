@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace PixelAdventure
 {
-    public class ToBeScreenManager : BaseScreenManager
+    public class ToBeScreenManager : SceneDirector
     {
         protected override void Start()
         {

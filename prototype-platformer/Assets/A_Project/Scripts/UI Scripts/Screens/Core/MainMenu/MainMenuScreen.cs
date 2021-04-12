@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PixelAdventure
 {
     public class MainMenuScreen : BaseScreen
@@ -10,6 +12,7 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
+            Time.timeScale = 1;
         }
 
         public void OnStartPressed()

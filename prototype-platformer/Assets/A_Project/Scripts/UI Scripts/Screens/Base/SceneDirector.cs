@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public abstract class BaseScreenManager : MonoBehaviour
+    public abstract class SceneDirector : MonoBehaviour
     {
        protected Dictionary<Type, BaseScreen> screenDict;
         Stack<BaseScreen> screenStack;

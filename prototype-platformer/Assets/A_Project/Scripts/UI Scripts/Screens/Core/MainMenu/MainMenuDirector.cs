@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace PixelAdventure
 {
-    public class MainMenuScreenManager : BaseScreenManager
+    public class MainMenuDirector : SceneDirector
     {
         private void Awake()
         {

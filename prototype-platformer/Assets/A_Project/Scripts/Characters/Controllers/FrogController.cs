@@ -7,7 +7,6 @@ namespace PixelAdventure
         private new void Awake()
         {
             base.Awake();
-
             transform.position = spawn.position;
         }
     }
