@@ -18,6 +18,10 @@ namespace PixelAdventure
             {
                 if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
+                else if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_NEXT_LVL))
+                {
+                    //Load Dung_3
+                }
             }
             else if (_screenType == typeof(InGameMenuScreen))
             {
@@ -33,7 +37,7 @@ namespace PixelAdventure
             else if (_screenType == typeof(OptionsScreen))
             {
                 if (_exitCode.Equals(OptionsScreen.EXIT_TO_BACK_SCREEN))
-                    SetCurrentScreen<DungeonGameScreen>().ShowScreen();
+                    ToBackScreen();
             }
         }
     }

@@ -21,7 +21,7 @@ namespace PixelAdventure
             var _velocity_Y = characterRigidBody.velocity.y;
 
             if (_velocity_Y < 0)
-                NextStateAction.Invoke(StatesEnum.Fall);
+                characterAnimator.SetInteger(INT_STATE, (int)StatesEnum.Fall);
 
             if (IsGrounded)
             {

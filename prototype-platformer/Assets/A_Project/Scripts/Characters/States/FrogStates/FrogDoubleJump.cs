@@ -25,7 +25,7 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
-            characterRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            characterRigidBody.AddForce(Vector2.up * characterRigidBody.velocity.y * -jumpForce, ForceMode2D.Impulse);
         }
     }
 }

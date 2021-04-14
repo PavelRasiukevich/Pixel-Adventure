@@ -7,7 +7,7 @@ namespace PixelAdventure
     {
         public static int direction;
 
-        static readonly int INT_STATE = Animator.StringToHash("State");
+        protected static readonly int INT_STATE = Animator.StringToHash("State");
 
         #region Abstract Members
         public abstract StatesEnum State { get; }

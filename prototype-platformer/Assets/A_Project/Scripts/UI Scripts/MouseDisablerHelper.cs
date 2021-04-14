@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace PixelAdventure
 {
-    public class InitializeButton : MonoBehaviour
+    public class MouseDisablerHelper : MonoBehaviour
     {
         GameObject lastselect;
 

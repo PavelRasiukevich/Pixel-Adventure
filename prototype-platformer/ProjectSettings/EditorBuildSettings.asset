@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/A_Project/Scenes/Startup.unity
     guid: f9842335b871baa47a30b876b1d06312
   - enabled: 1
-    path: Assets/A_Project/Scenes/MainMenu.unity
-    guid: 77184af03b5c88445be2498839e72301
-  - enabled: 1
     path: Assets/A_Project/Scenes/Dungeon/InitialDungeon.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/A_Project/Scenes/Dungeon/Dungeon_1.unity
     guid: d75e79566a5869b4e9c6a8bc587814af
+  - enabled: 1
+    path: Assets/A_Project/Scenes/MainMenu.unity
+    guid: 77184af03b5c88445be2498839e72301
   m_configObjects: {}

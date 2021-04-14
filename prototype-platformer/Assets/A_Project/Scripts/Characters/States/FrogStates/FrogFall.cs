@@ -7,7 +7,7 @@ namespace PixelAdventure
         [SerializeField] float gravityMultiplyer;
 
         public override StatesEnum State => StatesEnum.Fall;
-
+       
         public void FixedUpdate()
         {
             if (characterRigidBody.velocity.y < 0)
@@ -26,6 +26,7 @@ namespace PixelAdventure
         {
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(StatesEnum.FastFall);
+
         }
     }
 }

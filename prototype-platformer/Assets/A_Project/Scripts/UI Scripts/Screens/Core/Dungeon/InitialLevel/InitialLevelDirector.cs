@@ -16,6 +16,7 @@ namespace PixelAdventure
         {
             base.Start();
             SetCurrentScreen<DungeonGameScreen>().ShowScreen();
+            GameInfo.Instance.SetLevelState(SceneManager.GetActiveScene().buildIndex - 1, LevelState.Unlocked);
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
@@ -25,7 +26,10 @@ namespace PixelAdventure
                 if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
                 else if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_NEXT_LVL))
-                    SceneManager.LoadScene(SceneID.LVL_1_ID);
+                {
+                    GameInfo.Instance.SetLevelState(SceneManager.GetActiveScene().buildIndex, LevelState.Unlocked);
+                    SceneManager.LoadScene(SceneID.DUNG_1_ID);
+                }
             }
             else if (_screenType == typeof(InGameMenuScreen))
             {

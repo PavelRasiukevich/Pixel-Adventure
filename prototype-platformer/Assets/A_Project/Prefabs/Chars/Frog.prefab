@@ -198,6 +198,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gravityMultiplyer: 1.35
+  pushForce: 1.5
 --- !u!1 &8811168688884454113
 GameObject:
   m_ObjectHideFlags: 0
