@@ -56,13 +56,13 @@ namespace PixelAdventure
                 _state.NextStateAction += OnNextStateRequest;
             });
 
-            currentState = listOfStates.Find(_s => _s.State.Equals(StatesEnum.Idle));
+            currentState = listOfStates.Find(_s => _s.State.Equals(CharacterState.Idle));
             currentState.ActivateState();
         }
 
         private void OnDieHandler()
         {
-            OnNextStateRequest(StatesEnum.Idle);
+            OnNextStateRequest(CharacterState.Idle);
             transform.position = spawn.position;
             charRb.bodyType = RigidbodyType2D.Dynamic;
         }
@@ -91,7 +91,7 @@ namespace PixelAdventure
 
             if (trap != null)
             {
-                OnNextStateRequest(StatesEnum.Die);
+                OnNextStateRequest(CharacterState.Die);
             }
         }
 
@@ -101,11 +101,11 @@ namespace PixelAdventure
 
             if (trap != null)
             {
-                OnNextStateRequest(StatesEnum.Die);
+                OnNextStateRequest(CharacterState.Die);
             }
         }
 
-        protected void OnNextStateRequest(StatesEnum state)
+        protected void OnNextStateRequest(CharacterState state)
         {
             currentState.DeactivateState();
             currentState = listOfStates.Find(_s => _s.State.Equals(state));

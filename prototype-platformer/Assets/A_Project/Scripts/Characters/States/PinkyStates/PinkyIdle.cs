@@ -4,7 +4,7 @@ namespace PixelAdventure
 {
     public class PinkyIdle : BaseState
     {
-        public override StatesEnum State => StatesEnum.Idle;
+        public override CharacterState State => CharacterState.Idle;
 
         private void FixedUpdate()
         {
@@ -14,14 +14,14 @@ namespace PixelAdventure
                 float _jump = Input.GetAxis("Jump");
 
                 if (Mathf.Abs(_h) > Mathf.Epsilon)
-                    NextStateAction.Invoke(StatesEnum.Move);
+                    NextStateAction.Invoke(CharacterState.Move);
 
                 if (_jump > Mathf.Epsilon)
-                    NextStateAction.Invoke(StatesEnum.Jump);
+                    NextStateAction.Invoke(CharacterState.Jump);
             }
             else
             {
-                NextStateAction.Invoke(StatesEnum.Float);
+                NextStateAction.Invoke(CharacterState.Float);
             }
         }
 

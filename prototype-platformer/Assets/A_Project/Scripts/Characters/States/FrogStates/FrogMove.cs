@@ -6,7 +6,7 @@ namespace PixelAdventure
     {
         [SerializeField] float speed;
 
-        public override StatesEnum State => StatesEnum.Move;
+        public override CharacterState State => CharacterState.Move;
 
         private void FixedUpdate()
         {
@@ -20,11 +20,13 @@ namespace PixelAdventure
                     characterRigidBody.velocity = new Vector2(_h * speed, characterRigidBody.velocity.y);
 
                     if (_jump > Mathf.Epsilon)
-                        NextStateAction.Invoke(StatesEnum.Jump);
+                    {
+                        NextStateAction.Invoke(CharacterState.Jump);
+                    }
                 }
                 else
                 {
-                    NextStateAction.Invoke(StatesEnum.Idle);
+                    NextStateAction.Invoke(CharacterState.Idle);
                 }
 
                 if (characterRigidBody.velocity.x > 0)
@@ -36,7 +38,7 @@ namespace PixelAdventure
             }
             else
             {
-                NextStateAction.Invoke(StatesEnum.Fall);
+                NextStateAction.Invoke(CharacterState.Fall);
             }
         }
     }

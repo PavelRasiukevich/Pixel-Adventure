@@ -7,14 +7,14 @@ namespace PixelAdventure
         [SerializeField] float jumpForce;
         [SerializeField] float gravityMultiplyer;
 
-        public override StatesEnum State => StatesEnum.Jump;
+        public override CharacterState State => CharacterState.Jump;
 
         private void FixedUpdate()
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
             if (_velocity_Y < 0)
-                NextStateAction.Invoke(StatesEnum.Float);
+                NextStateAction.Invoke(CharacterState.Float);
 
             if (characterRigidBody.velocity.y > 0 && Input.GetAxis("Jump") <= 0)
                 characterRigidBody.velocity += Vector2.up * Physics2D.gravity.y * gravityMultiplyer * Time.deltaTime;
@@ -22,9 +22,9 @@ namespace PixelAdventure
             if (IsGrounded)
             {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
-                    NextStateAction.Invoke(StatesEnum.Move);
+                    NextStateAction.Invoke(CharacterState.Move);
                 else
-                    NextStateAction.Invoke(StatesEnum.Idle);
+                    NextStateAction.Invoke(CharacterState.Idle);
             }
         }
 

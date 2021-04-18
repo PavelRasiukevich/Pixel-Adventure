@@ -9,7 +9,7 @@ namespace PixelAdventure
 
         private float h;
 
-        public override StatesEnum State => StatesEnum.Fall;
+        public override CharacterState State => CharacterState.Fall;
 
         public void FixedUpdate()
         {
@@ -19,9 +19,9 @@ namespace PixelAdventure
             if (IsGrounded)
             {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
-                    NextStateAction.Invoke(StatesEnum.Move);
+                    NextStateAction.Invoke(CharacterState.Move);
                 else
-                    NextStateAction.Invoke(StatesEnum.Idle);
+                    NextStateAction.Invoke(CharacterState.Idle);
             }
         }
 

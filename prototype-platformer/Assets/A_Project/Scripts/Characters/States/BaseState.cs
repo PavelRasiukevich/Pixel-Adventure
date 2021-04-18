@@ -10,7 +10,7 @@ namespace PixelAdventure
         protected static readonly int INT_STATE = Animator.StringToHash("State");
 
         #region Abstract Members
-        public abstract StatesEnum State { get; }
+        public abstract CharacterState State { get; }
         #endregion
 
         #region SerializeFields
@@ -25,7 +25,7 @@ namespace PixelAdventure
         #endregion
 
         #region Properties
-        public Action<StatesEnum> NextStateAction { get; set; }
+        public Action<CharacterState> NextStateAction { get; set; }
         protected bool IsGrounded
         {
             get

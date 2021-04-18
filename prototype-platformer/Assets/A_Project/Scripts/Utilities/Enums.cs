@@ -5,4 +5,18 @@ namespace PixelAdventure
         Locked,
         Unlocked
     }
+
+    public enum CharacterState
+    {
+        Idle,
+        Move,
+        Jump,
+        Fall,
+        FastFall,
+        DoubleJump,
+        WallJump,
+        Dash,
+        Float,
+        Die
+    }
 }

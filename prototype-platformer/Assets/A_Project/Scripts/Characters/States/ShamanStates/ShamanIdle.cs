@@ -6,7 +6,7 @@ namespace PixelAdventure
 {
     public class ShamanIdle : BaseState
     {
-        public override StatesEnum State => StatesEnum.Idle;
+        public override CharacterState State => CharacterState.Idle;
 
         private void Update()
         {
@@ -16,12 +16,12 @@ namespace PixelAdventure
                 float _jump = Input.GetAxis("Jump");
 
                 if (Mathf.Abs(_h) > Mathf.Epsilon)
-                    NextStateAction.Invoke(StatesEnum.Move);
+                    NextStateAction.Invoke(CharacterState.Move);
 
             }
             else
             {
-                NextStateAction.Invoke(StatesEnum.Fall);
+                NextStateAction.Invoke(CharacterState.Fall);
             }
         }
 

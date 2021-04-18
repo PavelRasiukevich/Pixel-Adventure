@@ -4,7 +4,7 @@ namespace PixelAdventure
 {
     public class DieState : BaseState
     {
-        public override StatesEnum State => StatesEnum.Die;
+        public override CharacterState State => CharacterState.Die;
 
         public override void ActivateState()
         {
