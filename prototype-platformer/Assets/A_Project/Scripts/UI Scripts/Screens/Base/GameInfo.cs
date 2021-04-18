@@ -9,7 +9,10 @@ namespace PixelAdventure
     {
         [SerializeField] List<LevelConfig> levelConfig;
 
+
         public List<LevelConfig> LevelConfig { get => levelConfig; }
+
+        public int LifeAmount { get; set; }
 
         public int LevelIndex { get; set; }
 
@@ -27,6 +30,5 @@ namespace PixelAdventure
     [Serializable]
     public class LevelConfig
     {
-       
     }
 }

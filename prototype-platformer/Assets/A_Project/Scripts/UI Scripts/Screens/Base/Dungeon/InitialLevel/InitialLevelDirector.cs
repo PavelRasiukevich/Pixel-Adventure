@@ -30,6 +30,9 @@ namespace PixelAdventure
                     GameInfo.Instance.SetLevelState(SceneManager.GetActiveScene().buildIndex, LevelState.Unlocked);
                     SceneManager.LoadScene(SceneID.DUNG_1_ID);
                 }
+                else if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_GAMEOVER))
+                    SceneManager.LoadScene(SceneID.GAMEOVE_ID);
+
             }
             else if (_screenType == typeof(InGameMenuScreen))
             {

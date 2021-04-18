@@ -15,7 +15,7 @@ namespace PixelAdventure
         protected Rigidbody2D charRb;
         protected Animator charAnim;
         protected SpriteRenderer charSr;
-        protected BoxCollider2D charBoxCollider;
+        protected CapsuleCollider2D charCapsuleCollider;
         #endregion
 
         #region States
@@ -27,12 +27,13 @@ namespace PixelAdventure
         public Action<Transform> OnChangePosition { get; set; }
         public Action<Transform> OnPlayerEnable { get; set; }
         public Action OnDieActive { get; set; }
+        public Action LifeLost { get; set; }
         #endregion
 
         protected void Awake()
         {
             charRb = GetComponent<Rigidbody2D>();
-            charBoxCollider = GetComponentInChildren<BoxCollider2D>();
+            charCapsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
             charAnim = GetComponent<Animator>();
             charSr = GetComponentInChildren<SpriteRenderer>();
 
@@ -40,7 +41,7 @@ namespace PixelAdventure
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charBoxCollider);
+                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider);
             });
         }
 
@@ -67,7 +68,7 @@ namespace PixelAdventure
             charRb.bodyType = RigidbodyType2D.Dynamic;
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
 
             charRb.velocity = Vector2.zero;
@@ -85,22 +86,13 @@ namespace PixelAdventure
             OnChangePosition?.Invoke(transform);
         }
 
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            IDamaging trap = collider.gameObject.GetComponent<IDamaging>();
+            var obstacle = other.gameObject.GetComponent<IDamaging>();
 
-            if (trap != null)
+            if (obstacle != null)
             {
-                OnNextStateRequest(CharacterState.Die);
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            IDamaging trap = collision.gameObject.GetComponent<IDamaging>();
-
-            if (trap != null)
-            {
+                LifeLost.Invoke();
                 OnNextStateRequest(CharacterState.Die);
             }
         }

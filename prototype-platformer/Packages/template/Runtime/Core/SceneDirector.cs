@@ -7,7 +7,7 @@ namespace PixelAdventure
 {
     public abstract class SceneDirector : MonoBehaviour
     {
-       protected Dictionary<Type, BaseScreen> screenDict;
+        protected Dictionary<Type, BaseScreen> screenDict;
         Stack<BaseScreen> screenStack;
 
         protected BaseScreen CurrentScreen { get; private set; }

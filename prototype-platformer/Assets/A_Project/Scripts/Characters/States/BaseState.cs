@@ -21,7 +21,7 @@ namespace PixelAdventure
         protected Rigidbody2D characterRigidBody;
         protected Animator characterAnimator;
         protected SpriteRenderer characterSpriteRenderer;
-        protected BoxCollider2D characterBoxCollider;
+        protected CapsuleCollider2D charCapsuleCollider;
         #endregion
 
         #region Properties
@@ -30,16 +30,17 @@ namespace PixelAdventure
         {
             get
             {
-                return Physics2D.BoxCast(characterBoxCollider.bounds.center, characterBoxCollider.bounds.size,
+                return Physics2D.BoxCast(charCapsuleCollider.bounds.center,
+                    new Vector2(charCapsuleCollider.bounds.extents.x, charCapsuleCollider.bounds.size.y),
                     0, Vector2.down, .1f, groundLayerMask);
             }
         }
         #endregion
 
-        public void Setup(Rigidbody2D _charRb, Animator _charAnim, SpriteRenderer _charSr, BoxCollider2D _charBoxCollider)
+        public void Setup(Rigidbody2D _charRb, Animator _charAnim, SpriteRenderer _charSr, CapsuleCollider2D _charCapsuleCollider)
         {
             characterRigidBody = _charRb;
-            characterBoxCollider = _charBoxCollider;
+            charCapsuleCollider = _charCapsuleCollider;
             characterAnimator = _charAnim;
             characterSpriteRenderer = _charSr;
         }

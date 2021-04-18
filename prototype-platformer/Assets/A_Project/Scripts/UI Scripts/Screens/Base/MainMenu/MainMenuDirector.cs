@@ -16,6 +16,8 @@ namespace PixelAdventure
 
             lvlButtons = GetComponentInChildren<LevelMapScreen>(true).GetComponentInChildren<LayoutGroup>(true)
                 .GetComponentsInChildren<Button>(true);
+
+            GameInfo.Instance.LifeAmount = 3;
         }
 
         protected override void Start()

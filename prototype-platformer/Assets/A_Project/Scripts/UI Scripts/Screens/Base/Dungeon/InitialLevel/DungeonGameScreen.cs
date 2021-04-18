@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -7,18 +8,33 @@ namespace PixelAdventure
     {
         public const string EXIT_TO_MENU = "EXIT_TO_MENU";
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
+        public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
 
         [SerializeField] IronDoor door;
+        [SerializeField] TextMeshProUGUI lifeAmountLabel;
+        [SerializeField] BaseController character;
 
-      
+        private void Awake()
+        {
+            lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
+        }
+
         private void OnEnable()
         {
             door.OnDoorEntered += OnDoorInteredHandler;
+            character.LifeLost += LifeLostHandler;
         }
 
         private void OnDisable()
         {
             door.OnDoorEntered -= OnDoorInteredHandler;
+            character.LifeLost -= LifeLostHandler;
+        }
+
+        private void  LifeLostHandler()
+        {
+            GameInfo.Instance.LifeAmount--;
+            lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
         }
 
         private void OnDoorInteredHandler()
@@ -38,6 +54,9 @@ namespace PixelAdventure
                 Time.timeScale = 0;
                 Exit(EXIT_TO_MENU);
             }
+
+            if (GameInfo.Instance.LifeAmount == 0)
+                Exit(EXIT_TO_GAMEOVER);
         }
     }
 }

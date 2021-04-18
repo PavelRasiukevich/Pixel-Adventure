@@ -7,6 +7,7 @@ namespace PixelAdventure
     public static class SceneID
     {
         public const string MAIN_MENU_ID = "MainMenu";
+        public const string GAMEOVE_ID = "GameOver";
         public const string START_GAME_ID = "initialDungeon";
         public const string DUNG_1_ID = "Dungeon_1";
         public const string DUNG_2_ID = "Dungeon_2";
