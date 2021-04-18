@@ -101,7 +101,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -123,7 +123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel3Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -456,7 +456,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -478,7 +478,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel4Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1239,7 +1239,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel2Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1350,7 +1350,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1372,7 +1372,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel5Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1911,7 +1911,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel8Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2365,7 +2365,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2387,7 +2387,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel6Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3121,7 +3121,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9245283, g: 0.17880027, b: 0.17880027, a: 1}
+    m_SelectedColor: {r: 0.40784317, g: 0.23137257, b: 0.3019608, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3143,7 +3143,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
         m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_MethodName: OnLevel7Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
