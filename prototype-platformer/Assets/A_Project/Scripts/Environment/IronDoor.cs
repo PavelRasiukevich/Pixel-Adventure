@@ -25,7 +25,7 @@ namespace PixelAdventure
 
         private void OnEventHandler()
         {
-            doorAnim.SetInteger(DOOR_STATE, 1);
+            doorAnim.SetInteger(DOOR_STATE, (int)DoorState.Open);
             CanEnter = true;
         }
 

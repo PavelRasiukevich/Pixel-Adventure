@@ -17,6 +17,7 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
+                Debug.Log("Ground Detected in DoubleJump!");
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else
@@ -29,6 +30,8 @@ namespace PixelAdventure
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(CharacterState.FastFall);
         }
+
+     
 
         public override void ActivateState()
         {
