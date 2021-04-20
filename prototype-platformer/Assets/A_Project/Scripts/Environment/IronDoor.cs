@@ -6,16 +6,14 @@ using PixelAdventure.Interfaces;
 
 namespace PixelAdventure
 {
-    public class IronDoor : MonoBehaviour
+    public class IronDoor : BaseDoor
     {
-        public Action OnDoorEntered { get; set; }
 
         public readonly int DOOR_STATE = Animator.StringToHash("State");
 
         [SerializeField] Leveler leveler;
 
         private Animator doorAnim;
-        private bool CanEnter { get; set; }
 
         private void Awake()
         {

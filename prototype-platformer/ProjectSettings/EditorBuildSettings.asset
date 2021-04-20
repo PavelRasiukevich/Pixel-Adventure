@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/A_Project/Scenes/Startup.unity
+    path: Assets/A_Project/Scenes/MenuScenes/Startup.unity
     guid: f9842335b871baa47a30b876b1d06312
   - enabled: 1
     path: Assets/A_Project/Scenes/Dungeon/InitialDungeon.unity
@@ -21,9 +21,21 @@ EditorBuildSettings:
     path: Assets/A_Project/Scenes/Dungeon/Dungeon_3.unity
     guid: 79ffcaeaed249f4458838b789f96803b
   - enabled: 1
-    path: Assets/A_Project/Scenes/MainMenu.unity
+    path: Assets/A_Project/Scenes/Cave.unity
+    guid: 4bb650489727d8f4782f5d530f8a2e1f
+  - enabled: 1
+    path: Assets/A_Project/Scenes/Forest.unity
+    guid: d4aec2b16ee5a8847adedcfcbb2b8a83
+  - enabled: 1
+    path: Assets/A_Project/Scenes/Castle.unity
+    guid: eb8dd210af98c2448946d1541fd1e709
+  - enabled: 1
+    path: Assets/A_Project/Scenes/Tower.unity
+    guid: be2263fae87e7ad4d89a47ebe7f6e9a7
+  - enabled: 1
+    path: Assets/A_Project/Scenes/MenuScenes/MainMenu.unity
     guid: 77184af03b5c88445be2498839e72301
   - enabled: 1
-    path: Assets/A_Project/Scenes/GameOver.unity
+    path: Assets/A_Project/Scenes/MenuScenes/GameOver.unity
     guid: a67a6decf9ecb2f4480fab5d0aaa15c9
   m_configObjects: {}

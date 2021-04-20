@@ -48,17 +48,17 @@ namespace PixelAdventure
 
         public void OnLevel6Pressed()
         {
-            Exit(EXIT_TO_CASTLE);
+            Exit(EXIT_TO_FOREST);
         }
 
         public void OnLevel7Pressed()
         {
-            Exit(EXIT_TO_TOWER);
+            Exit(EXIT_TO_CASTLE);
         }
 
         public void OnLevel8Pressed()
         {
-            Exit(EXIT_TO_FOREST);
+            Exit(EXIT_TO_TOWER);
         }
     }
 }

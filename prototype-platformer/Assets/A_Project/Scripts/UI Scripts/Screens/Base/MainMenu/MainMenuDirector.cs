@@ -73,10 +73,12 @@ namespace PixelAdventure
                     SceneManager.LoadScene(SceneID.DUNG_3_ID);
                 else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_CAVE))
                     SceneManager.LoadScene(SceneID.CAVE_ID);
-                else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_TOWER))
-                    SceneManager.LoadScene(SceneID.TOWER_ID);
                 else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_FOREST))
                     SceneManager.LoadScene(SceneID.FOREST_ID);
+                else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_CASTLE))
+                    SceneManager.LoadScene(SceneID.CASTLE_ID);
+                else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_TOWER))
+                    SceneManager.LoadScene(SceneID.TOWER_ID);
             }
         }
     }

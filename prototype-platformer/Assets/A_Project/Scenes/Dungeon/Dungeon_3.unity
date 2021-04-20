@@ -2644,6 +2644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SawThrower_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6169553403643470978, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8061609083206168842, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2864,6 +2868,10 @@ PrefabInstance:
     - target: {fileID: 6169553403643470978, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
       propertyPath: m_Name
       value: SawThrower_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169553403643470978, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8061609083206168842, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
       propertyPath: m_RootOrder
@@ -20528,6 +20536,10 @@ PrefabInstance:
     - target: {fileID: 6169553403643470978, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
       propertyPath: m_Name
       value: SawThrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169553403643470978, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8061609083206168842, guid: 2f8340cc28171c74c854641fc54900ea, type: 3}
       propertyPath: m_RootOrder

@@ -10,7 +10,7 @@ namespace PixelAdventure
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
 
-        [SerializeField] IronDoor door;
+        [SerializeField] BaseDoor door;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] BaseController character;
 
