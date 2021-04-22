@@ -15,6 +15,7 @@ namespace PixelAdventure
 
         #region SerializeFields
         [SerializeField] protected LayerMask groundLayerMask;
+        [SerializeField] protected float boxCastDistance;
         #endregion
 
         #region Components
@@ -31,8 +32,8 @@ namespace PixelAdventure
             get
             {
                 return Physics2D.BoxCast(charCapsuleCollider.bounds.center,
-                    new Vector2(charCapsuleCollider.bounds.extents.x, 1),
-                    0.0f, Vector2.down, 0.3f, groundLayerMask);
+                    new Vector2(charCapsuleCollider.bounds.extents.x, charCapsuleCollider.bounds.size.y - .1f),
+                    0.0f, Vector2.down, 0.11f, groundLayerMask);
             }
         }
         #endregion

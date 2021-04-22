@@ -7,12 +7,10 @@ namespace PixelAdventure
         [SerializeField] float jumpForce;
         [SerializeField] float doubleJumpCountDown;
 
-        bool HasDoubleJumped { get; set; }
         bool IsSecondJumpAvaliable
         {
             get
             {
-                timer -= Time.deltaTime;
 
                 if (timer < 0)
                     return true;
@@ -51,6 +49,8 @@ namespace PixelAdventure
 
         private void Update()
         {
+            timer -= Time.deltaTime;
+
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(CharacterState.FastFall);
 
