@@ -69,10 +69,17 @@ namespace PixelAdventure
 
         private void OnDieHandler()
         {
-            transform.position = SpawnPosition;
-            charCapsuleCollider.enabled = true;
-            OnNextStateRequest(CharacterState.Idle);
-            charRb.bodyType = RigidbodyType2D.Dynamic;
+            if (!GameInfo.Instance.IsGameOverScreenAtive)
+            {
+                transform.position = SpawnPosition;
+                charCapsuleCollider.enabled = true;
+                OnNextStateRequest(CharacterState.Idle);
+                charRb.bodyType = RigidbodyType2D.Dynamic;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         protected void OnDisable()

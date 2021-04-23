@@ -13,8 +13,15 @@ namespace PixelAdventure
         public List<LevelConfig> LevelConfig { get => levelConfig; }
 
         public int LifeAmount { get; set; }
-
         public int LevelIndex { get; set; }
+        public bool IsGameOverScreenAtive { get; set; }
+
+        public int Retry()
+        {
+            Time.timeScale = 1;
+            LifeAmount = 3;
+            return LevelIndex;
+        }
 
         public LevelState GetLevelState(int _index)
         {

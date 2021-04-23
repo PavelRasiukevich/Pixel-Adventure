@@ -17,6 +17,8 @@ namespace PixelAdventure
         protected override void Start()
         {
             base.Start();
+            GameInfo.Instance.IsGameOverScreenAtive = false;
+            GameInfo.Instance.LevelIndex = SceneManager.GetActiveScene().buildIndex;
             SetCurrentScreen<DungeonGameScreen>().ShowScreen();
             GameInfo.Instance.SetLevelState(SceneManager.GetActiveScene().buildIndex - 1, LevelState.Unlocked);
         }
@@ -28,11 +30,9 @@ namespace PixelAdventure
                 if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
                 else if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_NEXT_LVL))
-                {
                     SceneManager.LoadScene(id.ToString());
-                }
                 else if (_exitCode.Equals(DungeonGameScreen.EXIT_TO_GAMEOVER))
-                    SceneManager.LoadScene(SceneID.GAMEOVE_ID);
+                    SetCurrentScreen<GameOverScreen>().ShowScreen();
 
             }
             else if (_screenType == typeof(InGameMenuScreen))
@@ -50,6 +50,13 @@ namespace PixelAdventure
             {
                 if (_exitCode.Equals(OptionsScreen.EXIT_TO_BACK_SCREEN))
                     ToBackScreen();
+            }
+            else if (_screenType == typeof(GameOverScreen))
+            {
+                if (_exitCode.Equals(GameOverScreen.EXIT_TO_MAIN_MENU))
+                    SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
+                else if (_exitCode.Equals(GameOverScreen.RETRY))
+                    SceneManager.LoadScene(GameInfo.Instance.Retry());
             }
         }
     }

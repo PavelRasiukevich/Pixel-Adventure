@@ -31,7 +31,7 @@ namespace PixelAdventure
             character.LifeLost -= LifeLostHandler;
         }
 
-        private void  LifeLostHandler()
+        private void LifeLostHandler()
         {
             GameInfo.Instance.LifeAmount--;
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
@@ -56,7 +56,10 @@ namespace PixelAdventure
             }
 
             if (GameInfo.Instance.LifeAmount == 0)
+            {
+                Time.timeScale = 0;
                 Exit(EXIT_TO_GAMEOVER);
+            }
         }
     }
 }

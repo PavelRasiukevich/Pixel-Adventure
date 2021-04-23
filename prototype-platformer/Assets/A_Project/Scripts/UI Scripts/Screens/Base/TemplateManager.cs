@@ -11,6 +11,12 @@ namespace PixelAdventure
             SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
         }
 
+        private void Start()
+        {
+            GameInfo.Instance.LifeAmount = 3;
+            
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Q))
