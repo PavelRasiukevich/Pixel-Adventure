@@ -8,6 +8,9 @@ namespace PixelAdventure
 
         private void FixedUpdate()
         {
+            if (IsWatered)
+                NextStateAction.Invoke(CharacterState.WaterFloat);
+
             if (IsGrounded)
             {
                 float _h = Input.GetAxis("Horizontal");

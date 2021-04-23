@@ -12,6 +12,7 @@ namespace PixelAdventure
             base.ActivateState();
             characterRigidBody.velocity = Vector2.zero;
             characterRigidBody.bodyType = RigidbodyType2D.Kinematic;
+            charCapsuleCollider.enabled = false;
         }
     }
 }

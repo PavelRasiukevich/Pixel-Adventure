@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class FrogController : BaseController, IControllable
+    public class FrogController : BaseController
     {
         private new void Awake()
         {
             base.Awake();
-            transform.position = spawn.position;
+            transform.position = SpawnPosition;
         }
     }
 }

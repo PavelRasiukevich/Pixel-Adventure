@@ -7,5 +7,7 @@ namespace PixelAdventure.Interfaces
     {
         Action<Transform> OnChangePosition { get; set; }
         Action<Transform> OnPlayerEnable { get; set; }
+
+        Vector3 SpawnPosition { get; set; }
     }
 }

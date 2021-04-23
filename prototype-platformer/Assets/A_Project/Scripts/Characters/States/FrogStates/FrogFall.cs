@@ -18,6 +18,9 @@ namespace PixelAdventure
             if (jump > Mathf.Epsilon)
                 NextStateAction.Invoke(CharacterState.Jump);
 
+            if (IsWatered)
+                NextStateAction.Invoke(CharacterState.WaterFloat);
+
             if (IsGrounded)
             {
                 Debug.Log("Ground Detected in Fall!");

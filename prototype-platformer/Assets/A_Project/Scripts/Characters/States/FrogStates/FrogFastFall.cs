@@ -12,6 +12,9 @@ namespace PixelAdventure
 
         private void FixedUpdate()
         {
+            if (IsWatered)
+                NextStateAction.Invoke(CharacterState.WaterFloat);
+
             if (IsGrounded)
             {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)

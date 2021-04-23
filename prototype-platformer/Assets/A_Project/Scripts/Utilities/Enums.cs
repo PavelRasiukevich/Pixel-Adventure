@@ -17,7 +17,8 @@ namespace PixelAdventure
         WallJump,
         Dash,
         Float,
-        Die
+        Die,
+        WaterFloat
     }
 
     public enum DoorState

@@ -30,8 +30,14 @@ namespace PixelAdventure
         public Action LifeLost { get; set; }
         #endregion
 
+        #region Properties
+        public Vector3 SpawnPosition { get; set; }
+        #endregion
+
         protected void Awake()
         {
+            SpawnPosition = spawn.position;
+
             charRb = GetComponent<Rigidbody2D>();
             charCapsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
             charAnim = GetComponent<Animator>();
@@ -63,8 +69,9 @@ namespace PixelAdventure
 
         private void OnDieHandler()
         {
+            transform.position = SpawnPosition;
+            charCapsuleCollider.enabled = true;
             OnNextStateRequest(CharacterState.Idle);
-            transform.position = spawn.position;
             charRb.bodyType = RigidbodyType2D.Dynamic;
         }
 

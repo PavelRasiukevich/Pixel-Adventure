@@ -26,9 +26,10 @@ namespace PixelAdventure
 
             if (player != null)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetAxis("Use") > 0)
                 {
                     levelerAnim.SetInteger(LEV_STATE, 1);
+                    player.SpawnPosition = gameObject.transform.position;
                     OnLevelerActivated.Invoke();
                 }
             }

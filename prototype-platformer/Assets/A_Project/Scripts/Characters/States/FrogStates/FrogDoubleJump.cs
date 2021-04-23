@@ -15,6 +15,9 @@ namespace PixelAdventure
             if (_velocity_Y < 0)
                 characterAnimator.SetInteger(INT_STATE, (int)CharacterState.Fall);
 
+            if (IsWatered)
+                NextStateAction.Invoke(CharacterState.WaterFloat);
+
             if (IsGrounded)
             {
                 Debug.Log("Ground Detected in DoubleJump!");

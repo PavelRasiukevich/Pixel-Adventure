@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6593189021366583217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246938487534119791}
+  - component: {fileID: 4156160420183502750}
+  m_Layer: 0
+  m_Name: Float
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &246938487534119791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6593189021366583217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8811168689093342836}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4156160420183502750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6593189021366583217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8feacc29c975648844cbcc553c56a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
+  boxCastDistance: 0.21
+  speed: 2
 --- !u!1 &8811168688137170713
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +97,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
   speed: 5
 --- !u!1 &8811168688822477405
@@ -94,6 +148,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
   fallForce: 12
 --- !u!1 &8811168688840539862
@@ -142,6 +199,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
   gravityMultiplyer: 1.35
 --- !u!1 &8811168688884454113
@@ -221,6 +281,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
 --- !u!1 &8811168689093342837
 GameObject:
@@ -257,6 +320,7 @@ Transform:
   - {fileID: 8811168689039096341}
   - {fileID: 8811168690217591034}
   - {fileID: 8811168689926317487}
+  - {fileID: 246938487534119791}
   m_Father: {fileID: 8811168689768907177}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,6 +370,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
 --- !u!1 &8811168689768907159
 GameObject:
@@ -381,7 +448,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 743162473
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -540,6 +607,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
 --- !u!1 &8811168690073216290
 GameObject:
@@ -587,6 +657,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
   jumpForce: 8
   doubleJumpCountDown: 0.1
@@ -636,5 +709,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  waterLayerMask:
+    serializedVersion: 2
+    m_Bits: 16
   boxCastDistance: 0.21
   jumpForce: 8

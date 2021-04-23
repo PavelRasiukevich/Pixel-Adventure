@@ -10,6 +10,9 @@ namespace PixelAdventure
 
         private void FixedUpdate()
         {
+            if (IsWatered)
+                NextStateAction.Invoke(CharacterState.WaterFloat);
+
             if (IsGrounded)
             {
                 float _h = Input.GetAxis("Horizontal");
@@ -31,10 +34,8 @@ namespace PixelAdventure
 
                 if (characterRigidBody.velocity.x > 0)
                     transform.parent.parent.localScale = new Vector2(1, 1);
-                    //characterSpriteRenderer.flipX = false;
                 else if (characterRigidBody.velocity.x < 0)
                     transform.parent.parent.localScale = new Vector2(-1, 1);
-                    //characterSpriteRenderer.flipX = true;
             }
             else
             {
