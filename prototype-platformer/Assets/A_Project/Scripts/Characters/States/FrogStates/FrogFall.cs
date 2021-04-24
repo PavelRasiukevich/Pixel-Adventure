@@ -6,8 +6,6 @@ namespace PixelAdventure
     {
         [SerializeField] float gravityMultiplyer;
 
-        float jump;
-
         public override CharacterState State => CharacterState.Fall;
        
         public void FixedUpdate()
@@ -15,7 +13,7 @@ namespace PixelAdventure
             if (characterRigidBody.velocity.y < 0)
                 characterRigidBody.velocity += Vector2.up * Physics2D.gravity * gravityMultiplyer * Time.deltaTime;
 
-            if (jump > Mathf.Epsilon)
+            if (JumpAxes > Mathf.Epsilon)
                 NextStateAction.Invoke(CharacterState.Jump);
 
             if (IsWatered)
@@ -25,7 +23,7 @@ namespace PixelAdventure
             {
                 Debug.Log("Ground Detected in Fall!");
 
-                if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
+                if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else
                     NextStateAction.Invoke(CharacterState.Idle);
@@ -36,8 +34,6 @@ namespace PixelAdventure
         {
             if (Input.GetKeyDown(KeyCode.S))
                 NextStateAction.Invoke(CharacterState.FastFall);
-
-            jump = Input.GetAxis("Jump");
         }
     }
 }

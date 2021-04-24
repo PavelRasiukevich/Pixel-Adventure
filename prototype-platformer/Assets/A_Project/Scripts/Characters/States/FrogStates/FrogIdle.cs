@@ -13,13 +13,11 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
-                float _h = Input.GetAxis("Horizontal");
-                float _jump = Input.GetAxis("Jump");
-
-                if (Mathf.Abs(_h) > Mathf.Epsilon)
+                
+                if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
 
-                if (_jump > Mathf.Epsilon)
+                if (JumpAxes > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Jump);
             }
             else

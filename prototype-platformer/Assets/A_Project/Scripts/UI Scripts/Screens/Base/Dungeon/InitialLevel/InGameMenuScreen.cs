@@ -14,6 +14,15 @@ namespace PixelAdventure
             base.ShowScreen();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1;
+                Exit(EXIT_TO_BACK_SCREEN);
+            }
+        }
+
         public void OnMainMenuPressed()
         {
             Exit(EXIT_TO_MAIN_MENU);

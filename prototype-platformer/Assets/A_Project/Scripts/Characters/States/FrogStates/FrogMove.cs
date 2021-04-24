@@ -15,14 +15,11 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
-                float _h = Input.GetAxis("Horizontal");
-                float _jump = Input.GetAxis("Jump");
-
-                if (Mathf.Abs(_h) > 0)
+                if (Mathf.Abs(HorizontalAxes) > 0)
                 {
-                    characterRigidBody.velocity = new Vector2(_h * speed, characterRigidBody.velocity.y);
+                    characterRigidBody.velocity = new Vector2(HorizontalAxes * speed, characterRigidBody.velocity.y);
 
-                    if (_jump > Mathf.Epsilon)
+                    if (JumpAxes > Mathf.Epsilon)
                     {
                         NextStateAction.Invoke(CharacterState.Jump);
                     }

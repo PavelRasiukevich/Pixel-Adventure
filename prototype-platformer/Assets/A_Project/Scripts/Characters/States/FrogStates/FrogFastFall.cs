@@ -17,7 +17,7 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
-                if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
+                if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else
                     NextStateAction.Invoke(CharacterState.Idle);

@@ -10,25 +10,17 @@ namespace PixelAdventure
 
         [SerializeField] float speed;
 
-        float h;
-
         private void FixedUpdate()
         {
-            if (Mathf.Abs(h) > 0)
+            if (Mathf.Abs(HorizontalAxes) > 0)
             {
-                characterRigidBody.velocity = new Vector2(h * speed, characterRigidBody.velocity.y);
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * speed, characterRigidBody.velocity.y);
 
-                if (Input.GetAxis("Jump") > Mathf.Epsilon)
+                if (JumpAxes > Mathf.Epsilon)
                 {
                     NextStateAction.Invoke(CharacterState.Jump);
                 }
             }
         }
-
-        private void Update()
-        {
-            h = Input.GetAxis("Horizontal");
-        }
-
     }
 }

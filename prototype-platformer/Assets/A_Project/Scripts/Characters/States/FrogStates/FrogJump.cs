@@ -21,8 +21,6 @@ namespace PixelAdventure
 
         private float timer;
 
-        float jump;
-
         private void OnEnable()
         {
             timer = doubleJumpCountDown;
@@ -43,7 +41,7 @@ namespace PixelAdventure
             if (IsGrounded)
             {
                 Debug.Log("Ground Detected in Jump!");
-                if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Epsilon)
+                if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else
                     NextStateAction.Invoke(CharacterState.Idle);
@@ -61,7 +59,6 @@ namespace PixelAdventure
                 if (Input.GetKeyDown(KeyCode.Space))
                     NextStateAction.Invoke(CharacterState.DoubleJump);
 
-            jump = Input.GetAxis("Jump");
         }
 
         public override void ActivateState()

@@ -28,6 +28,18 @@ namespace PixelAdventure
 
         #region Properties
         public Action<CharacterState> NextStateAction { get; set; }
+        public float HorizontalAxes
+        {
+            get => Input.GetAxis("Horizontal");
+        }
+        public float VerticalAxes
+        {
+            get => Input.GetAxis("Vertical");
+        }
+        public float JumpAxes
+        {
+            get => Input.GetAxis("Jump");
+        }
         protected bool IsGrounded
         {
             get
