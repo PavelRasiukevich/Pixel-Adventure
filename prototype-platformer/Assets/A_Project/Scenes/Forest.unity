@@ -99302,10 +99302,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followSpeed: 7
   offset: {x: 0, y: 0, z: -10}
-  minClamp_X: -53
-  maxClamp_X: 1000
-  minClamp_Y: -1
-  maxClamp_Y: 20
+  minClamp_X: 2
+  maxClamp_X: 102
+  minClamp_Y: 3
+  maxClamp_Y: 13
   target: {fileID: 156224533}
 --- !u!81 &2062291545
 AudioListener:
@@ -99366,7 +99366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062291543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: -10}
+  m_LocalPosition: {x: 2.9, y: 1.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
