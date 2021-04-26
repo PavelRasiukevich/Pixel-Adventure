@@ -40,7 +40,6 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
-                Debug.Log("Ground Detected in Jump!");
                 if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else

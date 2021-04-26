@@ -511,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274679623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -2.68, z: -10}
+  m_LocalPosition: {x: 3.4, y: -4.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -531,10 +531,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followSpeed: 7
   offset: {x: 0, y: 0, z: -10}
-  minClamp_X: 0.5
-  maxClamp_X: 1000
+  minClamp_X: 3.5
+  maxClamp_X: 32
   minClamp_Y: -2.5
-  maxClamp_Y: 15
+  maxClamp_Y: 17
   target: {fileID: 1209705408}
 --- !u!1001 &371071736
 PrefabInstance:

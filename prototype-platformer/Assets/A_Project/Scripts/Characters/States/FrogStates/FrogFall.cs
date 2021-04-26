@@ -21,7 +21,6 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
-                Debug.Log("Ground Detected in Fall!");
 
                 if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);

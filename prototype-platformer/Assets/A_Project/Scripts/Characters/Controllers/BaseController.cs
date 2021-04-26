@@ -115,7 +115,6 @@ namespace PixelAdventure
         {
             currentState.DeactivateState();
             currentState = listOfStates.Find(_s => _s.State.Equals(state));
-            Debug.Log(currentState.ToString());
             currentState.ActivateState();
         }
     }

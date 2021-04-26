@@ -21,6 +21,14 @@ namespace PixelAdventure
         WaterFloat
     }
 
+    public enum BatState
+    {
+        Idle,
+        Chasing,
+        CeillingIn,
+        CeillingOut
+    }
+
     public enum DoorState
     {
         Closed,
