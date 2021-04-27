@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class Bat : MonoBehaviour
+    public class Bat : MonoBehaviour, IDamaging
     {
         public readonly int INT_STATE = Animator.StringToHash("State");
 
@@ -24,6 +24,7 @@ namespace PixelAdventure
         [SerializeField] Transform targetToChase;
 
         Animator batAnim;
+        SpriteRenderer batSr;
 
         #region Properties
         public Animator BatAnim { get => batAnim; }
@@ -34,11 +35,13 @@ namespace PixelAdventure
         public BatChase Chase { get => chase; set => chase = value; }
         public BatCeillingIn CeillingIn { get => ceillingIn; set => ceillingIn = value; }
         public BatCeillingOut CeillingOut { get => ceillingOut; set => ceillingOut = value; }
+        public SpriteRenderer BatSr { get => batSr; }
         #endregion
 
         private void Awake()
         {
             batAnim = GetComponent<Animator>();
+            batSr = GetComponent<SpriteRenderer>();
             batAnim.GetBehaviour<CeillingOutBhv>().CeillingOutLastFrame += OnOutHandler;
             batAnim.GetBehaviour<CeillingInBhv>().CeillingInLastFrame += OnInHandler;
 
@@ -59,7 +62,7 @@ namespace PixelAdventure
 
         private void OnInHandler()
         {
-            machine.ChangeState(BatIdle);
+            machine.ChangeState(batIdle);
         }
 
         private void Start()
@@ -82,7 +85,9 @@ namespace PixelAdventure
         private void OnTriggerInteredHandler(BaseController _player)
         {
             targetToChase = _player.transform;
-            machine.ChangeState(ceillingOut);
+
+            if (!machine.CurrentState.Equals(chase))
+                machine.ChangeState(ceillingOut);
         }
 
         private void OnTriggerExitHandler()

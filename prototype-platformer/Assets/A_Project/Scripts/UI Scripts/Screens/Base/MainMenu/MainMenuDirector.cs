@@ -14,6 +14,8 @@ namespace PixelAdventure
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
+            GameInfo.Instance.LifeAmount = 3;
+
             lvlButtons = GetComponentInChildren<LevelMapScreen>(true).GetComponentInChildren<LayoutGroup>(true)
                 .GetComponentsInChildren<Button>(true);
         }

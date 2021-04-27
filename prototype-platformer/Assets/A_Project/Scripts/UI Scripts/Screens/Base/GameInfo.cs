@@ -21,9 +21,9 @@ namespace PixelAdventure
         public void Setup()
         {
 
-            if (AppPrefs.HasKey(PrefsKeys.USER_DATA))
+            if (AppPrefs.HasObject(PrefsKeys.USER_DATA))
             {
-                userData = JsonUtility.FromJson<UserData>(AppPrefs.GetString(PrefsKeys.USER_DATA));
+                userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             }
             else
             {
@@ -35,11 +35,7 @@ namespace PixelAdventure
                     userData.ListOfLevelStates.Add(LevelState.Locked);
                 }
 
-                Debug.Log(userData.ListOfLevelStates.Count);
-
-                var _userDataJson = JsonUtility.ToJson(userData);
-
-                AppPrefs.SetString(PrefsKeys.USER_DATA, _userDataJson);
+                AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             }
         }
 
@@ -47,8 +43,9 @@ namespace PixelAdventure
         {
             userData.ListOfLevelStates[_index] = LevelState.Unlocked;
 
-            var _userDataJson = JsonUtility.ToJson(userData);
-            AppPrefs.SetString(PrefsKeys.USER_DATA, _userDataJson);
+            AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
+
+            AppPrefs.Save();
 
         }
 

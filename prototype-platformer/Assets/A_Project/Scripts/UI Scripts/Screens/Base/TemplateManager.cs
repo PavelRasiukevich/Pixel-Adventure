@@ -13,17 +13,9 @@ namespace PixelAdventure
 
         private void Start()
         {
-            GameInfo.Instance.LifeAmount = 3;
             GameInfo.Instance.Setup();
-            
-        }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                PlayerPrefs.DeleteAll();
-            }
+            AppPrefs.Save();
         }
     }
 }

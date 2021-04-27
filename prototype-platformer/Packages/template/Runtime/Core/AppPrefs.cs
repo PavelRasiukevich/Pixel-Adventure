@@ -1,9 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class AppPrefs
 {
+    public static void SetObject(string _key, object _obj)
+    {
+        bool _flag;
+
+#if UNITY_EDITOR
+        _flag = true;
+#else
+        _flag = false;
+#endif
+        SaveToFile(_key, JsonUtility.ToJson(_obj, _flag));
+    }
+
+    public static T GetObject<T>(string _key)
+    {
+        return JsonUtility.FromJson<T>(ReadFromFile(_key));
+    }
+
     public static void SetBool(string _key, bool _value)
     {
         PlayerPrefs.SetInt(_key, _value ? 1 : 0);
@@ -62,5 +80,32 @@ public class AppPrefs
     public static bool HasKey(string _key)
     {
         return PlayerPrefs.HasKey(_key);
+    }
+
+    public static bool HasObject(string _key)
+    {
+        return File.Exists(GetFilePath(_key));
+    }
+
+    private static void SaveToFile(string _fileName, string _fileContent)
+    {
+        File.WriteAllText(GetFilePath(_fileName), _fileContent);
+    }
+
+    private static string ReadFromFile(string _fileName)
+    {
+        string _content;
+
+        if (File.Exists(GetFilePath(_fileName)))
+            _content = File.ReadAllText(GetFilePath(_fileName));
+        else
+            _content = string.Empty;
+
+        return _content;
+    }
+
+    private static string GetFilePath(string _fileName)
+    {
+        return Path.Combine(Application.persistentDataPath, _fileName);
     }
 }

@@ -6,6 +6,8 @@ namespace PixelAdventure
 {
     public class BatChase : State
     {
+        Vector3 lastPos;
+
         public BatChase(Bat _bat, StateMachine _stateMachine) : base(_bat, _stateMachine)
         {
         }
@@ -29,18 +31,27 @@ namespace PixelAdventure
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-           
-            if(Vector2.Distance(bat.transform.position, bat.TargetToChase.position) < .5f)
+            lastPos = bat.transform.position;
+
+            if (Vector2.Distance(bat.transform.position, bat.TargetToChase.position) < .55f)
             {
-                if(bat.TargetToChase.gameObject == bat.IdleSpot.gameObject)
+                if (bat.TargetToChase.gameObject == bat.IdleSpot.gameObject)
                 {
                     stateMachine.ChangeState(bat.CeillingIn);
                 }
             }
-
+            else
+            {
                 bat.transform.position = Vector2.MoveTowards(bat.transform.position,
-                    bat.TargetToChase.position, bat.Speed * Time.deltaTime);
-            
+                bat.TargetToChase.position, bat.Speed * Time.deltaTime);
+            }
+
+            Vector3 _direction = (bat.transform.position - lastPos).normalized;
+
+            if (_direction.x >= 0)
+                bat.BatSr.flipX = true;
+            else
+                bat.BatSr.flipX = false;
         }
 
         public override void PhysicsUpdate()
