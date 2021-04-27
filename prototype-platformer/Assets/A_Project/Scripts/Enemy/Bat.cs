@@ -88,7 +88,7 @@ namespace PixelAdventure
         private void OnTriggerExitHandler()
         {
             targetToChase = idleSpot;
-            #endregion
         }
+        #endregion
     }
 }

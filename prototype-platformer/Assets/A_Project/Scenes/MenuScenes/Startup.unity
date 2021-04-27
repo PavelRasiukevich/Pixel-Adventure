@@ -242,11 +242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelConfig:
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
-  - isInteractable: 0
+  - lvlIndex: 0
+  - lvlIndex: 1
+  - lvlIndex: 2
+  - lvlIndex: 3
+  - lvlIndex: 4
+  - lvlIndex: 5
+  - lvlIndex: 6
+  - lvlIndex: 7

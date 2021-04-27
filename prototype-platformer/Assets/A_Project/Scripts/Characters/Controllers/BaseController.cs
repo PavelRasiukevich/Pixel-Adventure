@@ -69,7 +69,7 @@ namespace PixelAdventure
 
         private void OnDieHandler()
         {
-            if (!GameInfo.Instance.IsGameOverScreenAtive)
+            if (!GameInfo.Instance.IsGameOverScreenActive)
             {
                 transform.position = SpawnPosition;
                 charCapsuleCollider.enabled = true;

@@ -9,12 +9,48 @@ namespace PixelAdventure
     {
         [SerializeField] List<LevelConfig> levelConfig;
 
+        UserData userData;
 
+        #region Properties
         public List<LevelConfig> LevelConfig { get => levelConfig; }
-
         public int LifeAmount { get; set; }
         public int LevelIndex { get; set; }
-        public bool IsGameOverScreenAtive { get; set; }
+        public bool IsGameOverScreenActive { get; set; }
+        #endregion
+
+        public void Setup()
+        {
+
+            if (AppPrefs.HasKey(PrefsKeys.USER_DATA))
+            {
+                userData = JsonUtility.FromJson<UserData>(AppPrefs.GetString(PrefsKeys.USER_DATA));
+            }
+            else
+            {
+                userData = new UserData();
+                userData.ListOfLevelStates.Add(LevelState.Unlocked);
+
+                for (int i = 0; i < LevelConfig.Count - 1; i++)
+                {
+                    userData.ListOfLevelStates.Add(LevelState.Locked);
+                }
+
+                Debug.Log(userData.ListOfLevelStates.Count);
+
+                var _userDataJson = JsonUtility.ToJson(userData);
+
+                AppPrefs.SetString(PrefsKeys.USER_DATA, _userDataJson);
+            }
+        }
+
+        public void LevelComplited(int _index)
+        {
+            userData.ListOfLevelStates[_index] = LevelState.Unlocked;
+
+            var _userDataJson = JsonUtility.ToJson(userData);
+            AppPrefs.SetString(PrefsKeys.USER_DATA, _userDataJson);
+
+        }
 
         public int Retry()
         {
@@ -25,12 +61,12 @@ namespace PixelAdventure
 
         public LevelState GetLevelState(int _index)
         {
-            return (LevelState)PlayerPrefs.GetInt(PrefsKeys.LEVEL_ + _index);
+            return userData.ListOfLevelStates[_index];
         }
 
         public void SetLevelState(int _index, LevelState _state)
         {
-            PlayerPrefs.SetInt(PrefsKeys.LEVEL_ + _index, (int)_state);
+            userData.ListOfLevelStates[_index] = _state;
         }
     }
 

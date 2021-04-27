@@ -14,6 +14,7 @@ namespace PixelAdventure
         private void Start()
         {
             GameInfo.Instance.LifeAmount = 3;
+            GameInfo.Instance.Setup();
             
         }
 

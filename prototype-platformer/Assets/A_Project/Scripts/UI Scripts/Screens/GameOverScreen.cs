@@ -22,7 +22,7 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
-            GameInfo.Instance.IsGameOverScreenAtive = true;
+            GameInfo.Instance.IsGameOverScreenActive = true;
         }
     }
 }

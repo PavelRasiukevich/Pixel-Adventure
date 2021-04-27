@@ -34,7 +34,6 @@ namespace PixelAdventure
             {
                 if(bat.TargetToChase.gameObject == bat.IdleSpot.gameObject)
                 {
-                    Debug.Log("!!!!!");
                     stateMachine.ChangeState(bat.CeillingIn);
                 }
             }

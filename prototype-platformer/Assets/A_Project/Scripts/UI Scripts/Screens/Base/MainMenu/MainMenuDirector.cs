@@ -21,6 +21,7 @@ namespace PixelAdventure
         protected override void Start()
         {
             base.Start();
+
             SetCurrentScreen<MainMenuScreen>().ShowScreen();
 
             for (int i = 0; i < lvlButtons.Length; i++)
