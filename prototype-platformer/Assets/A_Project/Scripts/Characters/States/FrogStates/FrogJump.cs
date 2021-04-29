@@ -11,7 +11,6 @@ namespace PixelAdventure
         {
             get
             {
-
                 if (timer < 0)
                     return true;
 
@@ -40,6 +39,8 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
+                AudioManager.Instance.PlaySound(characterSounds.GroundedSound);
+
                 if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);
                 else
@@ -63,6 +64,8 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
+
+            AudioManager.Instance.PlaySound(characterSounds.JumpSound);
 
             if (characterRigidBody.velocity.y >= 0)
             {

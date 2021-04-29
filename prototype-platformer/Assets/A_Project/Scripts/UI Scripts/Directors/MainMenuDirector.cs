@@ -33,6 +33,8 @@ namespace PixelAdventure
                 else
                     lvlButtons[i].interactable = true;
             }
+
+            AudioManager.Instance.PlayMusic();
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)

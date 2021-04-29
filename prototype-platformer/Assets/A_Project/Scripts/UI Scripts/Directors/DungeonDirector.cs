@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -17,6 +18,7 @@ namespace PixelAdventure
         protected override void Start()
         {
             base.Start();
+            
             GameInfo.Instance.IsGameOverScreenActive = false;
             GameInfo.Instance.LevelIndex = SceneManager.GetActiveScene().buildIndex;
             SetCurrentScreen<DungeonGameScreen>().ShowScreen();

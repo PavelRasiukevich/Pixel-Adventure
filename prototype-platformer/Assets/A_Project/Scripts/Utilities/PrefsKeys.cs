@@ -8,5 +8,8 @@ namespace PixelAdventure
     {
         public const string USER_DATA = "USER_DATA";
         public const string LEVEL_ = "LEVEL_";
+        public const string SOUND = "SOUND";
+        public const string MUSIC = "MUSIC";
+        public const string MASTER = "MASTER";
     }
 }

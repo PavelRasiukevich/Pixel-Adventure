@@ -9,6 +9,7 @@ namespace PixelAdventure
     {
         #region
         [SerializeField] protected Transform spawn;
+        [SerializeField] protected CharacterSoundSO characterSounds;
         #endregion
 
         #region Components
@@ -47,7 +48,7 @@ namespace PixelAdventure
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider);
+                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds);
             });
         }
 

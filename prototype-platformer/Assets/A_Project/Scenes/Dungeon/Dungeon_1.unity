@@ -20820,6 +20820,10 @@ PrefabInstance:
       propertyPath: spawn
       value: 
       objectReference: {fileID: 1197558824}
+    - target: {fileID: 8811168689768907158, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
+      propertyPath: characterSounds
+      value: 
+      objectReference: {fileID: 11400000, guid: ac18df41a65de9047b22656e30ef37f2, type: 2}
     - target: {fileID: 8811168689768907159, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
       propertyPath: m_Name
       value: Frog

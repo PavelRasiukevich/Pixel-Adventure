@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class TemplateManager : PixelAdventureDirector
+    public class TemplateDirector : PixelAdventureDirector
     {
         protected override void Awake()
         {

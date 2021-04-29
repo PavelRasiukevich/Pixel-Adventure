@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using PixelAdventure.Interfaces;
 using TMPro;
+using UnityEngine.Events;
 
 namespace PixelAdventure
 {
     public class IronDoor : BaseDoor
     {
+        [SerializeField] UnityEvent unityEvent;
 
         public readonly int DOOR_STATE = Animator.StringToHash("State");
 
@@ -22,10 +24,11 @@ namespace PixelAdventure
             leveler.OnLevelerActivated += OnEventHandler;
         }
 
-        private void OnEventHandler()
+        public void OnEventHandler()
         {
             doorAnim.SetInteger(DOOR_STATE, (int)DoorState.Open);
             CanEnter = true;
+            unityEvent.Invoke();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

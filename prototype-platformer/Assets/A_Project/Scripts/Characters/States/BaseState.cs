@@ -17,6 +17,7 @@ namespace PixelAdventure
         [SerializeField] protected LayerMask groundLayerMask;
         [SerializeField] protected LayerMask waterLayerMask;
         [SerializeField] protected float boxCastDistance;
+        [SerializeField] protected CharacterSoundSO characterSounds;
         #endregion
 
         #region Components
@@ -60,8 +61,11 @@ namespace PixelAdventure
         }
         #endregion
 
-        public void Setup(Rigidbody2D _charRb, Animator _charAnim, SpriteRenderer _charSr, CapsuleCollider2D _charCapsuleCollider)
+        public void Setup(Rigidbody2D _charRb,
+            Animator _charAnim, SpriteRenderer _charSr,
+            CapsuleCollider2D _charCapsuleCollider, CharacterSoundSO _characterSounds)
         {
+            characterSounds = _characterSounds;
             characterRigidBody = _charRb;
             charCapsuleCollider = _charCapsuleCollider;
             characterAnimator = _charAnim;

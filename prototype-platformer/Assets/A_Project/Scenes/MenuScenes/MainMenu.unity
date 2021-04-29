@@ -237,6 +237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579447200}
   - component: {fileID: 1579447201}
+  - component: {fileID: 1579447202}
   m_Layer: 0
   m_Name: MainMenuScreenManager
   m_TagString: Untagged
@@ -274,6 +275,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346ed6f642287a145a47d3717398dcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvlButtons: []
+  sliders: []
+--- !u!81 &1579447202
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579447199}
+  m_Enabled: 1
 --- !u!4 &2108585986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9123521162004710865, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
@@ -548,10 +559,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1579447200}
     m_Modifications:
+    - target: {fileID: 3425297432200877114, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425297432200877114, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425297432200877114, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817949411192617806, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817949411192617806, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3817949411192617806, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927421914830301208, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927421914830301208, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6982445315175708758, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
       propertyPath: menu
       value: 
       objectReference: {fileID: 295817739}
+    - target: {fileID: 7603498930086208364, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603498930086208364, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271738840794313, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293271738840794313, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698836819829313770, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698836819829313770, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698836819829313770, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 9123521161908995509, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
       propertyPath: m_enableVertexGradient
       value: 0
@@ -744,7 +815,8 @@ PrefabInstance:
       propertyPath: m_fontColorGradient.bottomRight.r
       value: 0.9372549
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2290869407216771918, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 78f3e34426e12c54182943fa127cc3a0, type: 3}
 --- !u!114 &9123521163843255764 stripped
 MonoBehaviour:

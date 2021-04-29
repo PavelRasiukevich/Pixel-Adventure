@@ -21,6 +21,7 @@ namespace PixelAdventure
 
             if (IsGrounded)
             {
+                AudioManager.Instance.PlaySound(characterSounds.GroundedSound);
 
                 if (Mathf.Abs(HorizontalAxes) > Mathf.Epsilon)
                     NextStateAction.Invoke(CharacterState.Move);

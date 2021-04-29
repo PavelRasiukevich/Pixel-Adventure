@@ -10,6 +10,7 @@ namespace PixelAdventure
         {
             base.Awake();
             transform.position = SpawnPosition;
+            
         }
     }
 }
