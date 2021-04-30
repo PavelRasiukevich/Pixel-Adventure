@@ -509,7 +509,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3719422941699815308}
         m_TargetAssemblyTypeName: PixelAdventure.SliderUI, Assembly-CSharp
-        m_MethodName: SoundChange
+        m_MethodName: MusicChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -884,10 +884,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8475335918608981219}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
-        m_MethodName: set_value
-        m_Mode: 0
+      - m_Target: {fileID: 3719422941699815308}
+        m_TargetAssemblyTypeName: PixelAdventure.SliderUI, Assembly-CSharp
+        m_MethodName: SoundChange
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

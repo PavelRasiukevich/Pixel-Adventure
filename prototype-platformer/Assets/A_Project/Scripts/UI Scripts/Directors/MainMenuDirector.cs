@@ -8,6 +8,7 @@ namespace PixelAdventure
     public class MainMenuDirector : SceneDirector
     {
         [SerializeField] Button[] lvlButtons;
+        [SerializeField] BaseSliderUI[] sliders;
 
         private void Awake()
         {
@@ -15,6 +16,8 @@ namespace PixelAdventure
             Cursor.visible = false;
 
             GameInfo.Instance.LifeAmount = 3;
+
+            sliders = GetComponentInChildren<OptionsScreen>(true).GetComponentsInChildren<BaseSliderUI>(true);
 
             lvlButtons = GetComponentInChildren<LevelMapScreen>(true).GetComponentInChildren<LayoutGroup>(true)
                 .GetComponentsInChildren<Button>(true);
@@ -26,6 +29,11 @@ namespace PixelAdventure
 
             SetCurrentScreen<MainMenuScreen>().ShowScreen();
 
+            for (int i = 0; i < sliders.Length; i++)
+            {
+                sliders[i].VolumeChanged = VolumeChangeHandler;
+            }
+
             for (int i = 0; i < lvlButtons.Length; i++)
             {
                 if (GameInfo.Instance.GetLevelState(i) == LevelState.Locked)
@@ -35,6 +43,12 @@ namespace PixelAdventure
             }
 
             AudioManager.Instance.PlayMusic();
+        }
+
+        private void VolumeChangeHandler()
+        {
+            AudioManager.Instance.MasterVolumeChange(AppPrefs.GetFloat(PrefsKeys.MASTER));
+
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
