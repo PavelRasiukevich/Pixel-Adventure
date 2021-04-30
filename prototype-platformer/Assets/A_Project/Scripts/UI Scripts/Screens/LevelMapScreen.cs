@@ -16,6 +16,28 @@ namespace PixelAdventure
         public const string EXIT_TO_TOWER = "EXIT_TO_TOWER";
         public const string EXIT_TO_FOREST = "EXIT_TO_FOREST";
 
+        [SerializeField] Button[] lvlButtons;
+
+        private void Awake()
+        {
+            lvlButtons = GetComponentInChildren<LayoutGroup>()
+            .GetComponentsInChildren<Button>();
+        }
+
+        public override void ShowScreen()
+        {
+            base.ShowScreen();
+
+            for (int i = 0; i < lvlButtons.Length; i++)
+            {
+                Debug.Log($"Iteration_{i}");
+                if (GameInfo.Instance.GetLevelState(i) == LevelState.Locked)
+                    lvlButtons[i].interactable = false;
+                else
+                    lvlButtons[i].interactable = true;
+            }
+        }
+
         public void OnBackPressed()
         {
             Exit(EXIT_TO_BACK_SCREEN);

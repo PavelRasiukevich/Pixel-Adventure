@@ -14,8 +14,8 @@ namespace PixelAdventure
         private void Start()
         {
             GameInfo.Instance.Setup();
-
             AppPrefs.Save();
         }
     }
 }
+      
