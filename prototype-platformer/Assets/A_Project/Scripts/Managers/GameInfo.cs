@@ -27,12 +27,12 @@ namespace PixelAdventure
             }
             else
             {
-                Debug.Log($"Levelcfg_{LevelConfig.Count}");
+                Debug.Log($"Levelcfg_{levelConfig.Count}");
 
                 userData = new UserData();
                 userData.ListOfLevelStates.Add(LevelState.Unlocked);
 
-                for (int i = 0; i < LevelConfig.Count - 1; i++)
+                for (int i = 0; i < levelConfig.Count - 1; i++)
                 {
                     userData.ListOfLevelStates.Add(LevelState.Locked);
                 }
@@ -73,5 +73,6 @@ namespace PixelAdventure
     [Serializable]
     public class LevelConfig
     {
+        [SerializeField] int index;
     }
 }
