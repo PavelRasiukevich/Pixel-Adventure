@@ -12,19 +12,17 @@ namespace PixelAdventure
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
             GameInfo.Instance.LifeAmount = 3;
         }
 
         protected override void Start()
         {
             base.Start();
-
             SetCurrentScreen<MainMenuScreen>().ShowScreen();
 
             AudioManager.Instance.PlayMusic();
         }
-       
+
         protected override void OnScreenExit(Type _screenType, string _exitCode)
         {
             if (_screenType == typeof(MainMenuScreen))

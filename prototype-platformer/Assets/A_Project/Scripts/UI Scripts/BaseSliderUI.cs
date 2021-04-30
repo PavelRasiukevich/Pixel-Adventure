@@ -11,10 +11,12 @@ namespace PixelAdventure
     {
         protected const int VALUE_MULT = 10;
 
-        public  Action VolumeChanged;
+        public Action<float> VolumeChanged;
 
         protected TextMeshProUGUI textTMP;
-        protected Slider slider;
+        private Slider slider;
+
+        public Slider Slider { get => slider; set => slider = value; }
 
         private void Awake()
         {
@@ -24,6 +26,6 @@ namespace PixelAdventure
             textTMP = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        protected abstract void VolumeChange();
+        public abstract void VolumeChange();
     }
 }

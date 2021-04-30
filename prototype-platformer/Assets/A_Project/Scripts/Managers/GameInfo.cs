@@ -27,8 +27,6 @@ namespace PixelAdventure
             }
             else
             {
-                Debug.Log($"Levelcfg_{levelConfig.Count}");
-
                 userData = new UserData();
                 userData.ListOfLevelStates.Add(LevelState.Unlocked);
 
@@ -37,7 +35,6 @@ namespace PixelAdventure
                     userData.ListOfLevelStates.Add(LevelState.Locked);
                 }
 
-                Debug.Log($"{userData.ListOfLevelStates.Count}");
                 AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             }
         }

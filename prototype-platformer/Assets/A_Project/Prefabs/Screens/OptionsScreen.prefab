@@ -507,9 +507,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3719422941699815308}
+      - m_Target: {fileID: 8250948948239474562}
         m_TargetAssemblyTypeName: PixelAdventure.SliderUI, Assembly-CSharp
-        m_MethodName: MusicChange
+        m_MethodName: VolumeChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -886,7 +886,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3719422941699815308}
         m_TargetAssemblyTypeName: PixelAdventure.SliderUI, Assembly-CSharp
-        m_MethodName: SoundChange
+        m_MethodName: VolumeChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1469,7 +1469,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 657880362140514728}
         m_TargetAssemblyTypeName: PixelAdventure.SliderUI, Assembly-CSharp
-        m_MethodName: MasterChange
+        m_MethodName: VolumeChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1885,6 +1885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d9b7c77f452a40b6c2d023f892329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliders: []
 --- !u!1 &9123521162762737241
 GameObject:
   m_ObjectHideFlags: 0

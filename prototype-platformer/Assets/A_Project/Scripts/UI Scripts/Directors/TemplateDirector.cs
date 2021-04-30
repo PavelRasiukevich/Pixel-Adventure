@@ -15,6 +15,14 @@ namespace PixelAdventure
         {
             GameInfo.Instance.Setup();
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                AppPrefs.DeleteAll();
+            }
+        }
     }
 }
       

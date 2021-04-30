@@ -14,6 +14,10 @@ namespace PixelAdventure
         {
             base.ShowScreen();
             Time.timeScale = 1;
+
+            AudioManager.Instance.MasterVolumeChange(AppPrefs.GetFloat(PrefsKeys.MASTER));
+            AudioManager.Instance.MusicVolumeChange(AppPrefs.GetFloat(PrefsKeys.MUSIC));
+            AudioManager.Instance.SoundVolumeChange(AppPrefs.GetFloat(PrefsKeys.SOUND));
         }
 
         public void OnStartPressed()

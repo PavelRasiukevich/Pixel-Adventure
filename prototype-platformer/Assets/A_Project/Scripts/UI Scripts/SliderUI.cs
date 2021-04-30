@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace PixelAdventure
 {
-    public class MasterVolumeSlider : BaseSliderUI, ISelectHandler, IDeselectHandler
+    public class SliderUI : BaseSliderUI, ISelectHandler, IDeselectHandler
     {
 
         public void OnSelect(BaseEventData eventData)
@@ -21,9 +21,9 @@ namespace PixelAdventure
             textTMP.enableVertexGradient = false;
         }
 
-        protected override void VolumeChange()
+        public override void VolumeChange()
         {
-            VolumeChanged.Invoke();
+            VolumeChanged.Invoke(Slider.value * VALUE_MULT);
         }
     }
 }
