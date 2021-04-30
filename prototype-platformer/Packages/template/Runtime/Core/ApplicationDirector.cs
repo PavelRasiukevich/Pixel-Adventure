@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public abstract class PixelAdventureDirector : MonoBehaviour
+    public abstract class ApplicationDirector : MonoBehaviour
     {
         protected virtual void Awake()
         {

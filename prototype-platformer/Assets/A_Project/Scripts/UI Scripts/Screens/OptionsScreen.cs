@@ -26,15 +26,15 @@ namespace PixelAdventure
                 {
                     case "Master Volume":
                         sliders[i].VolumeChanged += MasterHandler;
-                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.MASTER) / 10;
+                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.MASTER) / Values.VALUE_MULT;
                         break;
                     case "Music Volume":
                         sliders[i].VolumeChanged += MusicHandler;
-                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.MUSIC) / 10;
+                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.MUSIC) / Values.VALUE_MULT;
                         break;
                     case "Sound Volume":
                         sliders[i].VolumeChanged += SoundHandler;
-                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.SOUND) / 10;
+                        sliders[i].Slider.value = AppPrefs.GetFloat(PrefsKeys.SOUND) / Values.VALUE_MULT;
                         break;
                 }
             }

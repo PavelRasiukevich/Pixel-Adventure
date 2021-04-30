@@ -23,6 +23,13 @@ namespace PixelAdventure
 
         }
 
+        public void SetupVolume()
+        {
+            MasterVolumeChange(AppPrefs.GetFloat(PrefsKeys.MASTER));
+            MusicVolumeChange(AppPrefs.GetFloat(PrefsKeys.MUSIC));
+            SoundVolumeChange(AppPrefs.GetFloat(PrefsKeys.SOUND));
+        }
+
         public void PlaySound(AudioClip _clip)
         {
             soundSource.PlayOneShot(_clip);

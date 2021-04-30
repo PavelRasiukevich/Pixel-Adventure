@@ -3,17 +3,13 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class TemplateDirector : PixelAdventureDirector
+    public class PixelAdventureDirector : ApplicationDirector
     {
-        protected override void Awake()
-        {
-            base.Awake();
-            SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
-        }
-
         private void Start()
         {
             GameInfo.Instance.Setup();
+            AudioManager.Instance.SetupVolume();
+            SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
         }
 
         private void Update()
@@ -25,4 +21,3 @@ namespace PixelAdventure
         }
     }
 }
-      

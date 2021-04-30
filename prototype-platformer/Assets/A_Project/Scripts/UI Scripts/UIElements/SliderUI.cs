@@ -23,7 +23,7 @@ namespace PixelAdventure
 
         public override void VolumeChange()
         {
-            VolumeChanged.Invoke(Slider.value * VALUE_MULT);
+            VolumeChanged.Invoke(Slider.value * Values.VALUE_MULT);
         }
     }
 }

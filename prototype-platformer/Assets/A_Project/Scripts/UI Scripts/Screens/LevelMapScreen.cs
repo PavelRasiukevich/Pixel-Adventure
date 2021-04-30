@@ -30,7 +30,6 @@ namespace PixelAdventure
 
             for (int i = 0; i < lvlButtons.Length; i++)
             {
-                Debug.Log($"Iteration_{i}");
                 if (GameInfo.Instance.GetLevelState(i) == LevelState.Locked)
                     lvlButtons[i].interactable = false;
                 else
