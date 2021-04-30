@@ -42,8 +42,6 @@ namespace PixelAdventure
         {
             batAnim = GetComponent<Animator>();
             batSr = GetComponent<SpriteRenderer>();
-            batAnim.GetBehaviour<CeillingOutBhv>().CeillingOutLastFrame += OnOutHandler;
-            batAnim.GetBehaviour<CeillingInBhv>().CeillingInLastFrame += OnInHandler;
 
             machine = new StateMachine();
             batIdle = new BatIdle(this, machine);
@@ -51,18 +49,31 @@ namespace PixelAdventure
             ceillingIn = new BatCeillingIn(this, machine);
             ceillingOut = new BatCeillingOut(this, machine);
 
+        }
+
+        void OnEnable()
+        {
             detectionArea.TriggerInter += OnTriggerInteredHandler;
             detectionArea.TriggerExit += OnTriggerExitHandler;
+
+            var _listeners = batAnim.GetBehaviours<StateMachineListener>();
+
+            foreach (var _listener in _listeners)
+            {
+                _listener.ExitState += OnStateExit;
+            }
         }
 
-        private void OnOutHandler()
+        private void OnStateExit(AnimatorStateInfo _info)
         {
-            machine.ChangeState(chase);
-        }
-
-        private void OnInHandler()
-        {
-            machine.ChangeState(batIdle);
+            if (_info.IsName("BatCeillingOut"))
+            {
+                machine.ChangeState(chase);
+            }
+            else if (_info.IsName("BatCeillingIn"))
+            {
+                machine.ChangeState(batIdle);
+            }
         }
 
         private void Start()
