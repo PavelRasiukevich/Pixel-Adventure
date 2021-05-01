@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    [CreateAssetMenu(fileName = "FrogSounds", menuName = "Character Sound/Frog")]
+    [CreateAssetMenu(fileName = "FrogSounds", menuName = "Character/Frog Sound")]
     public class FrogSoundSO : CharacterSoundSO
     {
        

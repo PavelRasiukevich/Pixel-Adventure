@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    [CreateAssetMenu(fileName = "PinkySounds", menuName = "Character Sound/Pinky")]
+    [CreateAssetMenu(fileName = "PinkySounds", menuName = "Character /Pinky Sound")]
     public class PinkySoundSO : CharacterSoundSO
     {
         

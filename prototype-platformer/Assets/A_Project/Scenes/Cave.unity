@@ -475,10 +475,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frog
       objectReference: {fileID: 0}
-    - target: {fileID: 8811168689768907159, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8811168689768907177, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
       propertyPath: m_RootOrder
       value: 1

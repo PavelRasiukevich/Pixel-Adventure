@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/A_Project/Scenes/MenuScenes/Startup.unity
     guid: f9842335b871baa47a30b876b1d06312
   - enabled: 1
+    path: Assets/A_Project/Scenes/MenuScenes/MainMenu.unity
+    guid: 77184af03b5c88445be2498839e72301
+  - enabled: 1
     path: Assets/A_Project/Scenes/Dungeon/InitialDungeon.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -32,7 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/A_Project/Scenes/Tower.unity
     guid: be2263fae87e7ad4d89a47ebe7f6e9a7
-  - enabled: 1
-    path: Assets/A_Project/Scenes/MenuScenes/MainMenu.unity
-    guid: 77184af03b5c88445be2498839e72301
   m_configObjects: {}

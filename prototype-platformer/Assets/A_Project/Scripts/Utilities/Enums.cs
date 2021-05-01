@@ -54,4 +54,13 @@ namespace PixelAdventure
         Tower,
         Forest
     }
+
+    public enum Bonuses
+    {
+        JumpBonus,
+        DoubleJumpBonus,
+        DashBonus,
+        FastFallBonus,
+        SpeedBonus
+    }
 }

@@ -7,9 +7,12 @@ namespace PixelAdventure
 {
     public abstract class BaseController : MonoBehaviour, IControllable
     {
+        public readonly int INT_DIE = Animator.StringToHash("Die");
+
         #region
         [SerializeField] protected Transform spawn;
         [SerializeField] protected CharacterSoundSO characterSounds;
+        [SerializeField] protected CharacterStatsSO charStats;
         #endregion
 
         #region Components
@@ -48,14 +51,19 @@ namespace PixelAdventure
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds);
+                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds, charStats);
             });
         }
 
         protected void OnEnable()
         {
 
-            charAnim.GetBehaviour<DieBhv>().OnDied += OnDieHandler;
+            var _listeners = charAnim.GetBehaviours<StateMachineListener>();
+
+            foreach (var _listener in _listeners)
+            {
+                _listener.ExitState += OnStateExit;
+            }
 
             OnPlayerEnable?.Invoke(transform);
 
@@ -68,18 +76,21 @@ namespace PixelAdventure
             currentState.ActivateState();
         }
 
-        private void OnDieHandler()
+        private void OnStateExit(AnimatorStateInfo _info)
         {
-            if (!GameInfo.Instance.IsGameOverScreenActive)
+            if (_info.shortNameHash == INT_DIE)
             {
-                transform.position = SpawnPosition;
-                charCapsuleCollider.enabled = true;
-                OnNextStateRequest(CharacterState.Idle);
-                charRb.bodyType = RigidbodyType2D.Dynamic;
-            }
-            else
-            {
-                gameObject.SetActive(false);
+                if (!GameInfo.Instance.IsGameOverScreenActive)
+                {
+                    transform.position = SpawnPosition;
+                    charCapsuleCollider.enabled = true;
+                    OnNextStateRequest(CharacterState.Idle);
+                    charRb.bodyType = RigidbodyType2D.Dynamic;
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
 
@@ -101,7 +112,7 @@ namespace PixelAdventure
             OnChangePosition?.Invoke(transform);
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected void OnTriggerEnter2D(Collider2D other)
         {
             var obstacle = other.gameObject.GetComponent<IDamaging>();
 

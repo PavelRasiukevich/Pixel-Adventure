@@ -9,6 +9,8 @@ namespace PixelAdventure
     public class Bat : MonoBehaviour, IDamaging
     {
         public readonly int INT_STATE = Animator.StringToHash("State");
+        public readonly int INT_CEILLINGIN = Animator.StringToHash("BatCeillingIn");
+        public readonly int INT_CEILLINGOUT = Animator.StringToHash("BatCeillingOut");
 
         #region States and Machine
         StateMachine machine;
@@ -66,11 +68,11 @@ namespace PixelAdventure
 
         private void OnStateExit(AnimatorStateInfo _info)
         {
-            if (_info.IsName("BatCeillingOut"))
+            if (_info.shortNameHash == INT_CEILLINGOUT)
             {
                 machine.ChangeState(chase);
             }
-            else if (_info.IsName("BatCeillingIn"))
+            else if (_info.shortNameHash == INT_CEILLINGIN)
             {
                 machine.ChangeState(batIdle);
             }

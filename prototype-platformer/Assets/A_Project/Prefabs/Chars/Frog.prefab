@@ -51,6 +51,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
   speed: 2
 --- !u!1 &8811168688137170713
 GameObject:
@@ -103,7 +104,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  speed: 5
+  charStats: {fileID: 0}
 --- !u!1 &8811168688822477405
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
   fallForce: 12
 --- !u!1 &8811168688840539862
 GameObject:
@@ -207,6 +209,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
   gravityMultiplyer: 1.35
 --- !u!1 &8811168688884454113
 GameObject:
@@ -290,6 +293,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
 --- !u!1 &8811168689093342837
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +384,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
 --- !u!1 &8811168689768907159
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
   characterSounds: {fileID: 11400000, guid: ac18df41a65de9047b22656e30ef37f2, type: 2}
+  charStats: {fileID: 11400000, guid: e3c65dd49fd3e764da5f604013dec902, type: 2}
 --- !u!1 &8811168689805166892
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +625,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
 --- !u!1 &8811168690073216290
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,6 +677,7 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
   jumpForce: 8
   doubleJumpCountDown: 0.1
 --- !u!1 &8811168690217591035
@@ -723,4 +731,5 @@ MonoBehaviour:
     m_Bits: 16
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
+  charStats: {fileID: 0}
   jumpForce: 8

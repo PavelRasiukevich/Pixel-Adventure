@@ -4,7 +4,6 @@ namespace PixelAdventure
 {
     public class FrogJump : BaseState
     {
-        [SerializeField] float jumpForce;
         [SerializeField] float doubleJumpCountDown;
 
         bool IsSecondJumpAvaliable
@@ -69,7 +68,7 @@ namespace PixelAdventure
 
             if (characterRigidBody.velocity.y >= 0)
             {
-                characterRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * charStats.JumpForce, ForceMode2D.Impulse);
             }
             else
             {
@@ -77,7 +76,7 @@ namespace PixelAdventure
                 _velocity.y = 0;
                 characterRigidBody.velocity = _velocity;
 
-                characterRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * charStats.JumpForce, ForceMode2D.Impulse);
             }
         }
     }

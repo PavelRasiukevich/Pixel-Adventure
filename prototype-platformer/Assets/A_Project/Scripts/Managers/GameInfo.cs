@@ -7,16 +7,16 @@ namespace PixelAdventure
 {
     public class GameInfo : BaseManager<GameInfo>
     {
-        [SerializeField] List<LevelConfig> levelConfig;
+        [SerializeField] LevelConfigSO levelConfigSO;
 
         UserData userData;
 
         #region Properties
-        public List<LevelConfig> LevelConfig { get => levelConfig; }
         public int LifeAmount { get; set; }
-        public int LevelIndex { get; set; }
+        public string LevelName { get; set; }
         public bool IsGameOverScreenActive { get; set; }
         public UserData UserData { get => userData; }
+        public List<LevelConfig> LevelConfig => levelConfigSO.LevelConfig;
         #endregion
 
         public void Setup()
@@ -38,7 +38,7 @@ namespace PixelAdventure
 
         public void LevelComplited(int _index)
         {
-            userData.ListOfLevelStates[_index] = LevelState.Unlocked;
+            userData.ListOfLevelStates[_index + 1] = LevelState.Unlocked;
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
@@ -46,11 +46,11 @@ namespace PixelAdventure
 
         }
 
-        public int Retry()
+        public string Retry()
         {
             Time.timeScale = 1;
             LifeAmount = 3;
-            return LevelIndex;
+            return LevelName;
         }
 
         public LevelState GetLevelState(int _index)
@@ -66,7 +66,7 @@ namespace PixelAdventure
         public void SetInitialValues()
         {
 
-            for (int i = 0; i < levelConfig.Count; i++)
+            for (int i = 0; i < levelConfigSO.LevelConfig.Count; i++)
             {
                 if (i == 0)
                     userData.ListOfLevelStates.Add(LevelState.Unlocked);
@@ -80,9 +80,5 @@ namespace PixelAdventure
         }
     }
 
-    [Serializable]
-    public class LevelConfig
-    {
-        [SerializeField] int index;
-    }
+  
 }

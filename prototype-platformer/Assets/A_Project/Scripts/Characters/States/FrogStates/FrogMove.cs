@@ -4,7 +4,6 @@ namespace PixelAdventure
 {
     public class FrogMove : BaseState
     {
-        [SerializeField] float speed;
 
         public override CharacterState State => CharacterState.Move;
 
@@ -17,7 +16,7 @@ namespace PixelAdventure
             {
                 if (Mathf.Abs(HorizontalAxes) > 0)
                 {
-                    characterRigidBody.velocity = new Vector2(HorizontalAxes * speed, characterRigidBody.velocity.y);
+                    characterRigidBody.velocity = new Vector2(HorizontalAxes * charStats.Speed, characterRigidBody.velocity.y);
 
                     if (JumpAxes > Mathf.Epsilon)
                     {
