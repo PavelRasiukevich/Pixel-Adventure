@@ -16,6 +16,7 @@ namespace PixelAdventure
         public int LifeAmount { get; set; }
         public int LevelIndex { get; set; }
         public bool IsGameOverScreenActive { get; set; }
+        public UserData UserData { get => userData; }
         #endregion
 
         public void Setup()
@@ -28,12 +29,8 @@ namespace PixelAdventure
             else
             {
                 userData = new UserData();
-                userData.ListOfLevelStates.Add(LevelState.Unlocked);
 
-                for (int i = 0; i < levelConfig.Count - 1; i++)
-                {
-                    userData.ListOfLevelStates.Add(LevelState.Locked);
-                }
+                SetInitialValues();
 
                 AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             }
@@ -64,6 +61,22 @@ namespace PixelAdventure
         public void SetLevelState(int _index, LevelState _state)
         {
             userData.ListOfLevelStates[_index] = _state;
+        }
+
+        public void SetInitialValues()
+        {
+
+            for (int i = 0; i < levelConfig.Count; i++)
+            {
+                if (i == 0)
+                    userData.ListOfLevelStates.Add(LevelState.Unlocked);
+                else
+                    userData.ListOfLevelStates.Add(LevelState.Locked);
+            }
+
+            userData.MasterVolume = 0;
+            userData.MusicVolume = 0;
+            userData.SoundVolume = 0;
         }
     }
 

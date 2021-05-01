@@ -25,9 +25,9 @@ namespace PixelAdventure
 
         public void SetupVolume()
         {
-            MasterVolumeChange(AppPrefs.GetFloat(PrefsKeys.MASTER));
-            MusicVolumeChange(AppPrefs.GetFloat(PrefsKeys.MUSIC));
-            SoundVolumeChange(AppPrefs.GetFloat(PrefsKeys.SOUND));
+            MasterVolumeChange(GameInfo.Instance.UserData.MasterVolume);
+            MusicVolumeChange(GameInfo.Instance.UserData.MusicVolume);
+            SoundVolumeChange(GameInfo.Instance.UserData.SoundVolume);
         }
 
         public void PlaySound(AudioClip _clip)
@@ -38,21 +38,19 @@ namespace PixelAdventure
         public void MasterVolumeChange(float _value)
         {
             mixer.SetFloat("MasterVolume", _value);
-            AppPrefs.SetFloat(PrefsKeys.MASTER, _value);
+            GameInfo.Instance.UserData.MasterVolume = _value;
         }
 
         public void MusicVolumeChange(float _value)
         {
             mixer.SetFloat("MusicVolume", _value);
-            AppPrefs.SetFloat(PrefsKeys.MUSIC, _value);
+            GameInfo.Instance.UserData.MusicVolume = _value;
         }
 
         public void SoundVolumeChange(float _value)
         {
             mixer.SetFloat("SoundVolume", _value);
-            AppPrefs.SetFloat(PrefsKeys.SOUND, _value);
-
+            GameInfo.Instance.UserData.SoundVolume = _value;
         }
-
     }
 }
