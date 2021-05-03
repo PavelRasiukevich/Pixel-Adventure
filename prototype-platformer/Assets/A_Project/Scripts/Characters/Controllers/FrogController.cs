@@ -6,12 +6,22 @@ namespace PixelAdventure
 {
     public class FrogController : BaseController
     {
-        Bonuses bonus;
-
         private new void Awake()
         {
             base.Awake();
             transform.position = SpawnPosition;
+        }
+
+        private new void OnTriggerEnter2D(Collider2D collision)
+        {
+            base.OnTriggerEnter2D(collision);
+
+            var _collision = collision.GetComponent<IPowerUp>();
+
+            if (_collision != null)
+            {
+                _collision.AddBonusValue(this);
+            }
         }
     }
 }

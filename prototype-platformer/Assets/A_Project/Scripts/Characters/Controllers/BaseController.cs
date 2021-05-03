@@ -36,10 +36,16 @@ namespace PixelAdventure
 
         #region Properties
         public Vector3 SpawnPosition { get; set; }
+        public CharacterStatsSO CharStats { get => charStats; }
         #endregion
 
         protected void Awake()
         {
+            charStats.CurrentJumpForce = GameInfo.Instance.CharData.JumpForce;
+            charStats.CurrentDoubleJumpForce = GameInfo.Instance.CharData.DoubleJumpForce;
+            charStats.CurrentFastFallSpeed = GameInfo.Instance.CharData.FastFallSpeed;
+            charStats.CurrentSpeed = GameInfo.Instance.CharData.Speed;
+
             SpawnPosition = spawn.position;
 
             charRb = GetComponent<Rigidbody2D>();

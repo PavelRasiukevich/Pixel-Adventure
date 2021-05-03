@@ -546,3 +546,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelConfigSO: {fileID: 11400000, guid: 1ccb85a88981003478991bf0029030a0, type: 2}
+  charStatsSO: {fileID: 11400000, guid: e3c65dd49fd3e764da5f604013dec902, type: 2}

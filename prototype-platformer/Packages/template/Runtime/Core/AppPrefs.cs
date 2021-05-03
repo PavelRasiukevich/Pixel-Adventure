@@ -87,6 +87,11 @@ public class AppPrefs
         return File.Exists(GetFilePath(_key));
     }
 
+    public static void DeleteObject(string _key)
+    {
+        File.Delete(GetFilePath(_key));
+    }
+
     private static void SaveToFile(string _fileName, string _fileContent)
     {
         File.WriteAllText(GetFilePath(_fileName), _fileContent);

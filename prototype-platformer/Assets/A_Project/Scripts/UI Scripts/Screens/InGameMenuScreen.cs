@@ -25,6 +25,8 @@ namespace PixelAdventure
 
         public void OnMainMenuPressed()
         {
+            AppPrefs.DeleteObject(PrefsKeys.CHARACTER_DATA);
+            GameInfo.Instance.Setup();
             Exit(EXIT_TO_MAIN_MENU);
         }
 

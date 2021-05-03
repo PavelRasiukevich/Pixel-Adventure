@@ -8,8 +8,10 @@ namespace PixelAdventure
     public class GameInfo : BaseManager<GameInfo>
     {
         [SerializeField] LevelConfigSO levelConfigSO;
+        [SerializeField] CharacterStatsSO charStatsSO;
 
         UserData userData;
+        CharacterData charData;
 
         #region Properties
         public int LifeAmount { get; set; }
@@ -17,10 +19,30 @@ namespace PixelAdventure
         public bool IsGameOverScreenActive { get; set; }
         public UserData UserData { get => userData; }
         public List<LevelConfig> LevelConfig => levelConfigSO.LevelConfig;
+        public CharacterStatsSO CharStatsSO { get => charStatsSO; }
+        public CharacterData CharData { get => charData; }
         #endregion
 
         public void Setup()
         {
+
+            if (AppPrefs.HasObject(PrefsKeys.CHARACTER_DATA))
+            {
+                charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
+            }
+            else
+            {
+                charData = new CharacterData
+                {
+                    Speed = CharStatsSO.InitialSpeed,
+                    JumpForce = CharStatsSO.InitialJumpForce,
+                    DoubleJumpForce = CharStatsSO.InitialDoubleJumpForce,
+                    FastFallSpeed = CharStatsSO.InitialFastFallSpeed,
+                    DashLenght = CharStatsSO.InitialDashLenght
+                };
+
+                AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
+            }
 
             if (AppPrefs.HasObject(PrefsKeys.USER_DATA))
             {
@@ -41,13 +63,15 @@ namespace PixelAdventure
             userData.ListOfLevelStates[_index + 1] = LevelState.Unlocked;
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
-
+            AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
             AppPrefs.Save();
 
         }
 
         public string Retry()
         {
+            AppPrefs.DeleteObject(PrefsKeys.CHARACTER_DATA);
+            Setup();
             Time.timeScale = 1;
             LifeAmount = 3;
             return LevelName;
@@ -80,5 +104,5 @@ namespace PixelAdventure
         }
     }
 
-  
+
 }
