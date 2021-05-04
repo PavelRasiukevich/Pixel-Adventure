@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public interface IPowerUp
+    public interface IPowerUp 
     {
         public int RewardPoints { get; }
 

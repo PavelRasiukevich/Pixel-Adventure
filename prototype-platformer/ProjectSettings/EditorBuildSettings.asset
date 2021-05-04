@@ -12,27 +12,6 @@ EditorBuildSettings:
     path: Assets/A_Project/Scenes/MenuScenes/MainMenu.unity
     guid: 77184af03b5c88445be2498839e72301
   - enabled: 1
-    path: Assets/A_Project/Scenes/Dungeon/InitialDungeon.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Dungeon/Dungeon_1.unity
-    guid: d75e79566a5869b4e9c6a8bc587814af
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Dungeon/Dungeon_2.unity
-    guid: dd450b59245c8de44981eb53c316f3aa
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Dungeon/Dungeon_3.unity
-    guid: 79ffcaeaed249f4458838b789f96803b
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Cave.unity
-    guid: c596b0e8be52484489a741cf7c501a9e
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Forest.unity
-    guid: d4aec2b16ee5a8847adedcfcbb2b8a83
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Castle.unity
-    guid: eb8dd210af98c2448946d1541fd1e709
-  - enabled: 1
-    path: Assets/A_Project/Scenes/Tower.unity
-    guid: be2263fae87e7ad4d89a47ebe7f6e9a7
+    path: Assets/A_Project/Scenes/Game.unity
+    guid: e91bf091f8570fb4ba12b1bd98ff4957
   m_configObjects: {}

@@ -12,12 +12,12 @@ namespace PixelAdventure
 
         Collider2D collider2d;
 
+        public int RewardPoints { get => points; }
+
         void Awake()
         {
             collider2d = GetComponent<Collider2D>();
         }
-
-        public int RewardPoints { get => points; }
 
         public abstract void AddBonusValue(IControllable _character);
 

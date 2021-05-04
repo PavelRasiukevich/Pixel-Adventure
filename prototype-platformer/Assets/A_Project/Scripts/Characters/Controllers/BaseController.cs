@@ -16,7 +16,7 @@ namespace PixelAdventure
         #endregion
 
         #region Components
-        protected Rigidbody2D charRb;
+        private Rigidbody2D charRb;
         protected Animator charAnim;
         protected SpriteRenderer charSr;
         protected CapsuleCollider2D charCapsuleCollider;
@@ -37,6 +37,7 @@ namespace PixelAdventure
         #region Properties
         public Vector3 SpawnPosition { get; set; }
         public CharacterStatsSO CharStats { get => charStats; }
+        public Rigidbody2D CharRb { get => charRb; }
         #endregion
 
         protected void Awake()

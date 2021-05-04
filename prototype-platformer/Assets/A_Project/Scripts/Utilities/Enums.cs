@@ -63,4 +63,12 @@ namespace PixelAdventure
         FastFallBonus,
         SpeedBonus
     }
+
+    public enum CameraTriggers
+    {
+        Left_Height,
+        Right_Height,
+        Bottom_Lenght,
+        Up_Lenght
+    }
 }

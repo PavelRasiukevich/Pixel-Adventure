@@ -31,14 +31,14 @@ namespace PixelAdventure
 
         private void OnEnable()
         {
-            door.OnDoorEntered += OnDoorInteredHandler;
-            character.LifeLost += LifeLostHandler;
+            /*door.OnDoorEntered += OnDoorInteredHandler;
+            character.LifeLost += LifeLostHandler;*/
         }
 
         private void OnDisable()
         {
-            door.OnDoorEntered -= OnDoorInteredHandler;
-            character.LifeLost -= LifeLostHandler;
+            /*door.OnDoorEntered -= OnDoorInteredHandler;
+            character.LifeLost -= LifeLostHandler;*/
         }
 
         private void LifeLostHandler()

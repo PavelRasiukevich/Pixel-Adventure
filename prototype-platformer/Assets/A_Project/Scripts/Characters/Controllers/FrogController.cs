@@ -16,12 +16,14 @@ namespace PixelAdventure
         {
             base.OnTriggerEnter2D(collision);
 
-            var _collision = collision.GetComponent<IPowerUp>();
+            var _powerUp = collision.GetComponent<IPowerUp>();
+            var _ability = collision.GetComponent<IAbility>();
 
-            if (_collision != null)
-            {
-                _collision.AddBonusValue(this);
-            }
+            if (_ability != null)
+                _ability.AddAbility(this);
+
+            if (_powerUp != null)
+                _powerUp.AddBonusValue(this);
         }
     }
 }
