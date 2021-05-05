@@ -44,7 +44,7 @@ namespace PixelAdventure
 
             if (characterRigidBody.velocity.y >= 0)
             {
-                characterRigidBody.AddForce(Vector2.up * charStats.CurrentDoubleJumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace PixelAdventure
                 _velocity.y = 0;
                 characterRigidBody.velocity = _velocity;
 
-                characterRigidBody.AddForce(Vector2.up * charStats.CurrentDoubleJumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
             }
         }
     }

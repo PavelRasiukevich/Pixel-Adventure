@@ -56,7 +56,8 @@ namespace PixelAdventure
 
             if (IsSecondJumpAvaliable)
                 if (Input.GetKeyDown(KeyCode.Space))
-                    NextStateAction.Invoke(CharacterState.DoubleJump);
+                    if (GameInfo.Instance.CharData.HasDoubleJump)
+                        NextStateAction.Invoke(CharacterState.DoubleJump);
 
         }
 
@@ -68,7 +69,7 @@ namespace PixelAdventure
 
             if (characterRigidBody.velocity.y >= 0)
             {
-                characterRigidBody.AddForce(Vector2.up * charStats.CurrentJumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
             }
             else
             {
@@ -76,7 +77,7 @@ namespace PixelAdventure
                 _velocity.y = 0;
                 characterRigidBody.velocity = _velocity;
 
-                characterRigidBody.AddForce(Vector2.up * charStats.CurrentJumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
             }
         }
     }

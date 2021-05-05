@@ -8,8 +8,6 @@ namespace PixelAdventure.Interfaces
         Action<Transform> OnChangePosition { get; set; }
         Action<Transform> OnPlayerEnable { get; set; }
 
-        CharacterStatsSO CharStats { get; }
-
         Vector3 SpawnPosition { get; set; }
     }
 }

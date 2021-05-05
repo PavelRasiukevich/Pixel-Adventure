@@ -14,15 +14,17 @@ namespace PixelAdventure
         [SerializeField] BaseDoor door;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] BaseController character;
+      
 
         public override void ShowScreen()
         {
             base.ShowScreen();
 
-            foreach (var lvl in GameInfo.Instance.LevelConfig)
+           
+
+            foreach (var lvl in GameInfo.Instance.CheckPointConfigs)
             {
-                if (SceneManager.GetActiveScene().name.Equals(lvl.Name))
-                    GameInfo.Instance.LevelName = lvl.Name;
+                
             }
 
             GameInfo.Instance.IsGameOverScreenActive = false;
@@ -31,14 +33,14 @@ namespace PixelAdventure
 
         private void OnEnable()
         {
-            /*door.OnDoorEntered += OnDoorInteredHandler;
-            character.LifeLost += LifeLostHandler;*/
+            // door.OnDoorEntered += OnDoorInteredHandler;
+            character.LifeLost += LifeLostHandler;
         }
 
         private void OnDisable()
         {
-            /*door.OnDoorEntered -= OnDoorInteredHandler;
-            character.LifeLost -= LifeLostHandler;*/
+            //door.OnDoorEntered -= OnDoorInteredHandler;
+            character.LifeLost -= LifeLostHandler;
         }
 
         private void LifeLostHandler()
@@ -49,12 +51,9 @@ namespace PixelAdventure
 
         private void OnDoorInteredHandler()
         {
-            foreach (var lvl in GameInfo.Instance.LevelConfig)
+            foreach (var lvl in GameInfo.Instance.CheckPointConfigs)
             {
-                if (SceneManager.GetActiveScene().name.Equals(lvl.Name))
-                {
-                    GameInfo.Instance.LevelComplited(lvl.Index);
-                }
+                
             }
 
             Exit(EXIT_TO_NEXT_LVL);

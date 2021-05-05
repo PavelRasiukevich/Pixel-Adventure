@@ -10,9 +10,7 @@ namespace PixelAdventure
         public readonly int INT_DIE = Animator.StringToHash("Die");
 
         #region
-        [SerializeField] protected Transform spawn;
         [SerializeField] protected CharacterSoundSO characterSounds;
-        [SerializeField] protected CharacterStatsSO charStats;
         #endregion
 
         #region Components
@@ -36,19 +34,12 @@ namespace PixelAdventure
 
         #region Properties
         public Vector3 SpawnPosition { get; set; }
-        public CharacterStatsSO CharStats { get => charStats; }
         public Rigidbody2D CharRb { get => charRb; }
         #endregion
 
         protected void Awake()
         {
-            charStats.CurrentJumpForce = GameInfo.Instance.CharData.JumpForce;
-            charStats.CurrentDoubleJumpForce = GameInfo.Instance.CharData.DoubleJumpForce;
-            charStats.CurrentFastFallSpeed = GameInfo.Instance.CharData.FastFallSpeed;
-            charStats.CurrentSpeed = GameInfo.Instance.CharData.Speed;
-
-            SpawnPosition = spawn.position;
-
+            
             charRb = GetComponent<Rigidbody2D>();
             charCapsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
             charAnim = GetComponent<Animator>();
@@ -58,7 +49,7 @@ namespace PixelAdventure
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds, charStats);
+                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds);
             });
         }
 

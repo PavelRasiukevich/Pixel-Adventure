@@ -32,7 +32,6 @@ namespace PixelAdventure
 
         IEnumerator ColliderTimer(CircleCollider2D _collider)
         {
-            Debug.Log("CORUTINE");
             _collider.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.15f);
             _collider.gameObject.SetActive(true);

@@ -10,9 +10,9 @@ namespace PixelAdventure
         public override void AddBonusValue(IControllable _character)
         {
             
-            _character.CharStats.CurrentDashLenght += value;
-            GameInfo.Instance.CharData.DashLenght = _character.CharStats.CurrentDashLenght;
-            DestroyPowerUp();
+           GameInfo.Instance.CharData.DashLenght += value;
         }
+
+       
     }
 }

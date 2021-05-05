@@ -16,7 +16,7 @@ namespace PixelAdventure
             {
                 if (Mathf.Abs(HorizontalAxes) > 0)
                 {
-                    characterRigidBody.velocity = new Vector2(HorizontalAxes * charStats.CurrentSpeed, characterRigidBody.velocity.y);
+                    characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
 
                     if (JumpAxes > Mathf.Epsilon)
                     {

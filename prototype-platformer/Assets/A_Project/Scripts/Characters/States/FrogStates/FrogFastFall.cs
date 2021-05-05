@@ -29,7 +29,7 @@ namespace PixelAdventure
         {
             base.ActivateState();
             characterRigidBody.velocity = Vector2.zero;
-            characterRigidBody.AddForce(Vector2.down * charStats.CurrentFastFallSpeed, ForceMode2D.Impulse);
+            characterRigidBody.AddForce(Vector2.down * 10, ForceMode2D.Impulse);
         }
     }
 }

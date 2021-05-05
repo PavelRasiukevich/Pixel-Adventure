@@ -8,5 +8,6 @@ namespace PixelAdventure
     public interface IAbility
     {
         public void AddAbility(IControllable player);
+        public void DestroyPowerUp();
     }
 }

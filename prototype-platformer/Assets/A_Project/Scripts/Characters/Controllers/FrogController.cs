@@ -9,7 +9,7 @@ namespace PixelAdventure
         private new void Awake()
         {
             base.Awake();
-            transform.position = SpawnPosition;
+            transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
         }
 
         private new void OnTriggerEnter2D(Collider2D collision)

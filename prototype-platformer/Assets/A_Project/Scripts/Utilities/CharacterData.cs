@@ -9,15 +9,17 @@ namespace PixelAdventure
     public class CharacterData
     {
         [SerializeField] float jumpForce;
-        [SerializeField] float doubleJumpForce;
         [SerializeField] float speed;
         [SerializeField] float dashLenght;
         [SerializeField] float fastFallSpeed;
+        [SerializeField] bool hasDoubleJump;
+        [SerializeField] bool hasDash;
 
         public float JumpForce { get => jumpForce; set => jumpForce = value; }
-        public float DoubleJumpForce { get => doubleJumpForce; set => doubleJumpForce = value; }
         public float Speed { get => speed; set => speed = value; }
         public float DashLenght { get => dashLenght; set => dashLenght = value; }
         public float FastFallSpeed { get => fastFallSpeed; set => fastFallSpeed = value; }
+        public bool HasDoubleJump { get => hasDoubleJump; set => hasDoubleJump = value; }
+        public bool HasDash { get => hasDash; set => hasDash = value; }
     }
 }

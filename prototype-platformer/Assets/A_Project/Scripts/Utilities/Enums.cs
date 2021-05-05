@@ -1,6 +1,6 @@
 namespace PixelAdventure
 {
-    public enum LevelState
+    public enum CheckPointState
     {
         Locked,
         Unlocked
@@ -55,13 +55,10 @@ namespace PixelAdventure
         Forest
     }
 
-    public enum Bonuses
+    public enum PowerUpStates
     {
-        JumpBonus,
-        DoubleJumpBonus,
-        DashBonus,
-        FastFallBonus,
-        SpeedBonus
+        Avaliable,
+        Consumed
     }
 
     public enum CameraTriggers

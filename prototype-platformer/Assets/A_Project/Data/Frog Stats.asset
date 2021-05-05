@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasDoubleJumpAbility: 0
   hasDashAbility: 0
-  hasFastFallAbility: 0
-  initialJumpForce: 7
-  initialDoubleJumpForce: 7
-  initialFastFallSpeed: 10
+  initialJumpForce: 8
   initialDashLenght: 3
-  initialSpeed: 5
+  initialSpeed: 7

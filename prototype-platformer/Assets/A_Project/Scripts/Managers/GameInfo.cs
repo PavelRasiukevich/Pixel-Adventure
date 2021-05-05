@@ -7,24 +7,45 @@ namespace PixelAdventure
 {
     public class GameInfo : BaseManager<GameInfo>
     {
-        [SerializeField] LevelConfigSO levelConfigSO;
+        [SerializeField] CheckPointConfig_SO checkPointConfig_SO;
         [SerializeField] CharacterStatsSO charStatsSO;
 
         UserData userData;
         CharacterData charData;
+        PowerUpData powerData;
 
         #region Properties
         public int LifeAmount { get; set; }
         public string LevelName { get; set; }
         public bool IsGameOverScreenActive { get; set; }
         public UserData UserData { get => userData; }
-        public List<LevelConfig> LevelConfig => levelConfigSO.LevelConfig;
+
+        public List<PowerUpStates> PowerUps => powerData.PowerUps;
+        public List<CheckPointConfig> CheckPointConfigs => checkPointConfig_SO.CheckPointConfig;
+        public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
         public CharacterData CharData { get => charData; }
         #endregion
 
         public void Setup()
         {
+
+            if (AppPrefs.HasObject(PrefsKeys.POWERUPS_DATA))
+            {
+                powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
+
+            }
+            else
+            {
+                powerData = new PowerUpData();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    powerData.PowerUps.Add(PowerUpStates.Avaliable);
+                }
+
+                AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
+            }
 
             if (AppPrefs.HasObject(PrefsKeys.CHARACTER_DATA))
             {
@@ -36,9 +57,10 @@ namespace PixelAdventure
                 {
                     Speed = CharStatsSO.InitialSpeed,
                     JumpForce = CharStatsSO.InitialJumpForce,
-                    DoubleJumpForce = CharStatsSO.InitialDoubleJumpForce,
-                    FastFallSpeed = CharStatsSO.InitialFastFallSpeed,
-                    DashLenght = CharStatsSO.InitialDashLenght
+                    DashLenght = CharStatsSO.InitialDashLenght,
+                    HasDash = CharStatsSO.HasDashAbility,
+                    HasDoubleJump = CharStatsSO.HasDoubleJumpAbility
+
                 };
 
                 AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
@@ -58,45 +80,60 @@ namespace PixelAdventure
             }
         }
 
-        public void LevelComplited(int _index)
+        public void LoadProgress()
         {
-            userData.ListOfLevelStates[_index + 1] = LevelState.Unlocked;
+            userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
+            charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
+            powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
+        }
+
+        public void SaveProgress()
+        {
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
+            AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
             AppPrefs.Save();
 
         }
 
-        public string Retry()
+        public void Retry()
         {
-            AppPrefs.DeleteObject(PrefsKeys.CHARACTER_DATA);
-            Setup();
             Time.timeScale = 1;
             LifeAmount = 3;
-            return LevelName;
+            SaveProgress();
+            Setup();
         }
 
-        public LevelState GetLevelState(int _index)
+        public PowerUpStates GetPowerUpState(int _index)
         {
-            return userData.ListOfLevelStates[_index];
+            return powerData.PowerUps[_index];
         }
 
-        public void SetLevelState(int _index, LevelState _state)
+        public void SetPowerUpState(int _index, PowerUpStates _state)
         {
-            userData.ListOfLevelStates[_index] = _state;
+            powerData.PowerUps[_index] = _state;
+        }
+
+        public CheckPointState GetCheckPointState(int _index)
+        {
+            return userData.ListOfCheckPointState[_index];
+        }
+
+        public void SetCheckPointState(int _index, CheckPointState _state)
+        {
+            userData.ListOfCheckPointState[_index] = _state;
         }
 
         public void SetInitialValues()
         {
 
-            for (int i = 0; i < levelConfigSO.LevelConfig.Count; i++)
+            for (int i = 0; i < CheckPointConfigs.Count; i++)
             {
-                if (i == 0)
-                    userData.ListOfLevelStates.Add(LevelState.Unlocked);
-                else
-                    userData.ListOfLevelStates.Add(LevelState.Locked);
+                userData.ListOfCheckPointState.Add(CheckPointState.Locked);
             }
+
+            userData.PlayerSpawnPosition = Spawn;
 
             userData.MasterVolume = 0;
             userData.MusicVolume = 0;

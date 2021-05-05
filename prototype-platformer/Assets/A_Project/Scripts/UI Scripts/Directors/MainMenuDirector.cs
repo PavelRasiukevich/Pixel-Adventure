@@ -36,7 +36,7 @@ namespace PixelAdventure
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_FROM_APP))
                     Application.Quit();
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_MAP))
-                    SetCurrentScreen<LevelMapScreen>().ShowScreen();
+                    SetCurrentScreen<LoadMenu>().ShowScreen();
             }
             else if (_screenType == typeof(OptionsScreen))
             {
@@ -48,12 +48,11 @@ namespace PixelAdventure
                 if (_exitCode.Equals(CreditsScreen.EXIT_TO_BACK_SCREEN))
                     ToBackScreen();
             }
-            else if (_screenType == typeof(LevelMapScreen))
+            else if (_screenType == typeof(LoadMenu))
             {
-                if (_exitCode.Equals(LevelMapScreen.EXIT_TO_BACK_SCREEN))
+                if (_exitCode.Equals(LoadMenu.EXIT_TO_BACK_SCREEN))
                     ToBackScreen();
-                else if (_exitCode.Equals(LevelMapScreen.EXIT_TO_INITIAL_DUNGEON))
-                    SceneManager.LoadScene(SceneID.START_GAME_ID);
+                
                
             }
         }

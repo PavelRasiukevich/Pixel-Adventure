@@ -41,7 +41,7 @@ namespace PixelAdventure
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_OPTIONS))
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_MAIN_MENU))
-                    SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
+                    SceneManager.LoadScene(SceneID.LOADER_ID);
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_FROM_APP))
                     Application.Quit();
             }
@@ -53,9 +53,12 @@ namespace PixelAdventure
             else if (_screenType == typeof(GameOverScreen))
             {
                 if (_exitCode.Equals(GameOverScreen.EXIT_TO_MAIN_MENU))
-                    SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
+                    SceneManager.LoadScene(SceneID.LOADER_ID);
                 else if (_exitCode.Equals(GameOverScreen.RETRY))
-                    SceneManager.LoadScene(GameInfo.Instance.Retry());
+                {
+                    GameInfo.Instance.Retry();
+                    SceneManager.LoadScene(SceneID.START_GAME_ID);
+                }
             }
         }
     }

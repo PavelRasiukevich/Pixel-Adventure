@@ -545,5 +545,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae20ec00af7426469490fb4afe9902a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelConfigSO: {fileID: 11400000, guid: 1ccb85a88981003478991bf0029030a0, type: 2}
+  checkPointConfig_SO: {fileID: 11400000, guid: 7e54ec8c9151ef44583cfc6a0ae1da09, type: 2}
   charStatsSO: {fileID: 11400000, guid: e3c65dd49fd3e764da5f604013dec902, type: 2}
