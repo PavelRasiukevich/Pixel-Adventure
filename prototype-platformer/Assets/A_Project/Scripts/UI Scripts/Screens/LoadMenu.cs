@@ -7,6 +7,7 @@ namespace PixelAdventure
     public class LoadMenu : BaseScreen
     {
         public const string EXIT_TO_BACK_SCREEN = "EXIT_TO_BACK_SCREEN";
+        public const string LOAD_CHECKPOINT_1 = "0";
       
 
         [SerializeField] Button[] lvlButtons;
@@ -21,13 +22,6 @@ namespace PixelAdventure
         {
             base.ShowScreen();
 
-            for (int i = 0; i < lvlButtons.Length; i++)
-            {
-                if (GameInfo.Instance.GetCheckPointState(i) == CheckPointState.Locked)
-                    lvlButtons[i].interactable = false;
-                else
-                    lvlButtons[i].interactable = true;
-            }
         }
 
         public void OnBackPressed()
@@ -37,7 +31,7 @@ namespace PixelAdventure
 
         public void SaveSlot_1()
         {
-
+            Exit(LOAD_CHECKPOINT_1);
         }
 
         public void SaveSlot_2()

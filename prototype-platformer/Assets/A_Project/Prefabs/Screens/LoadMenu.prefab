@@ -1936,8 +1936,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 642910578744619899}
-        m_TargetAssemblyTypeName: PixelAdventure.LevelMapScreen, Assembly-CSharp
-        m_MethodName: OnLevel1Pressed
+        m_TargetAssemblyTypeName: PixelAdventure.LoadMenu, Assembly-CSharp
+        m_MethodName: SaveSlot_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

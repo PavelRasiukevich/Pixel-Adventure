@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6742791935160192892}
   - component: {fileID: 124141758929768307}
   m_Layer: 5
-  m_Name: Map
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6328927052329589063}
         m_TargetAssemblyTypeName: PixelAdventure.MainMenuScreen, Assembly-CSharp
-        m_MethodName: OnLevelMapPressed
+        m_MethodName: OnLoadGamePressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1195,7 +1195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.2382812, y: -180.00003}
+  m_AnchoredPosition: {x: 2.2382812, y: -180}
   m_SizeDelta: {x: -195.26, y: -1087.4}
   m_Pivot: {x: 0.5, y: 0.99999994}
 --- !u!222 &6279810575162584546
@@ -2146,8 +2146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 15.489998, y: 1.1900024}
+  m_SizeDelta: {x: 150.16, y: -40.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4944385135894029656
 CanvasRenderer:
@@ -2177,7 +2177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Map
+  m_text: Load Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ff423f376052e8f43ab8b84c390d2830, type: 2}
   m_sharedMaterial: {fileID: -5610714071158381297, guid: ff423f376052e8f43ab8b84c390d2830, type: 2}
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.5
+  m_fontSize: 58.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

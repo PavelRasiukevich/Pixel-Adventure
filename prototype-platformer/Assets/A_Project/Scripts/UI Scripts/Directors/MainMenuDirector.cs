@@ -28,15 +28,21 @@ namespace PixelAdventure
             if (_screenType == typeof(MainMenuScreen))
             {
                 if (_exitCode.Equals(MainMenuScreen.EXIT_TO_GAME))
+                {
+                    GameInfo.Instance.NewGameSetup();
                     SceneManager.LoadScene(SceneID.START_GAME_ID);
+                }
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_OPTIONS))
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_CREDITS))
                     SetCurrentScreen<CreditsScreen>().ShowScreen();
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_FROM_APP))
                     Application.Quit();
-                else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_MAP))
-                    SetCurrentScreen<LoadMenu>().ShowScreen();
+                else if (_exitCode.Equals(MainMenuScreen.LOAD_GAME))
+                {
+                    GameInfo.Instance.LoadGameProgress();
+                    SceneManager.LoadScene(SceneID.START_GAME_ID);
+                }
             }
             else if (_screenType == typeof(OptionsScreen))
             {
@@ -47,13 +53,6 @@ namespace PixelAdventure
             {
                 if (_exitCode.Equals(CreditsScreen.EXIT_TO_BACK_SCREEN))
                     ToBackScreen();
-            }
-            else if (_screenType == typeof(LoadMenu))
-            {
-                if (_exitCode.Equals(LoadMenu.EXIT_TO_BACK_SCREEN))
-                    ToBackScreen();
-                
-               
             }
         }
     }

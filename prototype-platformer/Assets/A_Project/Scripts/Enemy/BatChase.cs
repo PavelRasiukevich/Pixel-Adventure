@@ -33,7 +33,7 @@ namespace PixelAdventure
             base.LogicUpdate();
             lastPos = bat.transform.position;
 
-            if (Vector2.Distance(bat.transform.position, bat.TargetToChase.position) < .55f)
+            if (Vector2.Distance(bat.transform.position, bat.TargetToChase.position) < .75f)
             {
                 if (bat.TargetToChase.gameObject == bat.IdleSpot.gameObject)
                 {

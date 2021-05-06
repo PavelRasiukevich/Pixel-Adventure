@@ -11,12 +11,12 @@ namespace PixelAdventure
         public void AddAbility(IControllable _player)
         {
             GameInfo.Instance.CharData.HasDoubleJump = true;
-            
+            DestroyPowerUp();
         }
 
         public void DestroyPowerUp()
         {
-            throw new System.NotImplementedException();
+            Destroy(gameObject);
         }
     }
 }

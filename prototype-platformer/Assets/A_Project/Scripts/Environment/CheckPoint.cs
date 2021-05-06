@@ -9,7 +9,6 @@ namespace PixelAdventure
     public class CheckPoint : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI hintText;
-        [SerializeField] int index;
 
         private void OnTriggerStay2D(Collider2D collision)
         {
@@ -19,10 +18,9 @@ namespace PixelAdventure
             if (_player != null)
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    GameInfo.Instance.SetCheckPointState(index, CheckPointState.Unlocked);
+                    Debug.Log("SAVED");
                     GameInfo.Instance.UserData.PlayerSpawnPosition = transform.position;
-                    GameInfo.Instance.SaveProgress();
-
+                    GameInfo.Instance.SaveGameProgress();
                 }
         }
 

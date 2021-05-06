@@ -13,5 +13,7 @@ namespace PixelAdventure
         public const string SOUND = "SOUND";
         public const string MUSIC = "MUSIC";
         public const string MASTER = "MASTER";
+        public const string CHECKPOINT_DATA_ = "CHECKPOINT_";
+        public const string AUDIO_DATA = "AUDIO_DATA";
     }
 }

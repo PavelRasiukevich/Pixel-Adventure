@@ -80,7 +80,7 @@ namespace PixelAdventure
             {
                 if (!GameInfo.Instance.IsGameOverScreenActive)
                 {
-                    transform.position = SpawnPosition;
+                    transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
                     charCapsuleCollider.enabled = true;
                     OnNextStateRequest(CharacterState.Idle);
                     charRb.bodyType = RigidbodyType2D.Dynamic;

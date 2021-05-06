@@ -8,13 +8,15 @@ namespace PixelAdventure
     public class AudioManager : BaseManager<AudioManager>
     {
         [SerializeField] AudioMixer mixer;
-
         [SerializeField] AudioClip clip;
 
         [SerializeField] AudioSource musicSource;
         [SerializeField] AudioSource soundSource;
 
+        AudioData audioData;
+
         public AudioClip Clip { get => clip; set => clip = value; }
+        public AudioData AudioData { get => audioData; }
 
         public void PlayMusic()
         {
@@ -25,9 +27,25 @@ namespace PixelAdventure
 
         public void SetupVolume()
         {
-            MasterVolumeChange(GameInfo.Instance.UserData.MasterVolume);
-            MusicVolumeChange(GameInfo.Instance.UserData.MusicVolume);
-            SoundVolumeChange(GameInfo.Instance.UserData.SoundVolume);
+
+            if (AppPrefs.HasObject(PrefsKeys.AUDIO_DATA))
+            {
+                audioData = AppPrefs.GetObject<AudioData>(PrefsKeys.AUDIO_DATA);
+
+                MasterVolumeChange(audioData.Master);
+                MusicVolumeChange(audioData.Volume);
+                SoundVolumeChange(audioData.Sound);
+            }
+            else
+            {
+                audioData = new AudioData();
+
+                MasterVolumeChange(audioData.Master);
+                MusicVolumeChange(audioData.Volume);
+                SoundVolumeChange(audioData.Sound);
+
+                AppPrefs.SetObject(PrefsKeys.AUDIO_DATA, audioData);
+            }
         }
 
         public void PlaySound(AudioClip _clip)
@@ -38,19 +56,19 @@ namespace PixelAdventure
         public void MasterVolumeChange(float _value)
         {
             mixer.SetFloat("MasterVolume", _value);
-            GameInfo.Instance.UserData.MasterVolume = _value;
+            audioData.Master = _value;
         }
 
         public void MusicVolumeChange(float _value)
         {
             mixer.SetFloat("MusicVolume", _value);
-            GameInfo.Instance.UserData.MusicVolume = _value;
+            audioData.Volume = _value;
         }
 
         public void SoundVolumeChange(float _value)
         {
             mixer.SetFloat("SoundVolume", _value);
-            GameInfo.Instance.UserData.SoundVolume = _value;
+            audioData.Sound = _value;
         }
     }
 }

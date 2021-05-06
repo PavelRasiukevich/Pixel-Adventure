@@ -9,7 +9,6 @@ namespace PixelAdventure
     {
         private void Awake()
         {
-            GameInfo.Instance.Setup();
             AudioManager.Instance.SetupVolume();
             SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
         }
