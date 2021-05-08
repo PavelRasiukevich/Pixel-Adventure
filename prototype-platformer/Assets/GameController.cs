@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,26 +7,34 @@ namespace PixelAdventure
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] BasePowerUp[] powerUps;
-        [SerializeField] int test;
+        [SerializeField] PowerUpContainer powerUpsList;
+
+        public List<BasePowerUp> List { get => powerUpsList.List; }
 
         private void Awake()
         {
-            powerUps = FindObjectsOfType<BasePowerUp>();
 
-            for (int i = 0; i < powerUps.Length; i++)
+            for (int i = 0; i < List.Count; i++)
             {
                 if (GameInfo.Instance.GetPowerUpState(i) == PowerUpStates.Avaliable)
                 {
-                    powerUps[i].Index = i;
-                    powerUps[i].gameObject.SetActive(true);
+                    List[i].Index = i;
+                    List[i].gameObject.SetActive(true);
                 }
                 else
                 {
-                    powerUps[i].Index = i;
-                    powerUps[i].gameObject.SetActive(false);
+                    List[i].Index = i;
+                    List[i].gameObject.SetActive(false);
                 }
             }
         }
+    }
+
+    [Serializable]
+    public class PowerUpContainer
+    {
+        [SerializeField] List<BasePowerUp> list;
+
+        public List<BasePowerUp> List { get => list; }
     }
 }

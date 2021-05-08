@@ -48,6 +48,11 @@ namespace PixelAdventure
             }
         }
 
+        public void SaveVolumeChanges()
+        {
+            AppPrefs.SetObject(PrefsKeys.AUDIO_DATA, audioData);
+        }
+
         public void PlaySound(AudioClip _clip)
         {
             soundSource.PlayOneShot(_clip);

@@ -8,7 +8,7 @@ namespace PixelAdventure
 {   
     public class JumpPowerUp : BasePowerUp
     {
-        public override void AddBonusValue(IControllable _character)
+        public override void AddBonusValue()
         {
             GameInfo.Instance.CharData.JumpForce += value;
             PickUpPowerUp();

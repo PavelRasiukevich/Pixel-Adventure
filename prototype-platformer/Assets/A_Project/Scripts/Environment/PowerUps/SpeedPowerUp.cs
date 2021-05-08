@@ -7,7 +7,7 @@ namespace PixelAdventure
 {
     public class SpeedPowerUp : BasePowerUp
     {
-        public override void AddBonusValue(IControllable _character)
+        public override void AddBonusValue()
         {
             GameInfo.Instance.CharData.Speed += value;
         }

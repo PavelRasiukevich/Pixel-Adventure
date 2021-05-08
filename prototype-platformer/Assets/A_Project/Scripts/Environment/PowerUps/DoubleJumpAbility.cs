@@ -1,22 +1,17 @@
 using PixelAdventure.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class DoubleJumpAbility : MonoBehaviour, IAbility
+    public class DoubleJumpAbility : BasePowerUp
     {
-       
-        public void AddAbility(IControllable _player)
+        public override void AddBonusValue()
         {
             GameInfo.Instance.CharData.HasDoubleJump = true;
-            DestroyPowerUp();
-        }
-
-        public void DestroyPowerUp()
-        {
-            Destroy(gameObject);
+            PickUpPowerUp();
         }
     }
 }

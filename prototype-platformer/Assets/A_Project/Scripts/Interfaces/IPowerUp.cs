@@ -10,7 +10,7 @@ namespace PixelAdventure
     {
         public int RewardPoints { get; }
 
-        public void AddBonusValue(IControllable _character);
+        public void AddBonusValue();
         public void PickUpPowerUp();
     }
 }

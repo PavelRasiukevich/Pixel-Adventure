@@ -25,15 +25,15 @@ namespace PixelAdventure
                 switch (sliders[i].name)
                 {
                     case "Master Volume":
-                        sliders[i].VolumeChanged += MasterHandler;
+                        sliders[i].VolumeChanged = MasterHandler;
                         sliders[i].Slider.value = AudioManager.Instance.AudioData.Master / Values.VALUE_MULT;
                         break;
                     case "Music Volume":
-                        sliders[i].VolumeChanged += MusicHandler;
+                        sliders[i].VolumeChanged = MusicHandler;
                         sliders[i].Slider.value = AudioManager.Instance.AudioData.Volume / Values.VALUE_MULT;
                         break;
                     case "Sound Volume":
-                        sliders[i].VolumeChanged += SoundHandler;
+                        sliders[i].VolumeChanged = SoundHandler;
                         sliders[i].Slider.value = AudioManager.Instance.AudioData.Sound / Values.VALUE_MULT;
                         break;
                 }
@@ -57,7 +57,7 @@ namespace PixelAdventure
 
         public void OnBackPressed()
         {
-            AppPrefs.SetObject(PrefsKeys.AUDIO_DATA, AudioManager.Instance.AudioData);
+            AudioManager.Instance.SaveVolumeChanges();
             Exit(EXIT_TO_BACK_SCREEN);
         }
     }

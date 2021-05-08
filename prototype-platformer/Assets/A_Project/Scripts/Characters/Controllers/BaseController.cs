@@ -30,6 +30,7 @@ namespace PixelAdventure
         public Action<Transform> OnPlayerEnable { get; set; }
         public Action OnDieActive { get; set; }
         public Action LifeLost { get; set; }
+        public Action GetRewardPoints { get; set; }
         #endregion
 
         #region Properties

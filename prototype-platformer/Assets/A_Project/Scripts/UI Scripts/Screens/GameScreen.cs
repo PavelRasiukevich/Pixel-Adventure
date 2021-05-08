@@ -11,36 +11,34 @@ namespace PixelAdventure
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
 
-        [SerializeField] BaseDoor door;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
+        [SerializeField] TextMeshProUGUI scoreAmountLabel;
         [SerializeField] BaseController character;
-      
+
 
         public override void ShowScreen()
         {
             base.ShowScreen();
 
-           
-
-            foreach (var lvl in GameInfo.Instance.CheckPointConfigs)
-            {
-                
-            }
-
             GameInfo.Instance.IsGameOverScreenActive = false;
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
+            scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
         }
 
         private void OnEnable()
         {
-            // door.OnDoorEntered += OnDoorInteredHandler;
             character.LifeLost += LifeLostHandler;
+            character.GetRewardPoints = OnRewarded;
         }
 
         private void OnDisable()
         {
-            //door.OnDoorEntered -= OnDoorInteredHandler;
             character.LifeLost -= LifeLostHandler;
+        }
+
+        private void OnRewarded()
+        {
+            scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
         }
 
         private void LifeLostHandler()
@@ -53,7 +51,7 @@ namespace PixelAdventure
         {
             foreach (var lvl in GameInfo.Instance.CheckPointConfigs)
             {
-                
+
             }
 
             Exit(EXIT_TO_NEXT_LVL);

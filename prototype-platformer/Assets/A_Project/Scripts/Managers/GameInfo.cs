@@ -32,7 +32,7 @@ namespace PixelAdventure
             //powerUpData
             powerData = new PowerUpData();
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 powerData.PowerUps.Add(PowerUpStates.Avaliable);
             }
@@ -55,7 +55,6 @@ namespace PixelAdventure
             userData = new UserData();
             userData.PlayerSpawnPosition = Spawn;
 
-
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
         }
 
@@ -66,8 +65,7 @@ namespace PixelAdventure
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
 
             if (userData == null || charData == null || powerData == null)
-                throw new Exception("Nothing to load yet. TODO workout this issue!");
-
+                NewGameSetup();
         }
 
         public void SaveGameProgress()
@@ -81,6 +79,17 @@ namespace PixelAdventure
         {
             Time.timeScale = 1;
             LifeAmount = 3;
+            LoadGameProgress();
+        }
+
+        public void SetScore(int _score)
+        {
+            userData.Score += _score;
+        }
+
+        public int GetScore()
+        {
+            return userData.Score;
         }
 
         public PowerUpStates GetPowerUpState(int _index)
