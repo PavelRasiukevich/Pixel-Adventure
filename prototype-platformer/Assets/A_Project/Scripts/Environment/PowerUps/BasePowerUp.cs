@@ -10,6 +10,7 @@ namespace PixelAdventure
     {
         [SerializeField] protected float value;
         [SerializeField] protected int points;
+        [SerializeField] GameObject pointsCanvasPrefab;
         private int index;
 
         PowerUpStates state;
@@ -22,9 +23,14 @@ namespace PixelAdventure
 
         public void PickUpPowerUp()
         {
-            gameObject.SetActive(false);
+            var _pc = Instantiate(pointsCanvasPrefab).GetComponent<PointsCanvas>();
+            _pc.transform.position = transform.position;
+            _pc.PointsText.text = points.ToString();
+            Destroy(_pc.gameObject, 0.5f);
+
             GameInfo.Instance.SetScore(points);
             GameInfo.Instance.SetPowerUpState(Index, PowerUpStates.Consumed);
+            gameObject.SetActive(false);
         }
 
     }
