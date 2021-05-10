@@ -9,16 +9,27 @@ namespace PixelAdventure
     {
         [SerializeField] bool hasDoubleJumpAbility;
         [SerializeField] bool hasDashAbility;
+        [SerializeField] bool hasFastFallAbility;
 
         [SerializeField] float initialJumpForce;
-        [SerializeField] float initialDashLenght;
+        [SerializeField] Vector2 initialDashLenght;
         [SerializeField] float initialSpeed;
 
-        public bool HasDoubleJumpAbility { get => hasDoubleJumpAbility; set => hasDoubleJumpAbility = value; }
-        public bool HasDashAbility { get => hasDashAbility; set => hasDashAbility = value; }
+        [SerializeField] float dashReloadTime;
+        [SerializeField] float doubleJumpReloadTime;
+        [SerializeField] float fastFallReloadTime;
+
+
+        public bool HasDoubleJumpAbility { get => hasDoubleJumpAbility; }
+        public bool HasDashAbility { get => hasDashAbility; }
+        public bool HasFastFallAbility { get => hasFastFallAbility; }
 
         public float InitialJumpForce { get => initialJumpForce; }
         public float InitialSpeed { get => initialSpeed; }
-        public float InitialDashLenght { get => initialDashLenght; }
+        public Vector2 InitialDashLenght { get => initialDashLenght; }
+
+        public float DashReloadTime { get => dashReloadTime; }
+        public float DoubleJumpReloadTime { get => doubleJumpReloadTime; }
+        public float FastFallReloadTime { get => fastFallReloadTime; }
     }
 }

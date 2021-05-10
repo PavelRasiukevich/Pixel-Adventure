@@ -7,7 +7,7 @@ namespace PixelAdventure
         [SerializeField] float gravityMultiplyer;
 
         public override CharacterState State => CharacterState.Fall;
-       
+
         public void FixedUpdate()
         {
             if (characterRigidBody.velocity.y < 0)
@@ -33,7 +33,8 @@ namespace PixelAdventure
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
-                NextStateAction.Invoke(CharacterState.FastFall);
+                if (GameInfo.Instance.CharData.HasFastFall)
+                    NextStateAction.Invoke(CharacterState.FastFall);
         }
     }
 }

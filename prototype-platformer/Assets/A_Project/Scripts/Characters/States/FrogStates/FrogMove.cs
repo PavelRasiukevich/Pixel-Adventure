@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace PixelAdventure
 {
     public class FrogMove : BaseState
     {
-
         public override CharacterState State => CharacterState.Move;
+
+        public Action PlayerUsedDash;
 
         private void FixedUpdate()
         {
@@ -18,10 +20,16 @@ namespace PixelAdventure
                 {
                     characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
 
+                    if (DashAxes > Mathf.Epsilon)
+                        if (GameInfo.Instance.CharData.HasDash)
+                            if (GameInfo.Instance.HasReloadedDash)
+                            {
+                                PlayerUsedDash.Invoke();
+                                NextStateAction(CharacterState.Dash);
+                            }
+
                     if (JumpAxes > Mathf.Epsilon)
-                    {
                         NextStateAction.Invoke(CharacterState.Jump);
-                    }
                 }
                 else
                 {
@@ -37,6 +45,11 @@ namespace PixelAdventure
             {
                 NextStateAction.Invoke(CharacterState.Fall);
             }
+        }
+
+        public override void ActivateState()
+        {
+            base.ActivateState();
         }
     }
 }

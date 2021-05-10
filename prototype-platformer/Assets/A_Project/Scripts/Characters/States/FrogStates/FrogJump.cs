@@ -52,7 +52,8 @@ namespace PixelAdventure
             timer -= Time.deltaTime;
 
             if (Input.GetKeyDown(KeyCode.S))
-                NextStateAction.Invoke(CharacterState.FastFall);
+                if (GameInfo.Instance.CharData.HasFastFall)
+                    NextStateAction.Invoke(CharacterState.FastFall);
 
             if (IsSecondJumpAvaliable)
                 if (Input.GetKeyDown(KeyCode.Space))

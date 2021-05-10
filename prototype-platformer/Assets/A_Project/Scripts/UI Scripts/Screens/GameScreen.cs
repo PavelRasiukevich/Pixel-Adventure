@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -14,7 +16,13 @@ namespace PixelAdventure
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] TextMeshProUGUI scoreAmountLabel;
         [SerializeField] BaseController character;
+        [SerializeField] Image dash;
+        [SerializeField] Image doubleJump;
+        [SerializeField] Image fastFall;
 
+        [SerializeField] GameObject dashUIContainer;
+        [SerializeField] GameObject fastFallUIContainer;
+        [SerializeField] GameObject doubleJumpUIContainer;
 
         public override void ShowScreen()
         {
@@ -23,17 +31,29 @@ namespace PixelAdventure
             GameInfo.Instance.IsGameOverScreenActive = false;
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
+
+            if (GameInfo.Instance.CharData.HasDash)
+                dashUIContainer.gameObject.SetActive(true);
+            else
+                dashUIContainer.gameObject.SetActive(false);
+
         }
 
         private void OnEnable()
         {
             character.LifeLost += LifeLostHandler;
             character.GetRewardPoints = OnRewarded;
+            character.DashHandled = OnDashReloadTimer;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
+        }
+
+        private void OnDashReloadTimer()
+        {
+            dash.fillAmount = 0;
         }
 
         private void OnRewarded()
@@ -47,19 +67,15 @@ namespace PixelAdventure
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
         }
 
-        private void OnDoorInteredHandler()
-        {
-            foreach (var lvl in GameInfo.Instance.CheckPointConfigs)
-            {
-
-            }
-
-            Exit(EXIT_TO_NEXT_LVL);
-        }
-
-
         private void Update()
         {
+
+            if (dash.fillAmount < 1)
+                dash.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DashReloadTime;
+
+            if (fastFall.fillAmount < 1)
+                fastFall.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.FastFallReloadTime;
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Time.timeScale = 0;

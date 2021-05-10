@@ -41,6 +41,11 @@ namespace PixelAdventure
         {
             get => Input.GetAxis("Jump");
         }
+
+        public float DashAxes
+        {
+            get => Input.GetAxis("Dash");
+        }
         protected bool IsGrounded
         {
             get

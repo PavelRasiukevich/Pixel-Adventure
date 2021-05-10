@@ -31,6 +31,7 @@ namespace PixelAdventure
         public Action OnDieActive { get; set; }
         public Action LifeLost { get; set; }
         public Action GetRewardPoints { get; set; }
+        public Action DashHandled { get; set; }
         #endregion
 
         #region Properties

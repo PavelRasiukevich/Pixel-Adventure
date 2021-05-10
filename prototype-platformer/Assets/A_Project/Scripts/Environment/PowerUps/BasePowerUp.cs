@@ -25,7 +25,7 @@ namespace PixelAdventure
         {
             var _pc = Instantiate(pointsCanvasPrefab).GetComponent<PointsCanvas>();
             _pc.transform.position = transform.position;
-            _pc.PointsText.text = points.ToString();
+            _pc.PointsText.text += $"{points}";
             Destroy(_pc.gameObject, 0.5f);
 
             GameInfo.Instance.SetScore(points);

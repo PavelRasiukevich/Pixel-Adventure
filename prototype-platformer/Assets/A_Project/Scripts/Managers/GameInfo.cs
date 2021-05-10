@@ -25,6 +25,7 @@ namespace PixelAdventure
         public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
         public CharacterData CharData { get => charData; }
+        public bool HasReloadedDash { get; set; } = true;
         #endregion
 
         public void NewGameSetup()
@@ -32,7 +33,7 @@ namespace PixelAdventure
             //powerUpData
             powerData = new PowerUpData();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
                 powerData.PowerUps.Add(PowerUpStates.Avaliable);
             }
@@ -46,7 +47,11 @@ namespace PixelAdventure
                 JumpForce = CharStatsSO.InitialJumpForce,
                 DashLenght = CharStatsSO.InitialDashLenght,
                 HasDash = CharStatsSO.HasDashAbility,
-                HasDoubleJump = CharStatsSO.HasDoubleJumpAbility
+                HasDoubleJump = CharStatsSO.HasDoubleJumpAbility,
+                HasFastFall = CharStatsSO.HasFastFallAbility,
+                DashReloadTime = CharStatsSO.DashReloadTime,
+                DoubleJumpReloadTime = CharStatsSO.DoubleJumpReloadTime,
+                FastFallReloadTime = CharStatsSO.FastFallReloadTime
             };
 
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
