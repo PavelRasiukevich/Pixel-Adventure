@@ -31,12 +31,6 @@ namespace PixelAdventure
             GameInfo.Instance.IsGameOverScreenActive = false;
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
-
-            if (GameInfo.Instance.CharData.HasDash)
-                dashUIContainer.gameObject.SetActive(true);
-            else
-                dashUIContainer.gameObject.SetActive(false);
-
         }
 
         private void OnEnable()
@@ -44,11 +38,17 @@ namespace PixelAdventure
             character.LifeLost += LifeLostHandler;
             character.GetRewardPoints = OnRewarded;
             character.DashHandled = OnDashReloadTimer;
+            character.FastFallHandled = OnFastFallReloadTimer;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
+        }
+
+        private void OnFastFallReloadTimer()
+        {
+            fastFall.fillAmount = 0;
         }
 
         private void OnDashReloadTimer()

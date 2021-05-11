@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace PixelAdventure
     {
 
         public override CharacterState State => CharacterState.FastFall;
+
+        public Action FastFallUsed;
 
         private void FixedUpdate()
         {
@@ -28,6 +31,7 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
+            FastFallUsed.Invoke();
             characterRigidBody.velocity = Vector2.zero;
             characterRigidBody.AddForce(Vector2.down * 10, ForceMode2D.Impulse);
         }

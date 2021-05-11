@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4714772811954125332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -517,7 +517,6 @@ MonoBehaviour:
   dashUIContainer: {fileID: 8461323992076151304}
   fastFallUIContainer: {fileID: 2187504450055783728}
   doubleJumpUIContainer: {fileID: 3334565769087714504}
-  reloadTimer: 2
 --- !u!1 &3905527998069133492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,7 +1383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1131919108426093176
 RectTransform:
   m_ObjectHideFlags: 0

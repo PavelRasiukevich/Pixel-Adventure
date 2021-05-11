@@ -33,7 +33,7 @@ namespace PixelAdventure
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
-                if (GameInfo.Instance.CharData.HasFastFall)
+                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.HasReloadedFastFall)
                     NextStateAction.Invoke(CharacterState.FastFall);
         }
     }

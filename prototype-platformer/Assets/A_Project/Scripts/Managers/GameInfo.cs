@@ -26,6 +26,8 @@ namespace PixelAdventure
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
         public CharacterData CharData { get => charData; }
         public bool HasReloadedDash { get; set; } = true;
+        public bool HasReloadedDoubleJump { get; set; } = true;
+        public bool HasReloadedFastFall { get; set; } = true;
         #endregion
 
         public void NewGameSetup()
