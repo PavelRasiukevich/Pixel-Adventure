@@ -39,6 +39,7 @@ namespace PixelAdventure
             character.GetRewardPoints = OnRewarded;
             character.DashHandled = OnDashReloadTimer;
             character.FastFallHandled = OnFastFallReloadTimer;
+            character.DoubleJumpHandled = OnDoubleJumpReloadTimer;
         }
 
         private void OnDisable()
@@ -54,6 +55,11 @@ namespace PixelAdventure
         private void OnDashReloadTimer()
         {
             dash.fillAmount = 0;
+        }
+
+        private void OnDoubleJumpReloadTimer()
+        {
+            doubleJump.fillAmount = 0;
         }
 
         private void OnRewarded()
@@ -75,6 +81,9 @@ namespace PixelAdventure
 
             if (fastFall.fillAmount < 1)
                 fastFall.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.FastFallReloadTime;
+
+            if (doubleJump.fillAmount < 1)
+                doubleJump.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DoubleJumpReloadTime;
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

@@ -7,7 +7,6 @@ namespace PixelAdventure
     public class FallenSpikes : MonoBehaviour
     {
         Rigidbody2D rb;
-
         public Rigidbody2D Rb { get => rb; }
 
         private void Awake()
@@ -18,7 +17,7 @@ namespace PixelAdventure
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.GetComponent<Transform>())
+            if (collision.gameObject.layer == 6)
                 Destroy(gameObject);
         }
     }

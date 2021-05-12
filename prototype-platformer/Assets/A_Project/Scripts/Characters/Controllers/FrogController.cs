@@ -9,6 +9,7 @@ namespace PixelAdventure
     {
         FrogMove frogMove;
         FrogFastFall frogFastFall;
+        FrogDoubleJump frogDoubleJump;
 
         private new void Awake()
         {
@@ -16,6 +17,7 @@ namespace PixelAdventure
             transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
             frogMove = listOfStates.Find(_s => _s.State.Equals(CharacterState.Move)) as FrogMove;
             frogFastFall = listOfStates.Find(_s => _s.State.Equals(CharacterState.FastFall)) as FrogFastFall;
+            frogDoubleJump = listOfStates.Find(_s => _s.State.Equals(CharacterState.DoubleJump)) as FrogDoubleJump;
         }
 
         private new void OnEnable()
@@ -23,6 +25,7 @@ namespace PixelAdventure
             base.OnEnable();
             frogMove.PlayerUsedDash = OnDashPlayerHandler;
             frogFastFall.FastFallUsed = OnFastFallPlayerHandler;
+            frogDoubleJump.DoubleJumpUsed = OnDoubleJumpPlayerHandler;
         }
 
         private void OnDashPlayerHandler()
@@ -49,6 +52,19 @@ namespace PixelAdventure
         {
             yield return new WaitForSeconds(GameInfo.Instance.CharData.FastFallReloadTime);
             GameInfo.Instance.HasReloadedFastFall = true;
+        }
+
+        private void OnDoubleJumpPlayerHandler()
+        {
+            GameInfo.Instance.HasReloadedDoubleJump = false;
+            StartCoroutine(ReloadDoubleJump());
+            DoubleJumpHandled.Invoke();
+        }
+
+        private IEnumerator ReloadDoubleJump()
+        {
+            yield return new WaitForSeconds(GameInfo.Instance.CharData.DoubleJumpReloadTime);
+            GameInfo.Instance.HasReloadedDoubleJump = true;
         }
 
         private new void OnTriggerEnter2D(Collider2D collision)

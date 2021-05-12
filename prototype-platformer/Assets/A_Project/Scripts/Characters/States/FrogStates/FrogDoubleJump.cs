@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -6,6 +7,8 @@ namespace PixelAdventure
     {
 
         public override CharacterState State => CharacterState.DoubleJump;
+
+        public Action DoubleJumpUsed;
 
         private void FixedUpdate()
         {
@@ -40,6 +43,8 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
+
+            DoubleJumpUsed.Invoke();
 
             AudioManager.Instance.PlaySound(characterSounds.DoubleJumpSound);
 

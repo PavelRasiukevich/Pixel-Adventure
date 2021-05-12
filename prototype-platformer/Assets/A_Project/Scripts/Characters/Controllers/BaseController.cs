@@ -33,6 +33,7 @@ namespace PixelAdventure
         public Action GetRewardPoints { get; set; }
         public Action DashHandled { get; set; }
         public Action FastFallHandled { get; set; }
+        public Action DoubleJumpHandled { get; set; }
         #endregion
 
         #region Properties

@@ -57,7 +57,7 @@ namespace PixelAdventure
 
             if (IsSecondJumpAvaliable)
                 if (Input.GetKeyDown(KeyCode.Space))
-                    if (GameInfo.Instance.CharData.HasDoubleJump)
+                    if (GameInfo.Instance.CharData.HasDoubleJump && GameInfo.Instance.HasReloadedDoubleJump)
                         NextStateAction.Invoke(CharacterState.DoubleJump);
 
         }
