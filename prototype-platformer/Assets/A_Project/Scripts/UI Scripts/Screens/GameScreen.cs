@@ -40,11 +40,28 @@ namespace PixelAdventure
             character.DashHandled = OnDashReloadTimer;
             character.FastFallHandled = OnFastFallReloadTimer;
             character.DoubleJumpHandled = OnDoubleJumpReloadTimer;
+            character.PowerUpConsumed = OnPowerUpConsumedHandler;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
+        }
+
+        private void OnPowerUpConsumedHandler(string _name)
+        {
+            switch (_name)
+            {
+                case Values.FAST_FALL:
+                    fastFallUIContainer.SetActive(true);
+                    break;
+                case Values.DOUBLE_JUMP:
+                    doubleJumpUIContainer.SetActive(true);
+                    break;
+                case Values.DASH:
+                    dashUIContainer.SetActive(true);
+                    break;
+            }
         }
 
         private void OnFastFallReloadTimer()

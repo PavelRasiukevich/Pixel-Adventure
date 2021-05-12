@@ -34,6 +34,7 @@ namespace PixelAdventure
         public Action DashHandled { get; set; }
         public Action FastFallHandled { get; set; }
         public Action DoubleJumpHandled { get; set; }
+        public Action<string> PowerUpConsumed { get; set; }
         #endregion
 
         #region Properties
@@ -43,7 +44,7 @@ namespace PixelAdventure
 
         protected void Awake()
         {
-            
+
             charRb = GetComponent<Rigidbody2D>();
             charCapsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
             charAnim = GetComponent<Animator>();

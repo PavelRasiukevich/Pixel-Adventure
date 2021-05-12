@@ -8,6 +8,7 @@ namespace PixelAdventure
 {   
     public interface IPowerUp 
     {
+        public string GetName { get; }
         public int RewardPoints { get; }
 
         public void AddBonusValue();

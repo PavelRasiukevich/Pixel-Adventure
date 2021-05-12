@@ -11,6 +11,8 @@ namespace PixelAdventure
         [SerializeField] protected float value;
         [SerializeField] protected int points;
         [SerializeField] GameObject pointsCanvasPrefab;
+
+        protected new string name;
         private int index;
 
         PowerUpStates state;
@@ -18,6 +20,8 @@ namespace PixelAdventure
         public int RewardPoints { get => points; }
         public PowerUpStates State { get => state; set => state = value; }
         public int Index { get => index; set => index = value; }
+
+        public string GetName => name;
 
         public abstract void AddBonusValue();
 

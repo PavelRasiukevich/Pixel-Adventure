@@ -8,6 +8,11 @@ namespace PixelAdventure
 {
     public class DoubleJumpAbility : BasePowerUp
     {
+        private void Awake()
+        {
+            name = Values.DOUBLE_JUMP;
+        }
+
         public override void AddBonusValue()
         {
             GameInfo.Instance.CharData.HasDoubleJump = true;

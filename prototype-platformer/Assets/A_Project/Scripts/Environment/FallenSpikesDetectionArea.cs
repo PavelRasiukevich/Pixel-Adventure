@@ -23,7 +23,6 @@ namespace PixelAdventure
 
             if(_player != null)
             {
-                Debug.Log("ENTERED");
                 spikes.Rb.bodyType = RigidbodyType2D.Dynamic;
                 boxCollider.enabled = false;
             }

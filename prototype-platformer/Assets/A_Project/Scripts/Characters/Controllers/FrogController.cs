@@ -77,6 +77,7 @@ namespace PixelAdventure
             {
                 _powerUp.AddBonusValue();
                 GetRewardPoints.Invoke();
+                PowerUpConsumed.Invoke(_powerUp.GetName);
             }
         }
     }
