@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c35d5291e2d6c84c8befe2d477e413e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1
-  points: 100
+  value: 0.25
+  points: 50
+  pointsCanvasPrefab: {fileID: 8284831937836610193, guid: dae378c7cfa515a49ae2f2820e236ccd, type: 3}
 --- !u!1001 &4837967260920553724
 PrefabInstance:
   m_ObjectHideFlags: 0

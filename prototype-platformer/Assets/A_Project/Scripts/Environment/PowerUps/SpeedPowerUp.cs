@@ -10,6 +10,7 @@ namespace PixelAdventure
         public override void AddBonusValue()
         {
             GameInfo.Instance.CharData.Speed += value;
+            PickUpPowerUp();
         }
 
        

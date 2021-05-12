@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1932444795875658822
+--- !u!114 &-4414175001185622455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524372744318026567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4845d7bbf91600d489fff88084f9196a, type: 3}
+  m_Script: {fileID: 11500000, guid: 25482c3d16067b145b72ea48ca3b269c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  points: 0
+  points: 100
   pointsCanvasPrefab: {fileID: 8284831937836610193, guid: dae378c7cfa515a49ae2f2820e236ccd, type: 3}
 --- !u!1001 &5953432396795010016
 PrefabInstance:
@@ -144,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Sprite

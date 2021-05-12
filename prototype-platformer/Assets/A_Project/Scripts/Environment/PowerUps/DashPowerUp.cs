@@ -9,8 +9,11 @@ namespace PixelAdventure
     {
         public override void AddBonusValue()
         {
-            
-         //  GameInfo.Instance.CharData.DashLenght.x += value;
+
+            var _dashLenght= GameInfo.Instance.CharData.DashLenght;
+            _dashLenght.x += value;
+            GameInfo.Instance.CharData.DashLenght = _dashLenght;
+            PickUpPowerUp();
         }
 
        

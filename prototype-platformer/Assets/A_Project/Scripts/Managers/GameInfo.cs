@@ -35,7 +35,7 @@ namespace PixelAdventure
             //powerUpData
             powerData = new PowerUpData();
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 20; i++)
             {
                 powerData.PowerUps.Add(PowerUpStates.Avaliable);
             }
