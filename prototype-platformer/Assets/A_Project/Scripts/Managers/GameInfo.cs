@@ -47,13 +47,15 @@ namespace PixelAdventure
             {
                 Speed = CharStatsSO.InitialSpeed,
                 JumpForce = CharStatsSO.InitialJumpForce,
-                DashLenght = CharStatsSO.InitialDashLenght,
+                DashForce = CharStatsSO.InitialDashForce,
                 HasDash = CharStatsSO.HasDashAbility,
                 HasDoubleJump = CharStatsSO.HasDoubleJumpAbility,
                 HasFastFall = CharStatsSO.HasFastFallAbility,
                 DashReloadTime = CharStatsSO.DashReloadTime,
                 DoubleJumpReloadTime = CharStatsSO.DoubleJumpReloadTime,
-                FastFallReloadTime = CharStatsSO.FastFallReloadTime
+                FastFallReloadTime = CharStatsSO.FastFallReloadTime,
+                DashDuration = CharStatsSO.DashDuration
+
             };
 
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);

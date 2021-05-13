@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Frog Stats
   m_EditorClassIdentifier: 
   hasDoubleJumpAbility: 0
-  hasDashAbility: 0
+  hasDashAbility: 1
   hasFastFallAbility: 0
   initialJumpForce: 10
-  initialDashLenght: {x: 2, y: 0}
+  initialDashForce: 4
   initialSpeed: 5
   dashReloadTime: 3
+  dashDuration: 0.1
   doubleJumpReloadTime: 2
   fastFallReloadTime: 1
