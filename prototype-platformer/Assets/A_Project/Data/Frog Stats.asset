@@ -19,6 +19,6 @@ MonoBehaviour:
   initialDashForce: 4
   initialSpeed: 5
   dashReloadTime: 3
-  dashDuration: 0.1
+  dashDuration: 0.125
   doubleJumpReloadTime: 2
   fastFallReloadTime: 1

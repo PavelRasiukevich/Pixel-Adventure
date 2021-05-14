@@ -1,5 +1,143 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2098075122185817801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108433057807450452}
+  - component: {fileID: 6307957056932929467}
+  m_Layer: 0
+  m_Name: Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &108433057807450452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098075122185817801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8811168689768907177}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!96 &6307957056932929467
+TrailRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098075122185817801}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1259073961
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Time: 0.1
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.38881764
+        outSlope: -0.38881764
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.23364493
+      - serializedVersion: 3
+        time: 1
+        value: 0.053764146
+        inSlope: -0.28929466
+        outSlope: -0.28929466
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.18584073
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0.6135602, b: 0, a: 1}
+      key2: {r: 0.96815324, g: 1, b: 0, a: 0}
+      key3: {r: 0.24619699, g: 1, b: 0, a: 0}
+      key4: {r: 0, g: 0.7647176, b: 1, a: 0}
+      key5: {r: 0, g: 0.27541065, b: 1, a: 0}
+      key6: {r: 1, g: 0, b: 0.5727849, a: 0}
+      key7: {r: 1, g: 1, b: 1, a: 0}
+      ctime0: 0
+      ctime1: 13107
+      ctime2: 22359
+      ctime3: 33924
+      ctime4: 43947
+      ctime5: 51850
+      ctime6: 65535
+      ctime7: 65535
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 7
+      m_NumAlphaKeys: 2
+    numCornerVertices: 90
+    numCapVertices: 90
+    alignment: 0
+    textureMode: 1
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
+  m_Emitting: 1
 --- !u!1 &6441843202811574669
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3380161672937824813
 Transform:
   m_ObjectHideFlags: 0
@@ -96,9 +234,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
   speed: 2
 --- !u!1 &8811168688137170713
 GameObject:
@@ -149,9 +289,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
 --- !u!1 &8811168688822477405
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,9 +343,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
 --- !u!1 &8811168688840539862
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,9 +397,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
   gravityMultiplyer: 1.35
 --- !u!1 &8811168688884454113
 GameObject:
@@ -338,9 +484,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
 --- !u!1 &8811168689093342837
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,9 +577,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 1024
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
 --- !u!1 &8811168689768907159
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,11 +610,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8811168689768907159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8811168688884454112}
   - {fileID: 8811168689093342836}
+  - {fileID: 108433057807450452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -571,9 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f487c007f4873d44ac6c9ce39865c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: {fileID: 0}
   characterSounds: {fileID: 11400000, guid: ac18df41a65de9047b22656e30ef37f2, type: 2}
-  charStats: {fileID: 11400000, guid: e3c65dd49fd3e764da5f604013dec902, type: 2}
 --- !u!1 &8811168689805166892
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8811168689805166895}
-  - component: {fileID: 8811168689805166894}
+  - component: {fileID: 2074894710502228911}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -605,8 +754,8 @@ Transform:
   m_Father: {fileID: 8811168688884454112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8811168689805166894
-CapsuleCollider2D:
+--- !u!61 &2074894710502228911
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -618,9 +767,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02904582, y: -0.2969138}
-  m_Size: {x: 1.2293754, y: 1.4130973}
-  m_Direction: 0
+  m_Offset: {x: 0.019130737, y: -0.30609196}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9234769, y: 1.4017457}
+  m_EdgeRadius: 0
 --- !u!1 &8811168689926317484
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,9 +829,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
 --- !u!1 &8811168690073216290
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,9 +883,11 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}
   doubleJumpCountDown: 0.1
 --- !u!1 &8811168690217591035
 GameObject:
@@ -775,6 +938,8 @@ MonoBehaviour:
   waterLayerMask:
     serializedVersion: 2
     m_Bits: 16
+  trampolineMask:
+    serializedVersion: 2
+    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
-  charStats: {fileID: 0}

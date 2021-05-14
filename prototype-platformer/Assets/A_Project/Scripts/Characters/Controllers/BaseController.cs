@@ -14,10 +14,11 @@ namespace PixelAdventure
         #endregion
 
         #region Components
-        private Rigidbody2D charRb;
+        protected Rigidbody2D charRb;
         protected Animator charAnim;
         protected SpriteRenderer charSr;
-        protected CapsuleCollider2D charCapsuleCollider;
+        protected BoxCollider2D charBoxCollider;
+        protected TrailRenderer charTrailRenderer;
         #endregion
 
         #region States
@@ -46,15 +47,16 @@ namespace PixelAdventure
         {
 
             charRb = GetComponent<Rigidbody2D>();
-            charCapsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
+            charBoxCollider = GetComponentInChildren<BoxCollider2D>();
             charAnim = GetComponent<Animator>();
             charSr = GetComponentInChildren<SpriteRenderer>();
+            charTrailRenderer = GetComponentInChildren<TrailRenderer>(true);
 
             listOfStates = new List<BaseState>(transform.GetComponentsInChildren<BaseState>(true));
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charCapsuleCollider, characterSounds);
+                _state.Setup(charRb, charAnim, charSr, charBoxCollider, characterSounds, charTrailRenderer);
             });
         }
 
@@ -86,7 +88,7 @@ namespace PixelAdventure
                 if (!GameInfo.Instance.IsGameOverScreenActive)
                 {
                     transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
-                    charCapsuleCollider.enabled = true;
+                    charBoxCollider.enabled = true;
                     OnNextStateRequest(CharacterState.Idle);
                     charRb.bodyType = RigidbodyType2D.Dynamic;
                 }

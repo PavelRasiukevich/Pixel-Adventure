@@ -16,6 +16,7 @@ namespace PixelAdventure
         #region SerializeFields
         [SerializeField] protected LayerMask groundLayerMask;
         [SerializeField] protected LayerMask waterLayerMask;
+        [SerializeField] protected LayerMask trampolineMask;
         [SerializeField] protected float boxCastDistance;
         [SerializeField] protected CharacterSoundSO characterSounds;
         #endregion
@@ -24,7 +25,8 @@ namespace PixelAdventure
         protected Rigidbody2D characterRigidBody;
         protected Animator characterAnimator;
         protected SpriteRenderer characterSpriteRenderer;
-        protected CapsuleCollider2D charCapsuleCollider;
+        protected BoxCollider2D charBoxCollider;
+        protected TrailRenderer charTrailRenderer;
         #endregion
 
         #region Properties
@@ -50,8 +52,8 @@ namespace PixelAdventure
         {
             get
             {
-                return Physics2D.BoxCast(charCapsuleCollider.bounds.center,
-                    new Vector2(charCapsuleCollider.bounds.extents.x, charCapsuleCollider.bounds.size.y - .2f),
+                return Physics2D.BoxCast(charBoxCollider.bounds.center,
+                    new Vector2(charBoxCollider.bounds.size.x, charBoxCollider.bounds.size.y - .2f),
                     0.0f, Vector2.down, 0.21f, groundLayerMask);
             }
         }
@@ -59,8 +61,8 @@ namespace PixelAdventure
         {
             get
             {
-                return Physics2D.BoxCast(charCapsuleCollider.bounds.center,
-                    new Vector2(charCapsuleCollider.bounds.extents.x, charCapsuleCollider.bounds.size.y - .1f),
+                return Physics2D.BoxCast(charBoxCollider.bounds.center,
+                    new Vector2(charBoxCollider.bounds.extents.x, charBoxCollider.bounds.size.y - .1f),
                     0.0f, Vector2.down, 0.11f, waterLayerMask);
             }
         }
@@ -68,11 +70,13 @@ namespace PixelAdventure
 
         public void Setup(Rigidbody2D _charRb,
             Animator _charAnim, SpriteRenderer _charSr,
-            CapsuleCollider2D _charCapsuleCollider, CharacterSoundSO _characterSounds)
+            BoxCollider2D _charBoxCollider, CharacterSoundSO _characterSounds,
+            TrailRenderer _charTrailRenderer)
         {
+            charTrailRenderer = _charTrailRenderer;
             characterSounds = _characterSounds;
             characterRigidBody = _charRb;
-            charCapsuleCollider = _charCapsuleCollider;
+            charBoxCollider = _charBoxCollider;
             characterAnimator = _charAnim;
             characterSpriteRenderer = _charSr;
         }
@@ -91,10 +95,6 @@ namespace PixelAdventure
         public virtual void DeactivateState()
         {
             gameObject.SetActive(false);
-        }
-
-        public virtual void OnCollision(Collision2D collision)
-        {
         }
     }
 }

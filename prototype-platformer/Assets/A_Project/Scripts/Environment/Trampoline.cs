@@ -13,20 +13,15 @@ namespace PixelAdventure
         private void Awake()
         {
             anim = GetComponent<Animator>();
-
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var _player = collision.gameObject.GetComponentInParent<BaseController>();
+            var _player = collision.gameObject.GetComponent<BaseController>();
 
             if (_player)
             {
-                var _velocity = _player.CharRb.velocity;
-                _velocity.y = 0;
-                _player.CharRb.velocity = _velocity;
-                _player.CharRb.AddForce(new Vector2(_player.CharRb.velocity.x, pushForce), ForceMode2D.Impulse);
-                anim.SetTrigger("Contact");
+                _player.CharRb.velocity = new Vector2(_player.CharRb.velocity.x, pushForce);
             }
         }
     }
