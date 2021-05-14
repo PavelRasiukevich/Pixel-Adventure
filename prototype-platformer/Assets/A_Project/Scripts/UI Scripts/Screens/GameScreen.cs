@@ -23,6 +23,7 @@ namespace PixelAdventure
         [SerializeField] GameObject dashUIContainer;
         [SerializeField] GameObject fastFallUIContainer;
         [SerializeField] GameObject doubleJumpUIContainer;
+        [SerializeField] GameObject itemsUIContainer;
 
         public override void ShowScreen()
         {
@@ -31,6 +32,10 @@ namespace PixelAdventure
             GameInfo.Instance.IsGameOverScreenActive = false;
             lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
+
+            dashUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsDashIconVisible);
+            fastFallUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsFastFallIconVisible);
+            doubleJumpUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsDoubleJumpIconVisible);
         }
 
         private void OnEnable()
@@ -54,12 +59,18 @@ namespace PixelAdventure
             {
                 case Values.FAST_FALL:
                     fastFallUIContainer.SetActive(true);
+                    GameInfo.Instance.AbilityUIData.IsFastFallIconVisible = true;
                     break;
                 case Values.DOUBLE_JUMP:
                     doubleJumpUIContainer.SetActive(true);
+                    GameInfo.Instance.AbilityUIData.IsDoubleJumpIconVisible = true;
                     break;
                 case Values.DASH:
                     dashUIContainer.SetActive(true);
+                    GameInfo.Instance.AbilityUIData.IsDashIconVisible = true;
+                    break;
+                case Values.GEAR_ITEM:
+                    itemsUIContainer.SetActive(true);
                     break;
             }
         }

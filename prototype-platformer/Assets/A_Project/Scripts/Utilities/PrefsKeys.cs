@@ -7,6 +7,7 @@ namespace PixelAdventure
     public static class PrefsKeys
     {
         public const string USER_DATA = "USER_DATA";
+        public const string ABILITY_UI_DATA = "ABILITY_UI_DATA";
         public const string ABILITY_DATA = "ABILITY_DATA";
         public const string CHARACTER_DATA = "CHARACTER_DATA";
         public const string POWERUPS_DATA = "POWERUPS_DATA";

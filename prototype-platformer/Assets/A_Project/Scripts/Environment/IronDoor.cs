@@ -21,7 +21,6 @@ namespace PixelAdventure
         private void Awake()
         {
             doorAnim = GetComponent<Animator>();
-            leveler.OnLevelerActivated += OnEventHandler;
         }
 
         public void OnEventHandler()

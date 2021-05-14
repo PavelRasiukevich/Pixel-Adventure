@@ -9,7 +9,6 @@ namespace PixelAdventure
     public class CheckPoint : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI hintText;
-        [SerializeField] TextMeshProUGUI hintText_2;
         [SerializeField] bool isSaved;
 
         public bool IsSaved { get => isSaved; set => isSaved = value; }
@@ -23,6 +22,7 @@ namespace PixelAdventure
                 if (Input.GetKeyDown(KeyCode.F) && !isSaved)
                 {
                     isSaved = true;
+                    hintText.text = $"Saved";
                     GameInfo.Instance.UserData.PlayerSpawnPosition = transform.position;
                     GameInfo.Instance.SaveGameProgress();
                 }
@@ -32,20 +32,16 @@ namespace PixelAdventure
         {
             IControllable _player = collision.GetComponentInParent<IControllable>();
 
-            if (_player != null && !isSaved)
+            if (_player != null)
                 hintText.gameObject.SetActive(true);
-            else
-                hintText_2.gameObject.SetActive(true);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             IControllable _player = collision.GetComponentInParent<IControllable>();
+
             if (_player != null)
-            {
                 hintText.gameObject.SetActive(false);
-                hintText_2.gameObject.SetActive(false);
-            }
         }
     }
 }

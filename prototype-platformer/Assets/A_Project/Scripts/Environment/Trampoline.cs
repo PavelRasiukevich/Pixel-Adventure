@@ -23,6 +23,8 @@ namespace PixelAdventure
             {
                 _player.CharRb.velocity = new Vector2(_player.CharRb.velocity.x, pushForce);
             }
+
+            anim.SetTrigger("Contact");
         }
     }
 }

@@ -11,9 +11,13 @@ namespace PixelAdventure
     {
         private readonly int LEV_STATE = Animator.StringToHash("Leveler_State");
 
-        public Action OnLevelerActivated { get; set; }
-
         private Animator levelerAnim;
+
+        [SerializeField] TextMeshProUGUI hint;
+        [SerializeField] Bridge bridge;
+
+        public bool IsRepaired { get; set; }
+        public bool IsInteractable { get; set; } = true;
 
         private void Awake()
         {
@@ -22,15 +26,54 @@ namespace PixelAdventure
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            IControllable player = collision.GetComponentInParent<IControllable>();
-
-            if (player != null)
+            if (IsInteractable)
             {
-                if (Input.GetAxis("Use") > 0)
+                IControllable player = collision.GetComponentInParent<IControllable>();
+
+                if (player != null)
                 {
-                    levelerAnim.SetInteger(LEV_STATE, 1);
-                    player.SpawnPosition = gameObject.transform.position;
-                    OnLevelerActivated.Invoke();
+                    if (Input.GetAxis("Use") > 0)
+                        if (IsRepaired)
+                        {
+                            levelerAnim.SetInteger(LEV_STATE, 1);
+                            bridge.gameObject.SetActive(true);
+                            hint.gameObject.SetActive(false);
+                            IsInteractable = false;
+                        }
+                }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (IsInteractable)
+            {
+                IControllable player = collision.GetComponentInParent<IControllable>();
+
+                if (player != null)
+                {
+                    hint.gameObject.SetActive(true);
+
+                    if (GameInfo.Instance.CharData.HasGear)
+                        IsRepaired = true;
+
+                    if (IsRepaired == false)
+                        hint.text = $"Level Arm is defective! Find <color=#00FF00>cogwheel <color=#FFFFFF>to repair.";
+                    else
+                        hint.text = $"Press <color=#00FF00>'E' <color=#FFFFFF>to use.";
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (IsInteractable)
+            {
+                IControllable player = collision.GetComponentInParent<IControllable>();
+
+                if (player != null)
+                {
+                    hint.gameObject.SetActive(false);
                 }
             }
         }

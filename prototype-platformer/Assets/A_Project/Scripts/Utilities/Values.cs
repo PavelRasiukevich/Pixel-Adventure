@@ -12,5 +12,6 @@ namespace PixelAdventure
         public const string DASH = "DASH";
         public const string DOUBLE_JUMP = "DOUBLE_JUMP";
         public const string FAST_FALL = "FAST_FALL";
+        public const string GEAR_ITEM = "GEAR_ITEM";
     }
 }

@@ -13,6 +13,7 @@ namespace PixelAdventure
         UserData userData;
         CharacterData charData;
         PowerUpData powerData;
+        AbilityUIData abilityUIData;
 
         #region Properties
         public int LifeAmount { get; set; }
@@ -28,14 +29,20 @@ namespace PixelAdventure
         public bool HasReloadedDash { get; set; } = true;
         public bool HasReloadedDoubleJump { get; set; } = true;
         public bool HasReloadedFastFall { get; set; } = true;
+        public AbilityUIData AbilityUIData { get => abilityUIData; }
         #endregion
 
         public void NewGameSetup()
         {
+            //iconUIData
+            abilityUIData = new AbilityUIData();
+
+            AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, AbilityUIData);
+
             //powerUpData
             powerData = new PowerUpData();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 28; i++)
             {
                 powerData.PowerUps.Add(PowerUpStates.Avaliable);
             }
@@ -54,7 +61,8 @@ namespace PixelAdventure
                 DashReloadTime = CharStatsSO.DashReloadTime,
                 DoubleJumpReloadTime = CharStatsSO.DoubleJumpReloadTime,
                 FastFallReloadTime = CharStatsSO.FastFallReloadTime,
-                DashDuration = CharStatsSO.DashDuration
+                DashDuration = CharStatsSO.DashDuration,
+                HasGear = CharStatsSO.HasGear
 
             };
 
@@ -72,6 +80,7 @@ namespace PixelAdventure
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
+            abilityUIData = AppPrefs.GetObject<AbilityUIData>(PrefsKeys.ABILITY_UI_DATA);
 
             if (userData == null || charData == null || powerData == null)
                 NewGameSetup();
@@ -82,6 +91,7 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
             AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
+            AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, abilityUIData);
         }
 
         public void Retry()

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2847bdee9b6862c4a945f0c85246affe, type: 3}
   m_Name: Frog Stats
   m_EditorClassIdentifier: 
+  hasGear: 0
   hasDoubleJumpAbility: 0
-  hasDashAbility: 1
+  hasDashAbility: 0
   hasFastFallAbility: 0
   initialJumpForce: 10
   initialDashForce: 4

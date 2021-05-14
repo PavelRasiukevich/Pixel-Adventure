@@ -19,6 +19,7 @@ namespace PixelAdventure
         [SerializeField] float doubleJumpReloadTime;
         [SerializeField] float fastFallReloadTime;
         [SerializeField] float dashDuration;
+        [SerializeField] bool hasGear;
 
         public float JumpForce { get => jumpForce; set => jumpForce = value; }
         public float Speed { get => speed; set => speed = value; }
@@ -31,5 +32,6 @@ namespace PixelAdventure
         public float DoubleJumpReloadTime { get => doubleJumpReloadTime; set => doubleJumpReloadTime = value; }
         public float FastFallReloadTime { get => fastFallReloadTime; set => fastFallReloadTime = value; }
         public float DashDuration { get => dashDuration; set => dashDuration = value; }
+        public bool HasGear { get => hasGear; set => hasGear = value; }
     }
 }
