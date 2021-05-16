@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 3642368220351004829}
+  bridge: {fileID: 0}
+  msg_1: Level Arm is defective! Find <color=#00FF00>cogwheel <color=#FFFFFF>to repair.
+  msg_2: Press <color=#00FF00>'E' <color=#FFFFFF>to use.
 --- !u!61 &931766331
 BoxCollider2D:
   m_ObjectHideFlags: 0

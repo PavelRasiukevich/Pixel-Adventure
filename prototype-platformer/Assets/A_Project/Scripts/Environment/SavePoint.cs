@@ -11,6 +11,7 @@ namespace PixelAdventure
         [SerializeField] TextMeshProUGUI hintText;
         [SerializeField] bool isSaved;
         [SerializeField] int id;
+        [SerializeField] string savedMsg;
 
         public bool IsSaved { get => isSaved; set => isSaved = value; }
         public int Id { get => id; }
@@ -21,10 +22,10 @@ namespace PixelAdventure
             IControllable _player = collision.GetComponentInParent<IControllable>();
 
             if (_player != null)
-                if (Input.GetKeyDown(KeyCode.F) && !isSaved)
+                if (Input.GetAxis("Use") > 0 && !isSaved)
                 {
                     isSaved = true;
-                    hintText.text = $"Saved";
+                    hintText.text = savedMsg;
                     GameInfo.Instance.SetSavePointId(id);
                     GameInfo.Instance.SaveGameProgress();
                 }

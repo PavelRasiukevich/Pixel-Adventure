@@ -15,6 +15,8 @@ namespace PixelAdventure
 
         [SerializeField] TextMeshProUGUI hint;
         [SerializeField] Bridge bridge;
+        [SerializeField] string msg_1;
+        [SerializeField] string msg_2;
 
         public bool IsRepaired { get; set; }
         public bool IsInteractable { get; set; } = true;
@@ -58,9 +60,9 @@ namespace PixelAdventure
                         IsRepaired = true;
 
                     if (IsRepaired == false)
-                        hint.text = $"Level Arm is defective! Find <color=#00FF00>cogwheel <color=#FFFFFF>to repair.";
+                        hint.text = msg_1;
                     else
-                        hint.text = $"Press <color=#00FF00>'E' <color=#FFFFFF>to use.";
+                        hint.text = msg_2;
                 }
             }
         }

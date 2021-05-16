@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -17,14 +15,8 @@ namespace PixelAdventure
         {
             var _player = collision.GetComponentInParent<BaseController>();
 
-            Debug.Log(_player);
-            Debug.Log(col);
-
-
             if (_player)
-            {
                 _player.ExiteFromBoundingShape.Invoke(col);
-            }
         }
     }
 }
