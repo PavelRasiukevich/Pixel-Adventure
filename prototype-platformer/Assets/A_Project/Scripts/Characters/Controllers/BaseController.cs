@@ -36,6 +36,7 @@ namespace PixelAdventure
         public Action FastFallHandled { get; set; }
         public Action DoubleJumpHandled { get; set; }
         public Action<string> PowerUpConsumed { get; set; }
+        public Action<PolygonCollider2D> ExiteFromBoundingShape { get; set; }
         #endregion
 
         #region Properties
@@ -87,7 +88,7 @@ namespace PixelAdventure
             {
                 if (!GameInfo.Instance.IsGameOverScreenActive)
                 {
-                    transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
+                    transform.position = GameInfo.Instance.GetPositionBySavePointId();
                     charBoxCollider.enabled = true;
                     OnNextStateRequest(CharacterState.Idle);
                     charRb.bodyType = RigidbodyType2D.Dynamic;
@@ -101,7 +102,6 @@ namespace PixelAdventure
 
         protected void OnDisable()
         {
-
             charRb.velocity = Vector2.zero;
             currentState.DeactivateState();
 
@@ -133,6 +133,11 @@ namespace PixelAdventure
             currentState.DeactivateState();
             currentState = listOfStates.Find(_s => _s.State.Equals(state));
             currentState.ActivateState();
+        }
+
+        public void PushUp(float _pushForce)
+        {
+            charRb.AddForce(Vector2.up * _pushForce, ForceMode2D.Impulse);
         }
     }
 }

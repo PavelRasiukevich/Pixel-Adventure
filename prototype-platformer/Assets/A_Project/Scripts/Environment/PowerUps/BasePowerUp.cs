@@ -2,6 +2,7 @@ using PixelAdventure.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -10,7 +11,7 @@ namespace PixelAdventure
     {
         [SerializeField] protected float value;
         [SerializeField] protected int points;
-        [SerializeField] GameObject pointsCanvasPrefab;
+        [SerializeField] GameObject pointsDisplayPrefab;
 
         protected new string name;
         private int index;
@@ -27,15 +28,20 @@ namespace PixelAdventure
 
         public void PickUpPowerUp()
         {
-            var _pc = Instantiate(pointsCanvasPrefab).GetComponent<PointsCanvas>();
+            var _pc = Instantiate(pointsDisplayPrefab);
+            var _text = _pc.GetComponent<TextMeshPro>();
             _pc.transform.position = transform.position;
-            _pc.PointsText.text += $"{points}";
+            _text.text += $"{points}";
             Destroy(_pc.gameObject, 0.5f);
 
             GameInfo.Instance.SetScore(points);
             GameInfo.Instance.SetPowerUpState(Index, PowerUpStates.Consumed);
-            gameObject.SetActive(false);
+            ActivatePowerUp(false);
         }
 
+        public void ActivatePowerUp(bool _value)
+        {
+            gameObject.SetActive(_value);
+        }
     }
 }

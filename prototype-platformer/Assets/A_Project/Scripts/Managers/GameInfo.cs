@@ -70,7 +70,7 @@ namespace PixelAdventure
 
             //userData
             userData = new UserData();
-            userData.PlayerSpawnPosition = Spawn;
+            GetPositionBySavePointId();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
         }
@@ -119,6 +119,26 @@ namespace PixelAdventure
         public void SetPowerUpState(int _index, PowerUpStates _state)
         {
             powerData.PowerUps[_index] = _state;
+        }
+
+        public void SetSavePointId(int _id)
+        {
+            userData.Id = _id;
+        }
+
+        public Vector2 GetPositionBySavePointId()
+        {
+            var _saves = FindObjectsOfType<SavePoint>();
+
+            foreach (var point in _saves)
+            {
+                if (point.Id.Equals(userData.Id))
+                {
+                    return point.GetPosition();
+                }
+            }
+
+            return Spawn;
         }
     }
 }

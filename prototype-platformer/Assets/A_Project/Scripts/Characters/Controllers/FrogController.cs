@@ -14,7 +14,7 @@ namespace PixelAdventure
         private new void Awake()
         {
             base.Awake();
-            transform.position = GameInfo.Instance.UserData.PlayerSpawnPosition;
+            transform.position = GameInfo.Instance.GetPositionBySavePointId();
             frogMove = listOfStates.Find(_s => _s.State.Equals(CharacterState.Move)) as FrogMove;
             frogFastFall = listOfStates.Find(_s => _s.State.Equals(CharacterState.FastFall)) as FrogFastFall;
             frogDoubleJump = listOfStates.Find(_s => _s.State.Equals(CharacterState.DoubleJump)) as FrogDoubleJump;

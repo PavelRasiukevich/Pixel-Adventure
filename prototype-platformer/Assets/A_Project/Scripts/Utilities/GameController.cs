@@ -1,40 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] PowerUpContainer powerUpsList;
-
-        public List<BasePowerUp> List { get => powerUpsList.List; }
+        [SerializeField] Transform container;
 
         private void Awake()
         {
-
-            for (int i = 0; i < List.Count; i++)
+            for (int i = 0; i < container.childCount; i++)
             {
+                var _powerUp = container.GetChild(i).GetComponent<BasePowerUp>();
+
                 if (GameInfo.Instance.GetPowerUpState(i) == PowerUpStates.Avaliable)
                 {
-                    List[i].Index = i;
-                    List[i].gameObject.SetActive(true);
+                    _powerUp.Index = i;
+                    _powerUp.ActivatePowerUp(true);
                 }
                 else
                 {
-                    List[i].Index = i;
-                    List[i].gameObject.SetActive(false);
+                    _powerUp.Index = i;
+                    _powerUp.ActivatePowerUp(false);
                 }
             }
         }
-    }
-
-    [Serializable]
-    public class PowerUpContainer
-    {
-        [SerializeField] List<BasePowerUp> list;
-
-        public List<BasePowerUp> List { get => list; }
     }
 }
