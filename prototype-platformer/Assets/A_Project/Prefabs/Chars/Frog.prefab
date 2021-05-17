@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &463146906231875988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9147556840514746563}
+  - component: {fileID: 3098847452343535963}
+  m_Layer: 0
+  m_Name: TrampolineJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9147556840514746563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463146906231875988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8811168689093342836}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3098847452343535963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463146906231875988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1690826ca1e0f418e2af300447030b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  boxCastDistance: 0
+  characterSounds: {fileID: 0}
+  pushForce: 10
 --- !u!1 &2098075122185817801
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,12 +280,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
   speed: 2
@@ -286,12 +329,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
 --- !u!1 &8811168688822477405
@@ -340,12 +377,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
 --- !u!1 &8811168688840539862
@@ -394,12 +425,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
   gravityMultiplyer: 1.35
@@ -481,12 +506,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
 --- !u!1 &8811168689093342837
@@ -525,6 +544,7 @@ Transform:
   - {fileID: 8811168690217591034}
   - {fileID: 8811168689926317487}
   - {fileID: 246938487534119791}
+  - {fileID: 9147556840514746563}
   m_Father: {fileID: 8811168689768907177}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574,12 +594,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 1024
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
 --- !u!1 &8811168689768907159
@@ -826,12 +840,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
 --- !u!1 &8811168690073216290
@@ -880,12 +888,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}
   doubleJumpCountDown: 0.1
@@ -935,11 +937,5 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  waterLayerMask:
-    serializedVersion: 2
-    m_Bits: 16
-  trampolineMask:
-    serializedVersion: 2
-    m_Bits: 0
   boxCastDistance: 0.21
   characterSounds: {fileID: 0}

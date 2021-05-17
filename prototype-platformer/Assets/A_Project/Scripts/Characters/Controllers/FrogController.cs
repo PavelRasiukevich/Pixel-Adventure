@@ -67,6 +67,16 @@ namespace PixelAdventure
             GameInfo.Instance.CharData.HasReloadedDoubleJump = true;
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            var _trampoline = collision.gameObject.GetComponent<Trampoline>();
+
+            if (_trampoline)
+            {
+                OnNextStateRequest(CharacterState.TrampolineJump);
+            }
+        }
+
         private new void OnTriggerEnter2D(Collider2D collision)
         {
             base.OnTriggerEnter2D(collision);

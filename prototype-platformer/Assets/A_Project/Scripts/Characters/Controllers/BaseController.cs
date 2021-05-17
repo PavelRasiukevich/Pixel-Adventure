@@ -42,6 +42,7 @@ namespace PixelAdventure
         #region Properties
         public Vector3 SpawnPosition { get; set; }
         public Rigidbody2D CharRb { get => charRb; }
+        public float PushForceValue { get; set; }
         #endregion
 
         protected void Awake()
@@ -135,9 +136,5 @@ namespace PixelAdventure
             currentState.ActivateState();
         }
 
-        public void PushUp(float _pushForce)
-        {
-            charRb.AddForce(Vector2.up * _pushForce, ForceMode2D.Impulse);
-        }
     }
 }

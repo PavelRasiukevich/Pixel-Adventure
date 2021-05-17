@@ -15,8 +15,6 @@ namespace PixelAdventure
 
         #region SerializeFields
         [SerializeField] protected LayerMask groundLayerMask;
-        [SerializeField] protected LayerMask waterLayerMask;
-        [SerializeField] protected LayerMask trampolineMask;
         [SerializeField] protected float boxCastDistance;
         [SerializeField] protected CharacterSoundSO characterSounds;
         #endregion
@@ -57,15 +55,7 @@ namespace PixelAdventure
                     0.0f, Vector2.down, 0.21f, groundLayerMask);
             }
         }
-        protected bool IsWatered
-        {
-            get
-            {
-                return Physics2D.BoxCast(charBoxCollider.bounds.center,
-                    new Vector2(charBoxCollider.bounds.extents.x, charBoxCollider.bounds.size.y - .1f),
-                    0.0f, Vector2.down, 0.11f, waterLayerMask);
-            }
-        }
+
         #endregion
 
         public void Setup(Rigidbody2D _charRb,

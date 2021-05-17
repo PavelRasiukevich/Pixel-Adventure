@@ -6,9 +6,7 @@ namespace PixelAdventure
 {
     public class Trampoline : MonoBehaviour
     {
-        [SerializeField] float pushForce;
-
-        Animator anim;
+        Animator anim; 
 
         private void Awake()
         {
@@ -17,12 +15,6 @@ namespace PixelAdventure
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var _player = collision.gameObject.GetComponent<BaseController>();
-
-            if (_player)
-            {
-                _player.PushUp(pushForce);
-            }
             anim.SetTrigger("Contact");
         }
     }

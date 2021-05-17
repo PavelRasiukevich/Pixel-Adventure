@@ -25,6 +25,11 @@ namespace PixelAdventure
                 else
                     NextStateAction.Invoke(CharacterState.Idle);
             }
+
+            if (Mathf.Abs(HorizontalAxes) > 0)
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
+
+            SpriteFlipper.FlipSprite(characterRigidBody,characterSpriteRenderer);
         }
 
         private void Update()
