@@ -30,7 +30,7 @@ namespace PixelAdventure
 
         private void OnDashPlayerHandler()
         {
-            GameInfo.Instance.HasReloadedDash = false;
+            GameInfo.Instance.CharData.HasReloadedDash = false;
             StartCoroutine(ReloadDash());
             DashHandled.Invoke();
         }
@@ -38,12 +38,12 @@ namespace PixelAdventure
         private IEnumerator ReloadDash()
         {
             yield return new WaitForSeconds(GameInfo.Instance.CharData.DashReloadTime);
-            GameInfo.Instance.HasReloadedDash = true;
+            GameInfo.Instance.CharData.HasReloadedDash = true;
         }
 
         private void OnFastFallPlayerHandler()
         {
-            GameInfo.Instance.HasReloadedFastFall = false;
+            GameInfo.Instance.CharData.HasReloadedFastFall = false;
             StartCoroutine(ReloadFastFall());
             FastFallHandled.Invoke();
         }
@@ -51,12 +51,12 @@ namespace PixelAdventure
         private IEnumerator ReloadFastFall()
         {
             yield return new WaitForSeconds(GameInfo.Instance.CharData.FastFallReloadTime);
-            GameInfo.Instance.HasReloadedFastFall = true;
+            GameInfo.Instance.CharData.HasReloadedFastFall = true;
         }
 
         private void OnDoubleJumpPlayerHandler()
         {
-            GameInfo.Instance.HasReloadedDoubleJump = false;
+            GameInfo.Instance.CharData.HasReloadedDoubleJump = false;
             StartCoroutine(ReloadDoubleJump());
             DoubleJumpHandled.Invoke();
         }
@@ -64,7 +64,7 @@ namespace PixelAdventure
         private IEnumerator ReloadDoubleJump()
         {
             yield return new WaitForSeconds(GameInfo.Instance.CharData.DoubleJumpReloadTime);
-            GameInfo.Instance.HasReloadedDoubleJump = true;
+            GameInfo.Instance.CharData.HasReloadedDoubleJump = true;
         }
 
         private new void OnTriggerEnter2D(Collider2D collision)

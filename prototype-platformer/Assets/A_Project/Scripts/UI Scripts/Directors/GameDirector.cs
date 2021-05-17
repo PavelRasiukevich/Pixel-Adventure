@@ -56,8 +56,8 @@ namespace PixelAdventure
                     SceneManager.LoadScene(SceneID.LOADER_ID);
                 else if (_exitCode.Equals(GameOverScreen.RETRY))
                 {
-                    GameInfo.Instance.Retry();
                     SceneManager.LoadScene(SceneID.START_GAME_ID);
+                    GameInfo.Instance.Retry();
                 }
             }
         }

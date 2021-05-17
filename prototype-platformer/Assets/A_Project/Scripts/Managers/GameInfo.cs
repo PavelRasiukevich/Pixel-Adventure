@@ -26,9 +26,7 @@ namespace PixelAdventure
         public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
         public CharacterData CharData { get => charData; }
-        public bool HasReloadedDash { get; set; } = true;
-        public bool HasReloadedDoubleJump { get; set; } = true;
-        public bool HasReloadedFastFall { get; set; } = true;
+
         public AbilityUIData AbilityUIData { get => abilityUIData; }
         #endregion
 
@@ -62,7 +60,10 @@ namespace PixelAdventure
                 DoubleJumpReloadTime = CharStatsSO.DoubleJumpReloadTime,
                 FastFallReloadTime = CharStatsSO.FastFallReloadTime,
                 DashDuration = CharStatsSO.DashDuration,
-                HasGear = CharStatsSO.HasGear
+                HasGear = CharStatsSO.HasGear,
+                HasReloadedDash = true,
+                HasReloadedDoubleJump = true,
+                HasReloadedFastFall = true
 
             };
 
@@ -77,10 +78,13 @@ namespace PixelAdventure
 
         public void LoadGameProgress()
         {
+
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
             abilityUIData = AppPrefs.GetObject<AbilityUIData>(PrefsKeys.ABILITY_UI_DATA);
+
+            charData.ReserCoolDown();
 
             if (userData == null || charData == null || powerData == null)
                 NewGameSetup();

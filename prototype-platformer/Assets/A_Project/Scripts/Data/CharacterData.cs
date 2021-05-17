@@ -21,6 +21,11 @@ namespace PixelAdventure
         [SerializeField] float dashDuration;
         [SerializeField] bool hasGear;
 
+        [SerializeField] bool hasReloadedDash;
+        [SerializeField] bool hasReloadedDoubleJump;
+        [SerializeField] bool hasReloadedFastFall;
+
+
         public float JumpForce { get => jumpForce; set => jumpForce = value; }
         public float Speed { get => speed; set => speed = value; }
         public float DashForce { get => dashForce; set => dashForce = value; }
@@ -33,5 +38,16 @@ namespace PixelAdventure
         public float FastFallReloadTime { get => fastFallReloadTime; set => fastFallReloadTime = value; }
         public float DashDuration { get => dashDuration; set => dashDuration = value; }
         public bool HasGear { get => hasGear; set => hasGear = value; }
+
+        public bool HasReloadedDash { get => hasReloadedDash; set => hasReloadedDash = value; }
+        public bool HasReloadedDoubleJump { get => hasReloadedDoubleJump; set => hasReloadedDoubleJump = value; }
+        public bool HasReloadedFastFall { get => hasReloadedFastFall; set => hasReloadedFastFall = value; }
+
+        public void ReserCoolDown()
+        {
+            hasReloadedDash = true;
+            hasReloadedDoubleJump = true;
+            hasReloadedFastFall = true;
+        }
     }
 }

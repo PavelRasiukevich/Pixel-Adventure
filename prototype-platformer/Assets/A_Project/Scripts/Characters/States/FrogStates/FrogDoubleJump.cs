@@ -14,9 +14,6 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
-            if (Mathf.Abs(HorizontalAxes) > 0)
-                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
-
             if (_velocity_Y < 0)
                 characterAnimator.SetInteger(INT_STATE, (int)CharacterState.Fall);
 
@@ -30,13 +27,16 @@ namespace PixelAdventure
                     NextStateAction.Invoke(CharacterState.Idle);
             }
 
+            if (Mathf.Abs(HorizontalAxes) > 0)
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
+
             SpriteFlipper.FlipSprite(characterRigidBody, characterSpriteRenderer);
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
-                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.HasReloadedFastFall)
+                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.CharData.HasReloadedFastFall)
                     NextStateAction.Invoke(CharacterState.FastFall);
         }
 
@@ -51,12 +51,11 @@ namespace PixelAdventure
             AudioManager.Instance.PlaySound(characterSounds.DoubleJumpSound);
 
             if (characterRigidBody.velocity.y >= 0)
-            {
                 characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
-            }
             else
             {
                 Vector2 _velocity = characterRigidBody.velocity;
+
                 _velocity.y = 0;
                 characterRigidBody.velocity = _velocity;
 

@@ -15,10 +15,7 @@ namespace PixelAdventure
 
             if (JumpAxes > Mathf.Epsilon)
                 NextStateAction.Invoke(CharacterState.Jump);
-
-            if (IsWatered)
-                NextStateAction.Invoke(CharacterState.WaterFloat);
-
+            
             if (IsGrounded)
             {
                 AudioManager.Instance.PlaySound(characterSounds.GroundedSound);
@@ -33,7 +30,7 @@ namespace PixelAdventure
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
-                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.HasReloadedFastFall)
+                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.CharData.HasReloadedFastFall)
                     NextStateAction.Invoke(CharacterState.FastFall);
         }
     }

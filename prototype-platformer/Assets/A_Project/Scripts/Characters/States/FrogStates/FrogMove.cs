@@ -22,7 +22,7 @@ namespace PixelAdventure
 
                     if (DashAxes > Mathf.Epsilon)
                         if (GameInfo.Instance.CharData.HasDash)
-                            if (GameInfo.Instance.HasReloadedDash)
+                            if (GameInfo.Instance.CharData.HasReloadedDash)
                             {
                                 NextStateAction(CharacterState.Dash);
                                 PlayerUsedDash.Invoke();

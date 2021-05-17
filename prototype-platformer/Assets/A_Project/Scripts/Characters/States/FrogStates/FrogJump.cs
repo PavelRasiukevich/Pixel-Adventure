@@ -30,9 +30,6 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
-            if (Mathf.Abs(HorizontalAxes) > 0)
-                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
-
             if (_velocity_Y < 0)
                 characterAnimator.SetInteger(INT_STATE, (int)CharacterState.Fall);
 
@@ -46,6 +43,9 @@ namespace PixelAdventure
                     NextStateAction.Invoke(CharacterState.Idle);
             }
 
+            if (Mathf.Abs(HorizontalAxes) > 0)
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
+
             SpriteFlipper.FlipSprite(characterRigidBody, characterSpriteRenderer);
         }
 
@@ -54,12 +54,12 @@ namespace PixelAdventure
             timer -= Time.deltaTime;
 
             if (Input.GetKeyDown(KeyCode.S))
-                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.HasReloadedFastFall)
+                if (GameInfo.Instance.CharData.HasFastFall && GameInfo.Instance.CharData.HasReloadedFastFall)
                     NextStateAction.Invoke(CharacterState.FastFall);
 
             if (IsSecondJumpAvaliable)
                 if (Input.GetKeyDown(KeyCode.Space))
-                    if (GameInfo.Instance.CharData.HasDoubleJump && GameInfo.Instance.HasReloadedDoubleJump)
+                    if (GameInfo.Instance.CharData.HasDoubleJump && GameInfo.Instance.CharData.HasReloadedDoubleJump)
                         NextStateAction.Invoke(CharacterState.DoubleJump);
 
         }
