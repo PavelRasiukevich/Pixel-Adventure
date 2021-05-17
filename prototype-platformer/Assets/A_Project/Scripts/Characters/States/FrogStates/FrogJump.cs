@@ -30,11 +30,11 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
+            if (Mathf.Abs(HorizontalAxes) > 0)
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
+
             if (_velocity_Y < 0)
                 characterAnimator.SetInteger(INT_STATE, (int)CharacterState.Fall);
-
-            if (IsWatered)
-                NextStateAction.Invoke(CharacterState.WaterFloat);
 
             if (IsGrounded)
             {
@@ -45,6 +45,8 @@ namespace PixelAdventure
                 else
                     NextStateAction.Invoke(CharacterState.Idle);
             }
+
+            SpriteFlipper.FlipSprite(characterRigidBody, characterSpriteRenderer);
         }
 
         private void Update()
@@ -69,9 +71,7 @@ namespace PixelAdventure
             AudioManager.Instance.PlaySound(characterSounds.JumpSound);
 
             if (characterRigidBody.velocity.y >= 0)
-            {
                 characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
-            }
             else
             {
                 Vector2 _velocity = characterRigidBody.velocity;

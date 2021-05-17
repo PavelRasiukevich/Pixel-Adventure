@@ -14,11 +14,11 @@ namespace PixelAdventure
         {
             var _velocity_Y = characterRigidBody.velocity.y;
 
+            if (Mathf.Abs(HorizontalAxes) > 0)
+                characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);
+
             if (_velocity_Y < 0)
                 characterAnimator.SetInteger(INT_STATE, (int)CharacterState.Fall);
-
-            if (IsWatered)
-                NextStateAction.Invoke(CharacterState.WaterFloat);
 
             if (IsGrounded)
             {
@@ -29,6 +29,8 @@ namespace PixelAdventure
                 else
                     NextStateAction.Invoke(CharacterState.Idle);
             }
+
+            SpriteFlipper.FlipSprite(characterRigidBody, characterSpriteRenderer);
         }
 
         private void Update()

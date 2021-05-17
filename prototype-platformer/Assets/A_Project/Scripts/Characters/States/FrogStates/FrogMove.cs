@@ -24,27 +24,20 @@ namespace PixelAdventure
                         if (GameInfo.Instance.CharData.HasDash)
                             if (GameInfo.Instance.HasReloadedDash)
                             {
-                                PlayerUsedDash.Invoke();
                                 NextStateAction(CharacterState.Dash);
+                                PlayerUsedDash.Invoke();
                             }
 
                     if (JumpAxes > Mathf.Epsilon)
                         NextStateAction.Invoke(CharacterState.Jump);
                 }
                 else
-                {
                     NextStateAction.Invoke(CharacterState.Idle);
-                }
 
-                if (characterRigidBody.velocity.x > 0)
-                    transform.parent.parent.localScale = new Vector2(1, 1);
-                else if (characterRigidBody.velocity.x < 0)
-                    transform.parent.parent.localScale = new Vector2(-1, 1);
+                SpriteFlipper.FlipSprite(characterRigidBody, characterSpriteRenderer);
             }
             else
-            {
                 NextStateAction.Invoke(CharacterState.Fall);
-            }
         }
 
         public override void ActivateState()
