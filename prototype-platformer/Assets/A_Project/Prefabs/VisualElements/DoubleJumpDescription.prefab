@@ -96,10 +96,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<color=#00FF00>-Double Jump Boots-
+  m_text: '<color=#00FF00>-Double Jump-
 
-    <color=#ffffff>''Space'' in mid
-    air to use'
+    <color=#ffffff>''Space'' in mid air
+    to use'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e68d5da0b275eed439eb9fa9520fe4d4, type: 2}
   m_sharedMaterial: {fileID: -3978995852426474936, guid: e68d5da0b275eed439eb9fa9520fe4d4, type: 2}

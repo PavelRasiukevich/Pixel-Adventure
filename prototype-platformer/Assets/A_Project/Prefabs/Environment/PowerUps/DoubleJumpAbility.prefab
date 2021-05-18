@@ -89,7 +89,7 @@ PrefabInstance:
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 29a1226f7b5e20240942612e151c3c4c, type: 3}
+      objectReference: {fileID: 21300000, guid: 5319e90cdef08eb4a90ed29d73271916, type: 3}
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -97,7 +97,7 @@ PrefabInstance:
     - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edc31919a4a0caa4eafbbd6eb17dfc39, type: 2}
+      objectReference: {fileID: 2100000, guid: ab43b5449aabc884faa9439a63aa2035, type: 2}
     - target: {fileID: 8993283076192457840, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Name
       value: DoubleJumpAbility

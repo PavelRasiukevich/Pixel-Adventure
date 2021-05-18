@@ -1,5 +1,4 @@
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 namespace PixelAdventure
 {
@@ -9,7 +8,5 @@ namespace PixelAdventure
         {
             SceneManager.LoadScene(SceneID.LOADER_ID);
         }
-
-      
     }
 }

@@ -36,16 +36,6 @@ namespace PixelAdventure
 
             AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, AbilityUIData);
 
-            //powerUpData
-            powerData = new PowerUpData();
-
-            for (int i = 0; i < 28; i++)
-            {
-                powerData.PowerUps.Add(PowerUpStates.Avaliable);
-            }
-
-            AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
-
             //charData
             charData = new CharacterData
             {
@@ -76,8 +66,30 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
         }
 
+        public void GetPowerupData(int _powerUpCount)
+        {
+
+            if (powerData == null)
+            {
+                powerData = new PowerUpData();
+
+                for (int i = 0; i < _powerUpCount; i++)
+                {
+                    powerData.PowerUps.Add(PowerUpStates.Avaliable);
+                }
+
+                AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
+            }
+        }
+
         public void LoadGameProgress()
         {
+
+            if (userData == null || charData == null || powerData == null)
+            {
+                Debug.Log("Load Progress");
+                NewGameSetup();
+            }
 
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
@@ -86,8 +98,6 @@ namespace PixelAdventure
 
             charData.ReserCoolDown();
 
-            if (userData == null || charData == null || powerData == null)
-                NewGameSetup();
         }
 
         public void SaveGameProgress()

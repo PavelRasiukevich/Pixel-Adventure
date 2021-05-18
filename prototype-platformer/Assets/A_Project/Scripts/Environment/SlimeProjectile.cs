@@ -26,5 +26,15 @@ namespace PixelAdventure
         {
             slimeRb.AddForce(Vector2.up * _value, ForceMode2D.Impulse);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var _player = collision.GetComponentInParent<BaseController>();
+
+            if (_player)
+            {
+                _player.OnNextStateRequest(CharacterState.Die);
+            }
+        }
     }
 }
