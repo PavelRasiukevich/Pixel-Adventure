@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Bits: 64
   boxCastDistance: 0
   characterSounds: {fileID: 0}
-  pushForce: 10
+  pushForce: 8
 --- !u!1 &2098075122185817801
 GameObject:
   m_ObjectHideFlags: 0

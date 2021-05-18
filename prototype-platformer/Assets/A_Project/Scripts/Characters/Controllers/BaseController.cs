@@ -129,7 +129,7 @@ namespace PixelAdventure
             }
         }
 
-        protected void OnNextStateRequest(CharacterState state)
+        public void OnNextStateRequest(CharacterState state)
         {
             currentState.DeactivateState();
             currentState = listOfStates.Find(_s => _s.State.Equals(state));
