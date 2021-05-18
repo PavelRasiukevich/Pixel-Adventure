@@ -7,7 +7,7 @@ namespace PixelAdventure
     [CreateAssetMenu(fileName = "Character Stats", menuName = "Character/Stats")]
     public class CharacterStatsSO : ScriptableObject
     {
-        [Header("Items")]
+        [Header("Has Items")]
         [SerializeField] bool hasGear;
 
         [Header("Abilities")]
@@ -19,6 +19,7 @@ namespace PixelAdventure
         [SerializeField] float initialJumpForce;
         [SerializeField] float initialDashForce;
         [SerializeField] float initialSpeed;
+        [SerializeField] int liveAmount;
 
         [Header("Reload Timers")]
         [SerializeField] float dashReloadTime;
@@ -40,5 +41,6 @@ namespace PixelAdventure
         public float FastFallReloadTime { get => fastFallReloadTime; }
         public float DashDuration { get => dashDuration; }
         public bool HasGear { get => hasGear; }
+        public int LiveAmount { get => liveAmount; }
     }
 }

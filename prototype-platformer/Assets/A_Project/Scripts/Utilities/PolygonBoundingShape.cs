@@ -11,12 +11,9 @@ namespace PixelAdventure
             col = GetComponent<PolygonCollider2D>();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public PolygonCollider2D GetBoundingShape()
         {
-            var _player = collision.GetComponentInParent<BaseController>();
-
-            if (_player)
-                _player.ExiteFromBoundingShape.Invoke(col);
+            return col;
         }
     }
 }

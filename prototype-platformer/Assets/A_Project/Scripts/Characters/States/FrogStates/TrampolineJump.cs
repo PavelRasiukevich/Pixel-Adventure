@@ -16,7 +16,7 @@ namespace PixelAdventure
                 NextStateAction(CharacterState.Fall);
 
             if (JumpAxes > Mathf.Epsilon)
-                NextStateAction.Invoke(CharacterState.DoubleJump);
+                NextStateAction(CharacterState.Jump);
 
             if (Mathf.Abs(HorizontalAxes) > 0)
                 characterRigidBody.velocity = new Vector2(HorizontalAxes * GameInfo.Instance.CharData.Speed, characterRigidBody.velocity.y);

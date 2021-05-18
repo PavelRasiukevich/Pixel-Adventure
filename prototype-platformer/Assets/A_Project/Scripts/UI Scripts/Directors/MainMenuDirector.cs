@@ -12,7 +12,6 @@ namespace PixelAdventure
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            GameInfo.Instance.LifeAmount = 3;
         }
 
         protected override void Start()

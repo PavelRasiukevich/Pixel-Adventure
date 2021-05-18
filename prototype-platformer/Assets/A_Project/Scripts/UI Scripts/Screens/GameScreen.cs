@@ -14,7 +14,7 @@ namespace PixelAdventure
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
 
-        [SerializeField] CinemachineConfiner confiner; 
+        [SerializeField] CinemachineConfiner confiner;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] TextMeshProUGUI scoreAmountLabel;
         [SerializeField] BaseController character;
@@ -32,7 +32,7 @@ namespace PixelAdventure
             base.ShowScreen();
 
             GameInfo.Instance.IsGameOverScreenActive = false;
-            lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
+            lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
 
             dashUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsDashIconVisible);
@@ -105,8 +105,8 @@ namespace PixelAdventure
 
         private void LifeLostHandler()
         {
-            GameInfo.Instance.LifeAmount--;
-            lifeAmountLabel.text = GameInfo.Instance.LifeAmount.ToString();
+            GameInfo.Instance.CharData.LiveAmount--;
+            lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
         }
 
         private void Update()
@@ -127,7 +127,7 @@ namespace PixelAdventure
                 Exit(EXIT_TO_MENU);
             }
 
-            if (GameInfo.Instance.LifeAmount == 0)
+            if (GameInfo.Instance.CharData.LiveAmount == 0)
             {
                 Time.timeScale = 0;
                 Exit(EXIT_TO_GAMEOVER);

@@ -81,13 +81,33 @@ namespace PixelAdventure
         {
             base.OnTriggerEnter2D(collision);
 
-            var _powerUp = collision.GetComponent<IPowerUp>();
-
-            if (_powerUp != null)
+            if (collision.GetComponent<IPowerUp>() != null)
             {
-                _powerUp.AddBonusValue();
+                var _power = collision.GetComponent<IPowerUp>();
+
+                _power.AddBonusValue();
                 GetRewardPoints.Invoke();
-                PowerUpConsumed.Invoke(_powerUp.GetName);
+                PowerUpConsumed.Invoke(_power.GetName);
+
+            }
+            else if (collision.GetComponent<PolygonBoundingShape>() != null)
+            {
+                var _shape = collision.GetComponent<PolygonBoundingShape>();
+
+                if (CharRb.velocity.x > 0)
+                {
+                    var _position = transform.position;
+                    _position.x += 1;
+                    transform.position = _position;
+                }
+                if (CharRb.velocity.x < 0)
+                {
+                    var _position = transform.position;
+                    _position.x -= 1;
+                    transform.position = _position;
+                }
+
+                ExiteFromBoundingShape.Invoke(_shape.GetBoundingShape());
             }
         }
     }

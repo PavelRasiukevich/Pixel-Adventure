@@ -16,7 +16,6 @@ namespace PixelAdventure
         AbilityUIData abilityUIData;
 
         #region Properties
-        public int LifeAmount { get; set; }
         public string LevelName { get; set; }
         public bool IsGameOverScreenActive { get; set; }
         public UserData UserData { get => userData; }
@@ -50,6 +49,7 @@ namespace PixelAdventure
             //charData
             charData = new CharacterData
             {
+                LiveAmount = CharStatsSO.LiveAmount,
                 Speed = CharStatsSO.InitialSpeed,
                 JumpForce = CharStatsSO.InitialJumpForce,
                 DashForce = CharStatsSO.InitialDashForce,
@@ -101,7 +101,6 @@ namespace PixelAdventure
         public void Retry()
         {
             Time.timeScale = 1;
-            LifeAmount = 3;
             LoadGameProgress();
         }
 
