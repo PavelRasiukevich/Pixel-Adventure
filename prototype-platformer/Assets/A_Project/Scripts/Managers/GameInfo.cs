@@ -67,8 +67,6 @@ namespace PixelAdventure
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
-
-
         }
 
         public void InitPowerupData(int _powerUpCount)
@@ -91,9 +89,7 @@ namespace PixelAdventure
         {
 
             if (userData == null || charData == null || powerData == null)
-            {
                 NewGameSetup();
-            }
 
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
