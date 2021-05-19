@@ -16,7 +16,7 @@ MonoBehaviour:
   hasDoubleJumpAbility: 0
   hasDashAbility: 0
   hasFastFallAbility: 0
-  initialJumpForce: 8
+  initialJumpForce: 10.2
   initialDashForce: 4
   initialSpeed: 5
   liveAmount: 3

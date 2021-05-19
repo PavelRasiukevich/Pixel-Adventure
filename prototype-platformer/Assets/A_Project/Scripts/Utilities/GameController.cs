@@ -9,7 +9,7 @@ namespace PixelAdventure
         private void Awake()
         {
 
-            GameInfo.Instance.GetPowerupData(container.childCount);
+            GameInfo.Instance.InitPowerupData(container.childCount);
 
             for (int i = 0; i < container.childCount; i++)
             {

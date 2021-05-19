@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  points: 10
+  points: 15
   pointsDisplayPrefab: {fileID: 3897962591840691104, guid: 9dca3779018c16349b2e64b00a63771c, type: 3}
 --- !u!1001 &1206234792917879526
 PrefabInstance:

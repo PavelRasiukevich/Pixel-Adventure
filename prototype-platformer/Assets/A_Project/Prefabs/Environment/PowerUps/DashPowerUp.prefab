@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4845d7bbf91600d489fff88084f9196a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1
+  value: 0.5
   points: 100
   pointsDisplayPrefab: {fileID: 3897962591840691104, guid: 9dca3779018c16349b2e64b00a63771c, type: 3}
 --- !u!1001 &5164323857653684925

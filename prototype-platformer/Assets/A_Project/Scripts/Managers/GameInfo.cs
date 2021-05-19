@@ -31,6 +31,8 @@ namespace PixelAdventure
 
         public void NewGameSetup()
         {
+            powerData = null;
+
             //iconUIData
             abilityUIData = new AbilityUIData();
 
@@ -64,11 +66,13 @@ namespace PixelAdventure
             GetPositionBySavePointId();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
+
+
+
         }
 
-        public void GetPowerupData(int _powerUpCount)
+        public void InitPowerupData(int _powerUpCount)
         {
-
             if (powerData == null)
             {
                 powerData = new PowerUpData();
@@ -80,6 +84,7 @@ namespace PixelAdventure
 
                 AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
             }
+
         }
 
         public void LoadGameProgress()
@@ -87,7 +92,6 @@ namespace PixelAdventure
 
             if (userData == null || charData == null || powerData == null)
             {
-                Debug.Log("Load Progress");
                 NewGameSetup();
             }
 

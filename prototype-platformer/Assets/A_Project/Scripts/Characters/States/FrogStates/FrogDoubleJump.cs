@@ -51,7 +51,7 @@ namespace PixelAdventure
             AudioManager.Instance.PlaySound(characterSounds.DoubleJumpSound);
 
             if (characterRigidBody.velocity.y >= 0)
-                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * RecalculateJumpForce(), ForceMode2D.Impulse);
             else
             {
                 Vector2 _velocity = characterRigidBody.velocity;
@@ -59,8 +59,16 @@ namespace PixelAdventure
                 _velocity.y = 0;
                 characterRigidBody.velocity = _velocity;
 
-                characterRigidBody.AddForce(Vector2.up * GameInfo.Instance.CharData.JumpForce, ForceMode2D.Impulse);
+                characterRigidBody.AddForce(Vector2.up * RecalculateJumpForce(), ForceMode2D.Impulse);
             }
+        }
+
+        public float RecalculateJumpForce()
+        {
+            var _value = GameInfo.Instance.CharData.JumpForce;
+            var _recalculated = _value * 0.75f;
+
+            return _recalculated;
         }
     }
 }
