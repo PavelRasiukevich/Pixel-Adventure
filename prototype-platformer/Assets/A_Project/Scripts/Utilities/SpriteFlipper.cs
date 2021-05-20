@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PixelAdventure
 {
     public static class SpriteFlipper
-    {
+    { 
         public static void FlipSprite(Rigidbody2D _rigidBody,SpriteRenderer _renderer)
         {
             if (_rigidBody.velocity.x > 0)

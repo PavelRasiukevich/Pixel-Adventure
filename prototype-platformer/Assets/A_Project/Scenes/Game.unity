@@ -68119,7 +68119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &607415822
 Transform:
   m_ObjectHideFlags: 0
@@ -140849,6 +140849,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2074894710502228911, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 749192d0fed72f24d8cbf297a531568f, type: 2}
     - target: {fileID: 8811168689768907159, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
       propertyPath: m_Name
       value: Frog

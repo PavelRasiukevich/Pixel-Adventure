@@ -24,6 +24,11 @@ namespace PixelAdventure
             }
         }
 
+        private void Update()
+        {
+            characterRigidBody.velocity = Vector2.zero;
+        }
+
         public override void ActivateState()
         {
             base.ActivateState();
