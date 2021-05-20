@@ -18,12 +18,13 @@ namespace PixelAdventure
         #region Properties
         public string LevelName { get; set; }
         public bool IsGameOverScreenActive { get; set; }
+
         public UserData UserData { get => userData; }
+        public CharacterData CharData { get => charData; }
 
         public List<PowerUpStates> PowerUps => powerData.PowerUps;
         public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
-        public CharacterData CharData { get => charData; }
 
         public AbilityUIData AbilityUIData { get => abilityUIData; }
         #endregion
