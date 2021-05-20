@@ -21,7 +21,6 @@ namespace PixelAdventure
         public UserData UserData { get => userData; }
 
         public List<PowerUpStates> PowerUps => powerData.PowerUps;
-        public List<CheckPointConfig> CheckPointConfigs => checkPointConfig_SO.CheckPointConfig;
         public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
         public CharacterData CharData { get => charData; }

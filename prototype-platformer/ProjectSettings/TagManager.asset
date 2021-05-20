@@ -16,7 +16,7 @@ TagManager:
   - CameraTrigger
   - CharCheck
   - Trampoline
-  - 
+  - Back
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 4219676121
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
