@@ -39,8 +39,8 @@ namespace PixelAdventure
                     Application.Quit();
                 else if (_exitCode.Equals(MainMenuScreen.LOAD_GAME))
                 {
-                    SceneManager.LoadScene(SceneID.START_GAME_ID);
                     GameInfo.Instance.LoadGameProgress();
+                    SceneManager.LoadScene(SceneID.START_GAME_ID);
                 }
             }
             else if (_screenType == typeof(OptionsScreen))

@@ -63,7 +63,6 @@ namespace PixelAdventure
 
             //userData
             userData = new UserData();
-            GetPositionBySavePointId();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
@@ -88,16 +87,17 @@ namespace PixelAdventure
         public void LoadGameProgress()
         {
 
-            if (userData == null || charData == null || powerData == null)
-                NewGameSetup();
-
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
             abilityUIData = AppPrefs.GetObject<AbilityUIData>(PrefsKeys.ABILITY_UI_DATA);
 
-            charData.ReserCoolDown();
+            if (userData == null || charData == null || powerData == null)
+            {
+                NewGameSetup();
+            }
 
+            charData.ReserCoolDown();
         }
 
         public void SaveGameProgress()
