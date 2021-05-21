@@ -14,8 +14,10 @@ namespace PixelAdventure
 
             if (_player)
             {
+#if !UNITY_EDITOR
                 _player.OnNextStateRequest(CharacterState.Die);
                 _player.LifeLost();
+#endif
             }
         }
     }

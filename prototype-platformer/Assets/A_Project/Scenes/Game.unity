@@ -144168,6 +144168,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 749192d0fed72f24d8cbf297a531568f, type: 2}
+    - target: {fileID: 3098847452343535963, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
+      propertyPath: pushForce
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811168688822477407, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
+      propertyPath: fallForce
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 8811168689768907159, guid: 96069379b0fc01243a2b02c6950d2b1f, type: 3}
       propertyPath: m_Name
       value: Frog

@@ -7,6 +7,7 @@ namespace PixelAdventure
 {
     public class FrogFastFall : BaseState
     {
+        [SerializeField] float fallForce;
 
         public override CharacterState State => CharacterState.FastFall;
 
@@ -31,7 +32,7 @@ namespace PixelAdventure
             base.ActivateState();
             FastFallUsed.Invoke();
             characterRigidBody.velocity = Vector2.zero;
-            characterRigidBody.AddForce(Vector2.down * 100, ForceMode2D.Impulse);
+            characterRigidBody.AddForce(Vector2.down * fallForce, ForceMode2D.Impulse);
         }
     }
 }
