@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class DoubleJumpAbility : BasePowerUp
+    public class DoubleJumpAbility : BasePower
     {
         private void Awake()
         {

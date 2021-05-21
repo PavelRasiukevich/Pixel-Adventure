@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {   
-    public class JumpPowerUp : BasePowerUp
+    public class JumpPowerUp : BasePower
     {
         public override void AddBonusValue()
         {

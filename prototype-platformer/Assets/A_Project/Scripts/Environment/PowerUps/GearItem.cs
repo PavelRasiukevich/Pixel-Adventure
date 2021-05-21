@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class GearItem : BasePowerUp
+    public class GearItem : BasePower
     {
         private void Awake()
         {

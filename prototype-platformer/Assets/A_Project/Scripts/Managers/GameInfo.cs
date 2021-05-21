@@ -10,6 +10,9 @@ namespace PixelAdventure
         [SerializeField] CheckPointConfig_SO checkPointConfig_SO;
         [SerializeField] CharacterStatsSO charStatsSO;
 
+        float timer;
+        bool isPlaying;
+
         UserData userData;
         CharacterData charData;
         PowerUpData powerData;
@@ -23,10 +26,10 @@ namespace PixelAdventure
         public CharacterData CharData { get => charData; }
 
         public List<PowerUpStates> PowerUps => powerData.PowerUps;
-        public Vector3 Spawn => checkPointConfig_SO.Spawn;
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
 
         public AbilityUIData AbilityUIData { get => abilityUIData; }
+        public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         #endregion
 
         public void NewGameSetup()
@@ -66,6 +69,7 @@ namespace PixelAdventure
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
+            isPlaying = true;
         }
 
         public void InitPowerupData(int _powerUpCount)
@@ -141,7 +145,7 @@ namespace PixelAdventure
 
         public Vector2 GetPositionBySavePointId()
         {
-            var _saves = FindObjectsOfType<SavePoint>();
+            var _saves = FindObjectsOfType<SaveSpot>();
 
             foreach (var point in _saves)
             {
@@ -151,7 +155,15 @@ namespace PixelAdventure
                 }
             }
 
-            return Spawn;
+            return Vector2.zero;
+        }
+
+        public bool HasLoad()
+        {
+            if (AppPrefs.HasObject(PrefsKeys.USER_DATA))
+                return AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA).IsLoadAvaliable;
+
+            return false;
         }
     }
 }

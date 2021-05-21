@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.18139648, y: 1.85}
+  m_AnchoredPosition: {x: -0.143, y: 1.85}
   m_SizeDelta: {x: 3.3996, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8512849735274462749
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 8512849735848213420}
   - component: {fileID: 8512849735848213421}
   - component: {fileID: 8512849735848213418}
+  - component: {fileID: 1927287493456701372}
   m_Layer: 0
   m_Name: SaveSpot
   m_TagString: Untagged
@@ -126,7 +127,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8512849735848213422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -71.33, y: -22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 463095293
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b22156af64babe4f9bff6441c5b942f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68f54e5fc0fa326458d3e18bdccce704, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -202,7 +203,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.3333334}
+    oldSize: {x: 2.6666667, y: 2.6666667}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -225,8 +226,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hintText: {fileID: 8512849736096291831}
   isSaved: 0
-  id: 0
+  id: 1
   savedMsg: <color=#43AA8B>Saved
+--- !u!95 &1927287493456701372
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512849735848213422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 747c837ea2ff4e84d8110bfbf8e39fcb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8512849736096291785
 GameObject:
   m_ObjectHideFlags: 0

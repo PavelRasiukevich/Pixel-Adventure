@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class Points : BasePowerUp
+    public class Points : BasePower
     {
         public override void AddBonusValue()
         {

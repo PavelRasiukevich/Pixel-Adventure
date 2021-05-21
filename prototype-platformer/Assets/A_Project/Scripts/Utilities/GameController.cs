@@ -13,7 +13,7 @@ namespace PixelAdventure
 
             for (int i = 0; i < container.childCount; i++)
             {
-                var _powerUp = container.GetChild(i).GetComponent<BasePowerUp>();
+                var _powerUp = container.GetChild(i).GetComponent<BasePower>();
 
                 if (GameInfo.Instance.GetPowerUpState(i) == PowerUpStates.Avaliable)
                 {

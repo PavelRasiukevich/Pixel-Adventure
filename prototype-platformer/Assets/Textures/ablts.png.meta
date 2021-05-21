@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: aa2e69018fe97d944bcb0de372123754
+guid: 94ebd3411b3bcb34d889d9710ed99cb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1557895615101851894
-    second: dash
+      213: -1430444895079866630
+    second: AMVGj_0
   - first:
-      213: 134503361131232223
-    second: doubleJump
-  - first:
-      213: -7985109676145569901
-    second: fastFall
+      213: -715936398404894630
+    second: AMVGj_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -77,7 +74,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +86,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +110,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dash
+      name: AMVGj_0
       rect:
         serializedVersion: 2
-        x: 118
-        y: 410
-        width: 97
-        height: 96
+        x: 302
+        y: 2
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0727b0313e316ae0800000000000000
-      internalID: -1557895615101851894
+      spriteID: afe5efd52f9062ce0800000000000000
+      internalID: -1430444895079866630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: doubleJump
+      name: AMVGj_1
       rect:
         serializedVersion: 2
-        x: 462
-        y: 410
-        width: 94
-        height: 95
+        x: 302
+        y: 202
+        width: 46
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,29 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdbb255281addd100800000000000000
-      internalID: 134503361131232223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fastFall
-      rect:
-        serializedVersion: 2
-        x: 346
-        y: 6
-        width: 95
-        height: 94
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39f0fc47e013f2190800000000000000
-      internalID: -7985109676145569901
+      spriteID: a50cd4b83ab7016f0800000000000000
+      internalID: -715936398404894630
       vertices: []
       indices: 
       edges: []

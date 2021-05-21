@@ -1,13 +1,14 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace PixelAdventure
 {
     public class ButtonBhv : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
-        private TextMeshProUGUI textTMP;
-       
+        TextMeshProUGUI textTMP;
+
         private void Awake()
         {
             textTMP = GetComponentInChildren<TextMeshProUGUI>();
