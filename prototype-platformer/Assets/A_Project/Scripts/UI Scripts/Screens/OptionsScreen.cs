@@ -13,12 +13,12 @@ namespace PixelAdventure
         private void Awake()
         {
             sliders = GetComponentsInChildren<SliderUI>();
+
         }
 
         public override void ShowScreen()
         {
             base.ShowScreen();
-
             for (int i = 0; i < sliders.Length; i++)
             {
 

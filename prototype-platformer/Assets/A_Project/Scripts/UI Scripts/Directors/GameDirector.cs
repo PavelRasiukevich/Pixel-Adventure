@@ -18,8 +18,8 @@ namespace PixelAdventure
         protected override void Start()
         {
             base.Start();
-            
             SetCurrentScreen<GameScreen>().ShowScreen();
+            GameInfo.Instance.HasTransited = false;
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
@@ -28,8 +28,6 @@ namespace PixelAdventure
             {
                 if (_exitCode.Equals(GameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
-                else if (_exitCode.Equals(GameScreen.EXIT_TO_NEXT_LVL))
-                    SceneManager.LoadScene(id.ToString());
                 else if (_exitCode.Equals(GameScreen.EXIT_TO_GAMEOVER))
                     SetCurrentScreen<GameOverScreen>().ShowScreen();
 
@@ -41,7 +39,14 @@ namespace PixelAdventure
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_OPTIONS))
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_MAIN_MENU))
-                    SceneManager.LoadScene(SceneID.LOADER_ID);
+                {
+                    Time.timeScale = 1;
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+                }
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_FROM_APP))
                     Application.Quit();
             }

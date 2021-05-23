@@ -13,7 +13,8 @@ namespace PixelAdventure
         private void Awake()
         {
             spriteRend = GetComponent<SpriteRenderer>();
-            boundY = spriteRend.bounds.size.y;
+
+            boundY = spriteRend.bounds.extents.y;
             startPosition = transform.position;
         }
 
@@ -27,7 +28,7 @@ namespace PixelAdventure
 
         private float GetDifference()
         {
-            return transform.position.y - startPosition.y;
+            return (transform.position.y - startPosition.y);
         }
     }
 }

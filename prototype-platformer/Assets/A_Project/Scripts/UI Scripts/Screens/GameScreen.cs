@@ -30,7 +30,7 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
-
+           
             GameInfo.Instance.IsGameOverScreenActive = false;
             lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";

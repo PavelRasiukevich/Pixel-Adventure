@@ -7,6 +7,8 @@ namespace PixelAdventure
     {
         private void Awake()
         {
+            //TODO localization setup
+
             AudioManager.Instance.SetupVolume();
             SceneManager.LoadScene(SceneID.MAIN_MENU_ID);
         }

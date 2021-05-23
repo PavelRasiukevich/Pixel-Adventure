@@ -10,8 +10,8 @@ namespace PixelAdventure
         [SerializeField] CheckPointConfig_SO checkPointConfig_SO;
         [SerializeField] CharacterStatsSO charStatsSO;
 
-        float timer;
         bool isPlaying;
+        bool hasTransited;
 
         UserData userData;
         CharacterData charData;
@@ -30,6 +30,7 @@ namespace PixelAdventure
 
         public AbilityUIData AbilityUIData { get => abilityUIData; }
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
+        public bool HasTransited { get => hasTransited; set => hasTransited = value; }
         #endregion
 
         public void NewGameSetup()
