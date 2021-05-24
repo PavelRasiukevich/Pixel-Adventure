@@ -5,7 +5,7 @@ namespace PixelAdventure
     public class MovingBackground : MonoBehaviour
     {
         [SerializeField] float scrollSpeed;
-
+        [SerializeField] float coof;
         Vector3 startPosition;
         float boundY;
         SpriteRenderer spriteRend;
@@ -22,7 +22,7 @@ namespace PixelAdventure
         {
             transform.position += Vector3.down * scrollSpeed * Time.deltaTime;
 
-            if (Mathf.Abs(GetDifference()) > boundY)
+            if (Mathf.Abs(GetDifference()) > boundY / coof)
                 transform.position = startPosition;
         }
 
