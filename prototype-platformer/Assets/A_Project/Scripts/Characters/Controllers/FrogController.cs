@@ -90,24 +90,10 @@ namespace PixelAdventure
                 PowerUpConsumed.Invoke(_power.GetName);
 
             }
-            else if (collision.GetComponent<PolygonBoundingShape>() != null)
+            else if (collision.GetComponent<CameraBoundSwitcher>() != null)
             {
-                var _shape = collision.GetComponent<PolygonBoundingShape>();
-
-                if (CharRb.velocity.x > 0)
-                {
-                    var _position = transform.position;
-                    _position.x += 1;
-                    transform.position = _position;
-                }
-                if (CharRb.velocity.x < 0)
-                {
-                    var _position = transform.position;
-                    _position.x -= 1;
-                    transform.position = _position;
-                }
-
-                ExiteFromBoundingShape.Invoke(_shape.GetBoundingShape());
+                Debug.Log(collision.GetComponent<CameraBoundSwitcher>().Values);
+                ChangeCameraBound.Invoke(collision.GetComponent<CameraBoundSwitcher>().Values);
             }
         }
     }

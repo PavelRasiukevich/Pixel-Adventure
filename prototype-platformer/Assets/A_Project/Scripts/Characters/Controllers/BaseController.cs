@@ -37,6 +37,7 @@ namespace PixelAdventure
         public Action DoubleJumpHandled { get; set; }
         public Action<string> PowerUpConsumed { get; set; }
         public Action<PolygonCollider2D> ExiteFromBoundingShape { get; set; }
+        public Action<CameraBoundValues> ChangeCameraBound { get; set; }
         #endregion
 
         #region Properties
