@@ -7,7 +7,6 @@ namespace PixelAdventure
 {
     public class MainMenuDirector : SceneDirector
     {
-
         bool hasApplayedTransition;
 
         private void Awake()

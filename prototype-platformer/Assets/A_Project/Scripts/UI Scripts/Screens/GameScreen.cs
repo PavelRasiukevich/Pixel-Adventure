@@ -1,4 +1,4 @@
-using Cinemachine;
+
 using System;
 using System.Collections;
 using TMPro;
@@ -14,7 +14,6 @@ namespace PixelAdventure
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
 
-        [SerializeField] CinemachineConfiner confiner;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] TextMeshProUGUI scoreAmountLabel;
         [SerializeField] BaseController character;
@@ -48,17 +47,11 @@ namespace PixelAdventure
             character.FastFallHandled = OnFastFallReloadTimer;
             character.DoubleJumpHandled = OnDoubleJumpReloadTimer;
             character.PowerUpConsumed = OnPowerUpConsumedHandler;
-            character.ExiteFromBoundingShape = OnShapeBoundingExitHandler;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
-        }
-
-        private void OnShapeBoundingExitHandler(PolygonCollider2D _polygonShape)
-        {
-            confiner.m_BoundingShape2D = _polygonShape;
         }
 
         private void OnPowerUpConsumedHandler(string _name)

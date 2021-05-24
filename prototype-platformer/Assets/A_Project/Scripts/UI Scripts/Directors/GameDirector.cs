@@ -7,7 +7,6 @@ namespace PixelAdventure
 {
     public class GameDirector : SceneDirector
     {
-        [SerializeField] LevelID id;
 
         private void Awake()
         {

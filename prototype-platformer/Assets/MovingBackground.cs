@@ -6,15 +6,26 @@ namespace PixelAdventure
     {
         [SerializeField] float scrollSpeed;
         [SerializeField] float coof;
+        [SerializeField] Options options;
+
         Vector3 startPosition;
         float boundY;
         SpriteRenderer spriteRend;
+        BoxCollider2D boxC2D;
 
         private void Awake()
         {
-            spriteRend = GetComponent<SpriteRenderer>();
+            if (options.Equals(Options.Renderer))
+            {
+                spriteRend = GetComponent<SpriteRenderer>();
+                boundY = spriteRend.bounds.extents.y;
+            }
+            else if (options.Equals(Options.Collider))
+            {
+                boxC2D = GetComponent<BoxCollider2D>();
+                boundY = boxC2D.bounds.extents.y;
+            }
 
-            boundY = spriteRend.bounds.extents.y;
             startPosition = transform.position;
         }
 
@@ -30,5 +41,11 @@ namespace PixelAdventure
         {
             return (transform.position.y - startPosition.y);
         }
+    }
+
+    public enum Options
+    {
+        Renderer,
+        Collider
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7123871230017378862}
   - component: {fileID: 6364621112646300774}
   m_Layer: 0
-  m_Name: CharImg
+  m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,14 +58,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a39b27dc3215624e9ad56517f53f62c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -816,7 +816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 73.20001}
+  m_AnchoredPosition: {x: 0, y: 73.200195}
   m_SizeDelta: {x: 0, y: 146.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5551374545064186372
@@ -929,7 +929,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 93.54, y: 143.9}
+  m_SizeDelta: {x: 93.54, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4947460359009078779
 CanvasRenderer:
@@ -1062,8 +1062,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -140.17, y: -21.71}
-  m_SizeDelta: {x: 280.33, y: 43.43}
+  m_AnchoredPosition: {x: -160.14001, y: -21.71}
+  m_SizeDelta: {x: 320.26, y: 43.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8424368743055044637
 CanvasRenderer:
@@ -1120,8 +1120,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1197,7 +1197,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 95.66, y: 147.17}
+  m_SizeDelta: {x: 95.66, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5727094634335981002
 CanvasRenderer:
