@@ -92,8 +92,11 @@ namespace PixelAdventure
             }
             else if (collision.GetComponent<CameraBoundSwitcher>() != null)
             {
-                Debug.Log(collision.GetComponent<CameraBoundSwitcher>().Values);
-                ChangeCameraBound.Invoke(collision.GetComponent<CameraBoundSwitcher>().Values);
+                var _col = collision.GetComponent<CameraBoundSwitcher>().Values;
+
+                GameInfo.Instance.SetCameraBounds(_col);
+
+                ChangeCameraBound.Invoke(_col);
             }
         }
     }

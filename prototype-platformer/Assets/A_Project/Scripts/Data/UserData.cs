@@ -9,27 +9,13 @@ namespace PixelAdventure
         [SerializeField] int score;
         [SerializeField] int id;
         [SerializeField] bool isLoadAvaliable;
-        [SerializeField] GameTime gameTime;
+        [SerializeField] CameraBoundValues cameraBoundValues;
 
         public int Score { get => score; set => score = value; }
         public int Id { get => id; set => id = value; }
         public bool IsLoadAvaliable { get => isLoadAvaliable; set => isLoadAvaliable = value; }
-        public GameTime GameTime { get => gameTime; set => gameTime = value; }
-
-        public UserData()
-        {
-            GameTime = new GameTime();
-        }
+        public CameraBoundValues CameraBoundValues { get => cameraBoundValues; set => cameraBoundValues = value; }
 
     }
 
-    [Serializable]
-    public class GameTime
-    {
-        [SerializeField] string minutes;
-        [SerializeField] string seconds;
-
-        public string Minutes { get => minutes; set => minutes = value; }
-        public string Seconds { get => seconds; set => seconds = value; }
-    }
 }

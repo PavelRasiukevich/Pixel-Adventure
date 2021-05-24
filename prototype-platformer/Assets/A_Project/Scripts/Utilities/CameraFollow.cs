@@ -14,6 +14,16 @@ namespace PixelAdventure
 
         public Transform target;
 
+        void Awake()
+        {
+            var _val = GameInfo.Instance.GetCameraBounds();
+
+            vectorMin.x = _val.MinX;
+            vectorMin.y = _val.MinY;
+            vectorMax.x = _val.MaxX;
+            vectorMax.y = _val.MaxY;
+        }
+
         void OnEnable()
         {
             target.GetComponentInParent<BaseController>().ChangeCameraBound = SwitchBound;
