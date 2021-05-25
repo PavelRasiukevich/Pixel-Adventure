@@ -67,7 +67,8 @@ namespace PixelAdventure
 
             //userData
             userData = new UserData();
-            SetCameraBounds(userData.CameraBoundValues.InitializeDefault());
+            KeepCameraBounds(userData.KeepedValues.InitializeDefault());
+            userData.SetBoundsValues();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
@@ -168,14 +169,15 @@ namespace PixelAdventure
             return false;
         }
 
-        public void SetCameraBounds(CameraBoundValues _values)
+        public void KeepCameraBounds(CameraBoundValues _values)
         {
-            userData.CameraBoundValues = _values;
+            userData.KeepedValues = _values;
         }
 
         public CameraBoundValues GetCameraBounds()
         {
             return userData.CameraBoundValues;
         }
+       
     }
 }

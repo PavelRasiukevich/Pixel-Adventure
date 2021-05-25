@@ -93,6 +93,7 @@ namespace PixelAdventure
                     charBoxCollider.enabled = true;
                     OnNextStateRequest(CharacterState.Idle);
                     charRb.bodyType = RigidbodyType2D.Dynamic;
+                    ChangeCameraBound.Invoke(GameInfo.Instance.GetCameraBounds());
                 }
                 else
                 {
@@ -121,13 +122,13 @@ namespace PixelAdventure
         protected void OnTriggerEnter2D(Collider2D other)
         {
             var obstacle = other.gameObject.GetComponent<IDamaging>();
-#if !UNITY_EDITOR
+
             if (obstacle != null)
             {
                 LifeLost.Invoke();
                 OnNextStateRequest(CharacterState.Die);
             }
-#endif
+
         }
 
         public void OnNextStateRequest(CharacterState state)

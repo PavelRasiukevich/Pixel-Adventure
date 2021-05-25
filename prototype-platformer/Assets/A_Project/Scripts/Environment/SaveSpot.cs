@@ -55,6 +55,7 @@ namespace PixelAdventure
                     isSaved = true;
                     hintText.text = savedMsg;
                     GameInfo.Instance.SetSavePointId(id);
+                    GameInfo.Instance.UserData.SetBoundsValues();
                     GameInfo.Instance.SaveGameProgress();
                 }
         }

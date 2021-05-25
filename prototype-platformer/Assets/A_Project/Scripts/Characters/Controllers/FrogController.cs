@@ -93,9 +93,7 @@ namespace PixelAdventure
             else if (collision.GetComponent<CameraBoundSwitcher>() != null)
             {
                 var _col = collision.GetComponent<CameraBoundSwitcher>().Values;
-
-                GameInfo.Instance.SetCameraBounds(_col);
-
+                GameInfo.Instance.KeepCameraBounds(_col);
                 ChangeCameraBound.Invoke(_col);
             }
         }
