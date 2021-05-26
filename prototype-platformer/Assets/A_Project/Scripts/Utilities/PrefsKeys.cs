@@ -11,6 +11,8 @@ namespace PixelAdventure
         public const string ABILITY_DATA = "ABILITY_DATA";
         public const string CHARACTER_DATA = "CHARACTER_DATA";
         public const string POWERUPS_DATA = "POWERUPS_DATA";
+        public const string ITEM_DATA = "ITEM_DATA";
+        public const string SLOT_DATA = "SLOT_DATA";
         public const string LEVEL_ = "LEVEL_";
         public const string SOUND = "SOUND";
         public const string MUSIC = "MUSIC";

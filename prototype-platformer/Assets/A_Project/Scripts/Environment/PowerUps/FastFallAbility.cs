@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class FastFallAbility : BasePower
+    public class FastFallAbility : BasePowerUp
     {
 
         private void Awake()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class DashAbility : BasePower
+    public class DashAbility : BasePowerUp
     {
         private void Awake()
         {

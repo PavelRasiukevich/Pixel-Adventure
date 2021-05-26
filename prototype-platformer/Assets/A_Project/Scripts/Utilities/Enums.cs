@@ -62,6 +62,12 @@ namespace PixelAdventure
         Consumed
     }
 
+    public enum ItemState
+    {
+        Avaliable,
+        Picked
+    }
+
     public enum CameraTriggers
     {
         Left_Height,

@@ -96,6 +96,20 @@ namespace PixelAdventure
                 GameInfo.Instance.KeepCameraBounds(_col);
                 ChangeCameraBound.Invoke(_col);
             }
+            else if (collision.GetComponent<Item>() != null)
+            {
+                var _item = collision.GetComponent<Item>();
+                var _slot = inventory.SlotGroup.FindEmptySlot();
+
+                if (_slot)
+                {
+                    _item.Off();
+                    _slot.InputItemInSlot(_item.GetSprite());
+                    GameInfo.Instance.SetItemState(_item.Index, ItemState.Picked);
+                    GameInfo.Instance.SlotValues[_slot.Index] = _slot.IsEmpty;
+                    GameInfo.Instance.ListOfSprites[_slot.Index] = _item.GetSprite();
+                }
+            }
         }
     }
 }

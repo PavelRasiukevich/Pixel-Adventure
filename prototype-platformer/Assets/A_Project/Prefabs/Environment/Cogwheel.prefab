@@ -122,6 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58406f2f3f8fcb44c99b1c27ea404988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
-  points: 0
-  pointsCanvasPrefab: {fileID: 0}
+  spr: {fileID: 21300000, guid: 042fae2dd68bce044b8fbd1f26724a2d, type: 3}

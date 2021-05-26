@@ -11,6 +11,7 @@ namespace PixelAdventure
 
         #region
         [SerializeField] protected CharacterSoundSO characterSounds;
+        [SerializeField] protected Inventory inventory;
         #endregion
 
         #region Components
