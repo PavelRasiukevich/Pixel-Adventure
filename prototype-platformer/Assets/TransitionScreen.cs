@@ -17,7 +17,7 @@ namespace PixelAdventure
         }
 
         public void PlayAnimation(string _id)
-        {
+        { 
             StartCoroutine(Fade(_id));
         }
 

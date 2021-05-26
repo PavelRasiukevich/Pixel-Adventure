@@ -18,7 +18,7 @@ namespace PixelAdventure
             if (options.Equals(Options.Renderer))
             {
                 spriteRend = GetComponent<SpriteRenderer>();
-                boundY = spriteRend.bounds.extents.y;
+                boundY = spriteRend.bounds.size.y;
             }
             else if (options.Equals(Options.Collider))
             {

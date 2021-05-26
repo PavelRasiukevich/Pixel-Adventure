@@ -6,7 +6,7 @@ namespace PixelAdventure
     public class LoaderScene : MonoBehaviour
     {
         [SerializeField] Canvas canv;
-
+        bool isKeyPressed;
         private void Awake()
         {
             canv = GetComponentInChildren<Canvas>();
@@ -18,8 +18,12 @@ namespace PixelAdventure
         {
             if (Input.anyKeyDown)
             {
-                canv.sortingOrder = 555;
-                TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                if (!isKeyPressed)
+                {
+                    canv.sortingOrder = 555;
+                    TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                    isKeyPressed = true;
+                }
             }
         }
     }
