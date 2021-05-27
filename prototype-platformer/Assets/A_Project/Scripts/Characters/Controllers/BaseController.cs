@@ -124,10 +124,13 @@ namespace PixelAdventure
         {
             var obstacle = other.gameObject.GetComponent<IDamaging>();
 
-            if (obstacle != null)
+            if (!GameInfo.Instance.isInGodMod)
             {
-                LifeLost.Invoke();
-                OnNextStateRequest(CharacterState.Die);
+                if (obstacle != null)
+                {
+                    LifeLost.Invoke();
+                    OnNextStateRequest(CharacterState.Die);
+                }
             }
 
         }

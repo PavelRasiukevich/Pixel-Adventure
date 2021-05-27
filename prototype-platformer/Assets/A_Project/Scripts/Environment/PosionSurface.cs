@@ -12,11 +12,15 @@ namespace PixelAdventure
 
             Debug.Log(_player);
 
-            if (_player)
+            if (!GameInfo.Instance.isInGodMod)
             {
-                _player.OnNextStateRequest(CharacterState.Die);
-                _player.LifeLost();
+                if (_player)
+                {
+                    _player.OnNextStateRequest(CharacterState.Die);
+                    _player.LifeLost();
+                }
             }
+
         }
     }
 }

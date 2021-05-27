@@ -20,6 +20,8 @@ namespace PixelAdventure
         ItemData itemData;
         SlotData slotData;
 
+        public bool isInGodMod;
+
         #region Properties
         public string LevelName { get; set; }
         public bool IsGameOverScreenActive { get; set; }

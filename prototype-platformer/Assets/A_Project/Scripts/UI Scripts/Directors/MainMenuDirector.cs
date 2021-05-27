@@ -15,12 +15,17 @@ namespace PixelAdventure
             Cursor.visible = false;
         }
 
+        private void OnEnable()
+        {
+
+            GameInfo.Instance.HasTransited = false;
+        }
+
         protected override void Start()
         {
             base.Start();
             SetCurrentScreen<MainMenuScreen>().ShowScreen();
             AudioManager.Instance.PlayMusic();
-            GameInfo.Instance.HasTransited = false;
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
