@@ -17,7 +17,6 @@ namespace PixelAdventure
             SetItemState();
         }
 
-
         private void SetItemState()
         {
             for (int i = 0; i < itemContainer.childCount; i++)

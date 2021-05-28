@@ -7,7 +7,6 @@ namespace PixelAdventure
 {
     public class GameInfo : BaseManager<GameInfo>
     {
-        [SerializeField] CheckPointConfig_SO checkPointConfig_SO;
         [SerializeField] CharacterStatsSO charStatsSO;
 
         bool isPlaying;
