@@ -5,18 +5,23 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class Item : MonoBehaviour
+    public abstract class Item : MonoBehaviour, IEquipable
     {
+        [Header("Item Data")]
         [SerializeField] string itemName;
         [SerializeField] bool canBePicked;
         [SerializeField] GameObject display;
 
+        [Header("Provided Ability Data")]
+        [SerializeField] Sprite itemAbilitySprite;
+        [SerializeField] string itemAbilityName;
+
         int index;
         ItemState itemState;
 
-        SpriteRenderer sprR;
+        [SerializeField] SpriteRenderer sprR;
 
-        private void Awake()
+        private void OnEnable()
         {
             sprR = GetComponent<SpriteRenderer>();
         }
@@ -26,6 +31,8 @@ namespace PixelAdventure
         public ItemState ItemState { get => itemState; set => itemState = value; }
         public int Index { get => index; set => index = value; }
         public bool CanBePicked { get => canBePicked; set => canBePicked = value; }
+        public Sprite ItemAbilitySprite { get => itemAbilitySprite; }
+        public string ItemAbilityName { get => itemAbilityName; set => itemAbilityName = value; }
 
         public void Off()
         {
@@ -40,6 +47,14 @@ namespace PixelAdventure
         public void ShowDisplay(bool _value)
         {
             display.SetActive(_value);
+        }
+
+        public virtual void ApplyAbility()
+        {
+        }
+
+        public virtual void LoseAbility()
+        {
         }
     }
 }

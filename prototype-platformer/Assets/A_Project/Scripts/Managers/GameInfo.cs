@@ -16,6 +16,7 @@ namespace PixelAdventure
         AbilityUIData abilityUIData;
         ItemData itemData;
         SlotData slotData;
+        AbilitySlotData abilitySlotData;
 
         public bool isInGodMod;
 
@@ -37,6 +38,7 @@ namespace PixelAdventure
         public AbilityUIData AbilityUIData { get => abilityUIData; }
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         public bool HasTransited { get => hasTransited; set => hasTransited = value; }
+        public AbilitySlotData AbilitySlotData { get => abilitySlotData; }
         #endregion
 
         public void NewGameSetup()
@@ -86,6 +88,11 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
 
 
+            abilitySlotData = new AbilitySlotData();
+            abilitySlotData.InitSlotValues();
+
+            AppPrefs.SetObject(PrefsKeys.ABILITY_SLOT_DATA, abilitySlotData);
+
             isPlaying = true;
         }
 
@@ -128,6 +135,7 @@ namespace PixelAdventure
             itemData = AppPrefs.GetObject<ItemData>(PrefsKeys.ITEM_DATA);
             abilityUIData = AppPrefs.GetObject<AbilityUIData>(PrefsKeys.ABILITY_UI_DATA);
             slotData = AppPrefs.GetObject<SlotData>(PrefsKeys.SLOT_DATA);
+            abilitySlotData = AppPrefs.GetObject<AbilitySlotData>(PrefsKeys.ABILITY_SLOT_DATA);
 
             if (userData == null || charData == null || powerData == null)
             {
@@ -145,6 +153,7 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.ITEM_DATA, itemData);
             AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, abilityUIData);
             AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
+            AppPrefs.SetObject(PrefsKeys.ABILITY_SLOT_DATA, abilitySlotData);
         }
 
         public void Retry()

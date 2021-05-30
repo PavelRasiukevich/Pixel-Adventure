@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4103410077077048871}
   - component: {fileID: 4103410077077048864}
   - component: {fileID: 5732001602012995783}
-  - component: {fileID: 6657067095656655282}
+  - component: {fileID: 4273508936108296249}
   m_Layer: 0
   m_Name: Feather
   m_TagString: Untagged
@@ -255,7 +255,7 @@ PolygonCollider2D:
       - {x: 0.42801666, y: -0.01731348}
       - {x: 0.43761444, y: 0.3222127}
       - {x: 0.39185333, y: 0.40156603}
---- !u!114 &6657067095656655282
+--- !u!114 &4273508936108296249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,12 +264,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4103410077077048866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58406f2f3f8fcb44c99b1c27ea404988, type: 3}
+  m_Script: {fileID: 11500000, guid: 780a0b71f4692b94da7b8f4acb8d0c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  isInteractable: 0
+  itemName: Feather
+  canBePicked: 0
   display: {fileID: 8225401642996086428}
+  itemAbilitySprite: {fileID: 6197441177145146729, guid: 701c5d12cd1890b42af53b94a146c845, type: 3}
+  itemAbilityName: 
 --- !u!1 &8225401642996086428
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ GameObject:
   - component: {fileID: 1185537900879971806}
   - component: {fileID: 2442459419393094706}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

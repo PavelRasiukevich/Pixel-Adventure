@@ -7,6 +7,7 @@ namespace PixelAdventure
 {
     public class FrogController : BaseController
     {
+
         [SerializeField] bool canPick;
         [SerializeField] Item item;
         [SerializeField] Slot slot;
@@ -141,6 +142,8 @@ namespace PixelAdventure
                 GameInfo.Instance.SetItemState(item.Index, ItemState.Picked);
                 GameInfo.Instance.SlotValues[slot.Index] = slot.IsEmpty;
                 GameInfo.Instance.ListOfSprites[slot.Index] = item.Spr;
+
+                ItemPicked.Invoke(item);
             }
             else
             {
