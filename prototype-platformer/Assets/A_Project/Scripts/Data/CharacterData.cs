@@ -46,7 +46,7 @@ namespace PixelAdventure
         public bool HasReloadedFastFall { get => hasReloadedFastFall; set => hasReloadedFastFall = value; }
         public int LiveAmount { get => liveAmount; set => liveAmount = value; }
 
-        public void ReserCoolDown()
+        public void ResetCooldown()
         {
             hasReloadedDash = true;
             hasReloadedDoubleJump = true;

@@ -7,6 +7,10 @@ namespace PixelAdventure
 {
     public class FrogController : BaseController
     {
+        [SerializeField] bool canPick;
+        [SerializeField] Item item;
+        [SerializeField] Slot slot;
+
         FrogMove frogMove;
         FrogFastFall frogFastFall;
         FrogDoubleJump frogDoubleJump;
@@ -70,10 +74,14 @@ namespace PixelAdventure
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var _trampoline = collision.gameObject.GetComponent<Trampoline>();
+            var _enemy = collision.gameObject.GetComponent<IDamaging>();
 
             if (_trampoline)
-            {
                 OnNextStateRequest(CharacterState.TrampolineJump);
+            else if (_enemy != null)
+            {
+                LifeLost.Invoke();
+                OnNextStateRequest(CharacterState.Die);
             }
         }
 
@@ -98,17 +106,45 @@ namespace PixelAdventure
             }
             else if (collision.GetComponent<Item>() != null)
             {
-                var _item = collision.GetComponent<Item>();
-                var _slot = inventory.SlotGroup.FindEmptySlot();
+                item = collision.GetComponent<Item>();
+                item.CanBePicked = true;
+                item.ShowDisplay(item.CanBePicked);
+            }
+        }
 
-                if (_slot)
-                {
-                    _item.Off();
-                    _slot.InputItemInSlot(_item.GetSprite());
-                    GameInfo.Instance.SetItemState(_item.Index, ItemState.Picked);
-                    GameInfo.Instance.SlotValues[_slot.Index] = _slot.IsEmpty;
-                    GameInfo.Instance.ListOfSprites[_slot.Index] = _item.GetSprite();
-                }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.GetComponent<Item>() != null)
+            {
+                item = collision.GetComponent<Item>();
+                item.CanBePicked = false;
+                item.ShowDisplay(item.CanBePicked);
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetAxis("Use") > 0 && item != null && item.CanBePicked)
+            {
+                PickUpItem();
+            }
+        }
+
+        private void PickUpItem()
+        {
+            slot = inventory.SlotGroup.FindEmptySlot();
+
+            if (slot)
+            {
+                item.Off();
+                slot.InputItemInSlot(item);
+                GameInfo.Instance.SetItemState(item.Index, ItemState.Picked);
+                GameInfo.Instance.SlotValues[slot.Index] = slot.IsEmpty;
+                GameInfo.Instance.ListOfSprites[slot.Index] = item.Spr;
+            }
+            else
+            {
+                throw new Exception("No empty slots in inventory");
             }
         }
     }

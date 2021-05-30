@@ -13,5 +13,6 @@ namespace PixelAdventure
         public const string DOUBLE_JUMP = "DOUBLE_JUMP";
         public const string FAST_FALL = "FAST_FALL";
         public const string GEAR_ITEM = "GEAR_ITEM";
+        public const string PEARL = "PEARL";
     }
 }

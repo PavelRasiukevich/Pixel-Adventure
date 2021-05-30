@@ -70,8 +70,8 @@ namespace PixelAdventure
                     dashUIContainer.SetActive(true);
                     GameInfo.Instance.AbilityUIData.IsDashIconVisible = true;
                     break;
-                case Values.GEAR_ITEM:
-                    itemsUIContainer.SetActive(true);
+                case Values.PEARL:
+                    lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
                     break;
             }
         }

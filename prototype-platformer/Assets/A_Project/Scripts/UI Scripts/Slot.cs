@@ -21,9 +21,9 @@ namespace PixelAdventure
                 itemImg.gameObject.SetActive(!IsEmpty);
         }
 
-        public void InputItemInSlot(Sprite _spr)
+        public void InputItemInSlot(Item _item)
         {
-            itemImg.sprite = _spr;
+            itemImg.sprite = _item.Spr;
             IsEmpty = false;
             itemImg.gameObject.SetActive(true);
         }

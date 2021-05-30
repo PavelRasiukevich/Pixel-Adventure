@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -136,7 +134,7 @@ namespace PixelAdventure
                 NewGameSetup();
             }
 
-            charData.ReserCoolDown();
+            charData.ResetCooldown();
         }
 
         public void SaveGameProgress()

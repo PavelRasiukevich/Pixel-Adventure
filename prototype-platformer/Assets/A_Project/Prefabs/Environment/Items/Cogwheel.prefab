@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 799768542322213029}
   - component: {fileID: 799768542322213026}
   - component: {fileID: 799768542322213027}
-  - component: {fileID: 3065453164645348693}
+  - component: {fileID: -2023008911055871121}
   m_Layer: 0
   m_Name: Cogwheel
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57977057, y: 0.5358844}
   m_EdgeRadius: 0
---- !u!114 &3065453164645348693
+--- !u!114 &-2023008911055871121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 799768542322213024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58406f2f3f8fcb44c99b1c27ea404988, type: 3}
+  m_Script: {fileID: 11500000, guid: 780a0b71f4692b94da7b8f4acb8d0c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spr: {fileID: 21300000, guid: 042fae2dd68bce044b8fbd1f26724a2d, type: 3}
