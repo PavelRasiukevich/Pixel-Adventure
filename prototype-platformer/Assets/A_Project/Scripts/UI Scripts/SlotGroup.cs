@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,22 @@ namespace PixelAdventure
 {
     public class SlotGroup : MonoBehaviour
     {
+        public Action<Item> NotifyInventory { get; set; }
+
         [SerializeField] List<Slot> listOfSlots;
+
+        private void OnEnable()
+        {
+            for (int i = 0; i < listOfSlots.Count; i++)
+            {
+                listOfSlots[i].ItemEquiped = Handler;
+            }
+        }
+
+        private void Handler(Item _item)
+        {
+            NotifyInventory.Invoke(_item);
+        }
 
         public void GetSlots()
         {
@@ -20,8 +36,8 @@ namespace PixelAdventure
         {
             for (int i = 0; i < listOfSlots.Count; i++)
             {
-                listOfSlots[i].IsEmpty = GameInfo.Instance.SlotValues[i];
-                listOfSlots[i].SlotSprite = GameInfo.Instance.ListOfSprites[i];
+                listOfSlots[i].IsEmptySlot = GameInfo.Instance.SlotValues[i];
+                listOfSlots[i].SlotContent.ContentSprite = GameInfo.Instance.ListOfSprites[i];
                 listOfSlots[i].Index = i;
             }
         }
@@ -30,7 +46,7 @@ namespace PixelAdventure
         {
             for (int i = 0; i < listOfSlots.Count; i++)
             {
-                if (listOfSlots[i].IsEmpty)
+                if (listOfSlots[i].IsEmptySlot)
                     return listOfSlots[i];
             }
 

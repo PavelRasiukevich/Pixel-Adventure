@@ -42,10 +42,10 @@ namespace PixelAdventure
             character.FastFallHandled = OnFastFallReloadTimer;
             character.DoubleJumpHandled = OnDoubleJumpReloadTimer;
             character.PowerUpConsumed = OnPowerUpConsumedHandler;
-            character.ItemPicked = OnItemPickedHandler;
+            character.ItemEquiped = OnItemEquipedHandler;
         }
 
-        private void OnItemPickedHandler(Item _item)
+        private void OnItemEquipedHandler(Item _item)
         {
             var _abiltySlot = abilityGroup.FindEmptyAbilitySlot();
 
