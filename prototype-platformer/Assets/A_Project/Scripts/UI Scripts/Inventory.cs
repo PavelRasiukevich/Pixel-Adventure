@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -12,14 +10,17 @@ namespace PixelAdventure
         [SerializeField] bool isOpened;
         [SerializeField] GameObject inv;
         [SerializeField] SlotGroup slotGroup;
+        [SerializeField] EquipmentSlotGroup equipmentSlotGroup;
 
         public SlotGroup SlotGroup { get => slotGroup; set => slotGroup = value; }
+        public EquipmentSlotGroup EquipmentSlotGroup { get => equipmentSlotGroup; set => equipmentSlotGroup = value; }
 
         private void Awake()
         {
             slotGroup.GetSlots();
             slotGroup.SetSlotOccupation();
             slotGroup.NotifyInventory = Handler;
+
         }
 
         private void Handler(Item _item)
@@ -40,12 +41,18 @@ namespace PixelAdventure
 
         private void CloseInventory()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             inv.SetActive(false);
             isOpened = !isOpened;
         }
 
         private void OpenInventory()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             inv.SetActive(true);
             isOpened = !isOpened;
         }

@@ -6,6 +6,6 @@ namespace PixelAdventure
 {
     public class EquipmentSlotGroup : MonoBehaviour
     {
-
+       
     }
 }

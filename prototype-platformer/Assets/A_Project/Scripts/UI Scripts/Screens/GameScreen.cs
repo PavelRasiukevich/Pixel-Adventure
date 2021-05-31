@@ -47,6 +47,7 @@ namespace PixelAdventure
 
         private void OnItemEquipedHandler(Item _item)
         {
+
             var _abiltySlot = abilityGroup.FindEmptyAbilitySlot();
 
             if (_abiltySlot)
