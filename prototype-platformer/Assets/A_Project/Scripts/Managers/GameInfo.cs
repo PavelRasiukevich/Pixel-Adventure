@@ -30,8 +30,10 @@ namespace PixelAdventure
         public List<PowerUpStates> PowerUps => powerData.PowerUps;
         public List<ItemState> ItemStates => itemData.ListOfItemStates;
 
-        public List<bool> SlotValues => slotData.ListOfValues;
+        public List<bool> SlotFullness => slotData.ListOfFullness;
         public List<Sprite> ListOfSprites => slotData.ListOfSprites;
+        public List<ItemModel> ListOfItems => slotData.ListOfItems;
+
 
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
 

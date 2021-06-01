@@ -7,17 +7,21 @@ namespace PixelAdventure
     [Serializable]
     public class SlotData
     {
-        [SerializeField] List<bool> listOfValues;
+        [SerializeField] List<bool> listOfFullness;
         [SerializeField] List<Sprite> listOfSprites;
+        [SerializeField] List<ItemModel> listOfItems;
+
 
         public SlotData()
         {
-            listOfValues = new List<bool>();
+            listOfFullness = new List<bool>();
             listOfSprites = new List<Sprite>();
+            listOfItems = new List<ItemModel>();
         }
 
-        public List<bool> ListOfValues { get => listOfValues;}
+        public List<bool> ListOfFullness { get => listOfFullness; }
         public List<Sprite> ListOfSprites { get => listOfSprites; }
+        public List<ItemModel> ListOfItems { get => listOfItems; }
 
         /// <summary>
         /// Initializes slots with default values
@@ -26,9 +30,12 @@ namespace PixelAdventure
         {
             for (int i = 0; i < 16; i++)
             {
-                listOfValues.Add(true);
+                listOfFullness.Add(true);
                 listOfSprites.Add(null);
+                listOfItems.Add(null);
             }
         }
+
+       
     }
 }

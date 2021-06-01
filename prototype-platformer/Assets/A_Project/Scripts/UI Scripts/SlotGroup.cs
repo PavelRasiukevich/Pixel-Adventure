@@ -7,8 +7,8 @@ namespace PixelAdventure
 {
     public class SlotGroup : MonoBehaviour
     {
-        public Action<Item> NotifyInventoryAboutEquip { get; set; }
-        public Action<Item> NotifyInventoryAboutUnequip { get; set; }
+        public Action<ItemModel> NotifyInventoryAboutEquip { get; set; }
+        public Action<ItemModel> NotifyInventoryAboutUnequip { get; set; }
 
         [SerializeField] List<Slot> listOfSlots;
         [SerializeField] SlotContent[] slotContentToSwap;
@@ -40,12 +40,12 @@ namespace PixelAdventure
             }
         }
 
-        private void UnequipedHander(Item _item)
+        private void UnequipedHander(ItemModel _item)
         {
             NotifyInventoryAboutUnequip.Invoke(_item);
         }
 
-        private void EquipedHandler(Item _item)
+        private void EquipedHandler(ItemModel _item)
         {
             NotifyInventoryAboutEquip.Invoke(_item);
         }
@@ -148,6 +148,14 @@ namespace PixelAdventure
             {
                 slotContentToSwap[i].ParentSlot.RefreshslotDisplay();
             }
+
+            GameInfo.Instance.SlotFullness[startSlot.Index] = startSlot.IsEmptySlot;
+            GameInfo.Instance.ListOfSprites[startSlot.Index] = startSlot.SlotContent.SlotContentImage;
+            GameInfo.Instance.ListOfItems[startSlot.Index] = startSlot.SlotContent.Item;
+
+            GameInfo.Instance.SlotFullness[endSlot.Index] = endSlot.IsEmptySlot;
+            GameInfo.Instance.ListOfSprites[endSlot.Index] = endSlot.SlotContent.SlotContentImage;
+            GameInfo.Instance.ListOfItems[endSlot.Index] = endSlot.SlotContent.Item;
         }
 
         public void GetSlots()
@@ -167,8 +175,9 @@ namespace PixelAdventure
         {
             for (int i = 0; i < listOfSlots.Count; i++)
             {
-                listOfSlots[i].IsEmptySlot = GameInfo.Instance.SlotValues[i];
+                listOfSlots[i].IsEmptySlot = GameInfo.Instance.SlotFullness[i];
                 listOfSlots[i].SlotContent.SlotContentImage = GameInfo.Instance.ListOfSprites[i];
+                listOfSlots[i].SlotContent.Item = GameInfo.Instance.ListOfItems[i];
                 listOfSlots[i].Index = i;
             }
         }
@@ -177,7 +186,7 @@ namespace PixelAdventure
         {
             for (int i = 0; i < listOfSlots.Count; i++)
             {
-                if (listOfSlots[i].IsEmptySlot)
+                if (listOfSlots[i].IsEmptySlot && !listOfSlots[i].IsEquipmentSlot)
                     return listOfSlots[i];
             }
 

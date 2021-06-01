@@ -5,8 +5,8 @@ namespace PixelAdventure
 {
     public class Slot : MonoBehaviour
     {
-        public Action<Item> Equiped { get; set; }
-        public Action<Item> Unequiped { get; set; }
+        public Action<ItemModel> Equiped { get; set; }
+        public Action<ItemModel> Unequiped { get; set; }
 
         [SerializeField] SlotContent slotContent;
 
@@ -37,19 +37,19 @@ namespace PixelAdventure
         public void InputItemInSlot(Item _item)
         {
             IsEmptySlot = false;
-            SlotContent.SlotContentImage = _item.ItemSprite;
-            SlotContent.Item = _item;
+            SlotContent.SlotContentImage = _item.ItemModel.itemSprite;
+            SlotContent.Item = _item.ItemModel;
+
+            //save to appprefs
         }
 
-        public void EquipItem(Item _item)
+        public void EquipItem(ItemModel _item)
         {
-            Debug.Log("EQUIPED");
             Equiped.Invoke(_item);
         }
 
-        public void UnEquipItem(Item item)
+        public void UnEquipItem(ItemModel item)
         {
-            Debug.Log("UNEQUIPED");
             Unequiped.Invoke(item);
         }
     }

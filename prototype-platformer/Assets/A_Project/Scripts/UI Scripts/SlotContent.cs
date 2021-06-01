@@ -11,10 +11,10 @@ namespace PixelAdventure
         public Action<SlotContent> ItemDroped { get; set; }
 
         [SerializeField] Image slotContentImage;
-        [SerializeField] Item item;
+        [SerializeField] ItemModel item;
 
 
-        public Item Item { get => item; set => item = value; }
+        public ItemModel Item { get => item; set => item = value; }
         public Sprite SlotContentImage { get => slotContentImage.sprite; set => slotContentImage.sprite = value; }
         public Slot ParentSlot { get => GetComponentInParent<Slot>(); }
 

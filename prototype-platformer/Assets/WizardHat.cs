@@ -4,18 +4,7 @@ namespace PixelAdventure
     {
         private void Awake()
         {
-            ItemAbilityName = Values.DASH;
-        }
-
-        public override void ApplyAbility()
-        {
-            GameInfo.Instance.CharData.HasDash = true;
-        }
-
-        public override void LoseAbility()
-        {
-            base.LoseAbility();
-            GameInfo.Instance.CharData.HasDash = false;
+            ItemModel.itemAbilityName = Values.DASH;
         }
     }
 }

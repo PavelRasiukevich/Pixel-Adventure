@@ -1,4 +1,3 @@
-using PixelAdventure.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -35,12 +34,12 @@ namespace PixelAdventure
             inventory.NotifyPlayerAboutUnequip = UnequipHadler;
         }
 
-        private void UnequipHadler(Item _item)
+        private void UnequipHadler(ItemModel _item)
         {
             ItemUnEquiped.Invoke(_item);
         }
 
-        private void EquipHandler(Item _item)
+        private void EquipHandler(ItemModel _item)
         {
             ItemEquiped.Invoke(_item);
         }
@@ -120,8 +119,8 @@ namespace PixelAdventure
             else if (collision.GetComponent<Item>() != null)
             {
                 item = collision.GetComponent<Item>();
-                item.CanBePicked = true;
-                item.ShowDisplay(item.CanBePicked);
+                item.ItemModel.canBePicked = true;
+                item.ShowDisplay(item.ItemModel.canBePicked);
             }
         }
 
@@ -130,14 +129,14 @@ namespace PixelAdventure
             if (collision.GetComponent<Item>() != null)
             {
                 item = collision.GetComponent<Item>();
-                item.CanBePicked = false;
-                item.ShowDisplay(item.CanBePicked);
+                item.ItemModel.canBePicked = false;
+                item.ShowDisplay(item.ItemModel.canBePicked);
             }
         }
 
         private void Update()
         {
-            if (Input.GetAxis("Use") > 0 && item != null && item.CanBePicked)
+            if (Input.GetAxis("Use") > 0 && item != null && item.ItemModel.canBePicked)
             {
                 PickUpItem();
             }
@@ -152,9 +151,9 @@ namespace PixelAdventure
                 item.Off();
                 slot.InputItemInSlot(item);
                 GameInfo.Instance.SetItemState(item.Index, ItemState.Picked);
-                GameInfo.Instance.SlotValues[slot.Index] = slot.IsEmptySlot;
-                GameInfo.Instance.ListOfSprites[slot.Index] = item.ItemSprite;
-
+                GameInfo.Instance.SlotFullness[slot.Index] = slot.IsEmptySlot;
+                GameInfo.Instance.ListOfSprites[slot.Index] = item.ItemModel.itemSprite;
+                GameInfo.Instance.ListOfItems[slot.Index] = item.ItemModel;
             }
             else
             {

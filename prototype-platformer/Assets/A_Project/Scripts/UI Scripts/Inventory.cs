@@ -5,8 +5,8 @@ namespace PixelAdventure
 {
     public class Inventory : MonoBehaviour
     {
-        public Action<Item> NotifyPlayerAboutEquip { get; set; }
-        public Action<Item> NotifyPlayerAboutUnequip { get; set; }
+        public Action<ItemModel> NotifyPlayerAboutEquip { get; set; }
+        public Action<ItemModel> NotifyPlayerAboutUnequip { get; set; }
 
         [SerializeField] bool isOpened;
 
@@ -26,12 +26,12 @@ namespace PixelAdventure
             slotGroup.NotifyInventoryAboutUnequip = UnequipHanler;
         }
 
-        private void UnequipHanler(Item _item)
+        private void UnequipHanler(ItemModel _item)
         {
             NotifyPlayerAboutUnequip.Invoke(_item);
         }
 
-        private void EquipHandler(Item _item)
+        private void EquipHandler(ItemModel _item)
         {
             NotifyPlayerAboutEquip.Invoke(_item);
         }

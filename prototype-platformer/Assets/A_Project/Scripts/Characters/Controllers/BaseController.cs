@@ -36,8 +36,8 @@ namespace PixelAdventure
         public Action DashHandled { get; set; }
         public Action FastFallHandled { get; set; }
         public Action DoubleJumpHandled { get; set; }
-        public Action<Item> ItemEquiped { get; set; }
-        public Action<Item> ItemUnEquiped { get; set; }
+        public Action<ItemModel> ItemEquiped { get; set; }
+        public Action<ItemModel> ItemUnEquiped { get; set; }
         public Action<string> PowerUpConsumed { get; set; }
         public Action<CameraBoundValues> ChangeCameraBound { get; set; }
         #endregion

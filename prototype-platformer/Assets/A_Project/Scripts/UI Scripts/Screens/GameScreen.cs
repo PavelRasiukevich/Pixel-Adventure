@@ -1,11 +1,5 @@
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -24,10 +18,6 @@ namespace PixelAdventure
         AbilitySlot doubleJump;
         AbilitySlot fastFall;
         AbilitySlot dash;
-
-        AbilitySlot abiltySlot;
-
-        List<AbilitySlot> abilitySlotList;
 
         public override void ShowScreen()
         {
@@ -51,28 +41,24 @@ namespace PixelAdventure
             character.ItemUnEquiped = OnItemUnEquipHandler;
         }
 
-        private void OnItemUnEquipHandler(Item _item)
+        private void OnItemUnEquipHandler(ItemModel _item)
         {
-            var _abilitySlot = abilityGroup.GetAbilitySlotByName(_item.ItemAbilityName);
+            var _abilitySlot = abilityGroup.GetAbilitySlotByName(_item.itemAbilityName);
 
-            Debug.Log(_abilitySlot);
-
-            _item.LoseAbility();
+            _item.Lose(_item.itemAbilityName);
             _abilitySlot.SetupAbilitySlot(null, string.Empty, true);
             _abilitySlot.SetPropsToDataManager();
         }
 
-        private void OnItemEquipedHandler(Item _item)
+        private void OnItemEquipedHandler(ItemModel _item)
         {
             var _abilitySlot = abilityGroup.FindEmptyAbilitySlot();
 
-
             if (_abilitySlot)
             {
-                _item.ApplyAbility();
-                _abilitySlot.SetupAbilitySlot(_item.ItemAbilitySprite, _item.ItemAbilityName, false);
+                _item.Apply(_item.itemAbilityName);
+                _abilitySlot.SetupAbilitySlot(_item.itemAbilitySprite, _item.itemAbilityName, false);
                 _abilitySlot.SetPropsToDataManager();
-                Debug.Log(_abilitySlot.Name);
             }
         }
 

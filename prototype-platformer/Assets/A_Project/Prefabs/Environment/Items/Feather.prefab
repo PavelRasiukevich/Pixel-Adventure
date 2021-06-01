@@ -267,11 +267,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780a0b71f4692b94da7b8f4acb8d0c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemModel:
+    itemName: Feather
+    canBePicked: 0
+    itemSprite: {fileID: 0}
+    itemAbilitySprite: {fileID: 6197441177145146729, guid: 701c5d12cd1890b42af53b94a146c845, type: 3}
+    itemAbilityName: 
+    index: 0
+    itemState: 0
+    sprR: {fileID: 0}
   itemName: Feather
   canBePicked: 0
   display: {fileID: 8225401642996086428}
+  itemSprite: {fileID: 0}
   itemAbilitySprite: {fileID: 6197441177145146729, guid: 701c5d12cd1890b42af53b94a146c845, type: 3}
   itemAbilityName: 
+  sprR: {fileID: 0}
 --- !u!1 &8225401642996086428
 GameObject:
   m_ObjectHideFlags: 0

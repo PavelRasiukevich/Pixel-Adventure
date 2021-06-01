@@ -266,12 +266,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fca4fa344bc1a0499eff847aca5e758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: WizardHat
-  canBePicked: 0
+  itemModel:
+    itemName: WizardHat
+    canBePicked: 0
+    itemSprite: {fileID: 0}
+    itemAbilitySprite: {fileID: -1430444895079866630, guid: 94ebd3411b3bcb34d889d9710ed99cb6, type: 3}
+    itemAbilityName: 
   display: {fileID: 8225401642996086428}
-  itemAbilitySprite: {fileID: -1430444895079866630, guid: 94ebd3411b3bcb34d889d9710ed99cb6, type: 3}
-  itemAbilityName: 
-  sprR: {fileID: 0}
 --- !u!1 &8225401642996086428
 GameObject:
   m_ObjectHideFlags: 0
