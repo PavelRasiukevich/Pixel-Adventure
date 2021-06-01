@@ -7,71 +7,147 @@ namespace PixelAdventure
 {
     public class SlotGroup : MonoBehaviour
     {
-        public Action<Item> NotifyInventory { get; set; }
+        public Action<Item> NotifyInventoryAboutEquip { get; set; }
+        public Action<Item> NotifyInventoryAboutUnequip { get; set; }
 
         [SerializeField] List<Slot> listOfSlots;
-        [SerializeField] SlotContent[] arrayOfSlotContentToSwap;
-        [SerializeField] EquipmentSlotGroup equipment;
+        [SerializeField] SlotContent[] slotContentToSwap;
+        [SerializeField] EquipmentSlotGroup equipmentGroup;
+
+        Slot startSlot;
+        Slot endSlot;
 
         private void Awake()
         {
-            arrayOfSlotContentToSwap = new SlotContent[2];
+            slotContentToSwap = new SlotContent[2];
         }
 
         private void OnEnable()
         {
             for (int i = 0; i < listOfSlots.Count; i++)
             {
-                listOfSlots[i].Equiped = Equipedhandler;
+                listOfSlots[i].Equiped = EquipedHandler;
+                listOfSlots[i].Unequiped = UnequipedHander;
                 listOfSlots[i].SlotContent.ItemClicked = ItemClickedHandler;
                 listOfSlots[i].SlotContent.ItemDroped = ItemDropedHandler;
             }
 
-            for (int i = 0; i < equipment.transform.childCount; i++)
+            for (int i = 0; i < equipmentGroup.transform.childCount; i++)
             {
-                equipment.transform.GetChild(i).GetComponent<Slot>().SlotContent.ItemClicked = ItemClickedHandler;
-                equipment.transform.GetChild(i).GetComponent<Slot>().SlotContent.ItemDroped = ItemDropedHandler;
-                equipment.transform.GetChild(i).GetComponent<Slot>().Equiped = Equipedhandler;
+                equipmentGroup.transform.GetChild(i).GetComponent<Slot>().SlotContent.ItemClicked = ItemClickedHandler;
+                equipmentGroup.transform.GetChild(i).GetComponent<Slot>().SlotContent.ItemDroped = ItemDropedHandler;
+                equipmentGroup.transform.GetChild(i).GetComponent<Slot>().Equiped = EquipedHandler;
             }
         }
 
-        private void Equipedhandler(Item _item)
+        private void UnequipedHander(Item _item)
         {
-            NotifyInventory.Invoke(_item);
+            NotifyInventoryAboutUnequip.Invoke(_item);
+        }
+
+        private void EquipedHandler(Item _item)
+        {
+            NotifyInventoryAboutEquip.Invoke(_item);
         }
 
         private void ItemDropedHandler(SlotContent _slotContent)
         {
-            arrayOfSlotContentToSwap[1] = _slotContent;
-            SwapSlotContent();
+            slotContentToSwap[1] = _slotContent;
+            endSlot = slotContentToSwap[1].ParentSlot;
 
+            SlotSwitchHandler();
+        }
+
+        private void SlotSwitchHandler()
+        {
+            if (endSlot.IsEquipmentSlot == true)
+            {
+                if (startSlot.IsEmptySlot == false)
+                {
+                    if (endSlot.IsEmptySlot == true)
+                    {
+                        if (startSlot.IsEquipmentSlot == false)
+                        {
+                            SwapSlotContent();
+                            endSlot.EquipItem(endSlot.SlotContent.Item);
+                        }
+                        else
+                        {
+                            SwapSlotContent();
+                        }
+                    }
+                    else
+                    {
+                        if (startSlot.IsEquipmentSlot)
+                        {
+                            SwapSlotContent();
+                        }
+                        else
+                        {
+                            endSlot.UnEquipItem(endSlot.SlotContent.Item);
+                            SwapSlotContent();
+                            endSlot.EquipItem(endSlot.SlotContent.Item);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (startSlot.IsEmptySlot == false)
+                {
+                    if (endSlot.IsEmptySlot == true)
+                    {
+                        if (startSlot.IsEquipmentSlot == true)
+                        {
+                            startSlot.UnEquipItem(startSlot.SlotContent.Item);
+                            SwapSlotContent();
+                        }
+                        else
+                        {
+                            SwapSlotContent();
+                        }
+                    }
+                    else
+                    {
+                        if (startSlot.IsEquipmentSlot == true)
+                        {
+                            startSlot.UnEquipItem(startSlot.SlotContent.Item);
+                            SwapSlotContent();
+                            startSlot.EquipItem(startSlot.SlotContent.Item);
+                        }
+                        else
+                        {
+                            SwapSlotContent();
+                        }
+                    }
+                }
+            }
         }
 
         private void ItemClickedHandler(SlotContent _slotContent)
         {
-            arrayOfSlotContentToSwap[0] = _slotContent;
+            slotContentToSwap[0] = _slotContent;
+            startSlot = slotContentToSwap[0].ParentSlot;
         }
 
         private void SwapSlotContent()
         {
-            var _temp = arrayOfSlotContentToSwap[0].transform.parent;
-            arrayOfSlotContentToSwap[0].transform.SetParent(arrayOfSlotContentToSwap[1].transform.parent);
-            arrayOfSlotContentToSwap[1].transform.SetParent(_temp);
+            var _tempSprite = slotContentToSwap[0].SlotContentImage;
+            slotContentToSwap[0].SlotContentImage = slotContentToSwap[1].SlotContentImage;
+            slotContentToSwap[1].SlotContentImage = _tempSprite;
 
-            arrayOfSlotContentToSwap[0].transform.localPosition = Vector3.zero;
-            arrayOfSlotContentToSwap[1].transform.localPosition = Vector3.zero;
+            var _tempItem = slotContentToSwap[0].Item;
+            slotContentToSwap[0].Item = slotContentToSwap[1].Item;
+            slotContentToSwap[1].Item = _tempItem;
 
+            var _tempSpace = slotContentToSwap[0].ParentSlot.IsEmptySlot;
+            slotContentToSwap[0].ParentSlot.IsEmptySlot = slotContentToSwap[1].ParentSlot.IsEmptySlot;
+            slotContentToSwap[1].ParentSlot.IsEmptySlot = _tempSpace;
 
-            var _slot1 = arrayOfSlotContentToSwap[0].GetParentSlot();
-            var _slot2 = arrayOfSlotContentToSwap[1].GetParentSlot();
-
-
-            _slot1.SlotContent = arrayOfSlotContentToSwap[0];
-            _slot2.SlotContent = arrayOfSlotContentToSwap[1];
-
-            _slot1.CheckForEquipment();
-            _slot2.CheckForEquipment();
-
+            for (int i = 0; i < slotContentToSwap.Length; i++)
+            {
+                slotContentToSwap[i].ParentSlot.RefreshslotDisplay();
+            }
         }
 
         public void GetSlots()
@@ -80,6 +156,11 @@ namespace PixelAdventure
             {
                 listOfSlots.Add(transform.GetChild(i).GetComponent<Slot>());
             }
+
+            for (int i = 0; i < equipmentGroup.transform.childCount; i++)
+            {
+                listOfSlots.Add(equipmentGroup.transform.GetChild(i).GetComponent<Slot>());
+            }
         }
 
         public void SetSlotOccupation()
@@ -87,7 +168,7 @@ namespace PixelAdventure
             for (int i = 0; i < listOfSlots.Count; i++)
             {
                 listOfSlots[i].IsEmptySlot = GameInfo.Instance.SlotValues[i];
-                listOfSlots[i].SlotContent.ContentSprite = GameInfo.Instance.ListOfSprites[i];
+                listOfSlots[i].SlotContent.SlotContentImage = GameInfo.Instance.ListOfSprites[i];
                 listOfSlots[i].Index = i;
             }
         }

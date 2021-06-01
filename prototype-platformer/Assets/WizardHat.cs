@@ -15,6 +15,7 @@ namespace PixelAdventure
         public override void LoseAbility()
         {
             base.LoseAbility();
+            GameInfo.Instance.CharData.HasDash = false;
         }
     }
 }

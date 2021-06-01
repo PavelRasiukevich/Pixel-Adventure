@@ -5,27 +5,35 @@ namespace PixelAdventure
 {
     public class Inventory : MonoBehaviour
     {
-        public Action<Item> NotifyPlayer { get; set; }
+        public Action<Item> NotifyPlayerAboutEquip { get; set; }
+        public Action<Item> NotifyPlayerAboutUnequip { get; set; }
 
         [SerializeField] bool isOpened;
-        [SerializeField] GameObject inv;
+
+        [SerializeField] GameObject holder;
         [SerializeField] SlotGroup slotGroup;
         [SerializeField] EquipmentSlotGroup equipmentSlotGroup;
 
-        public SlotGroup SlotGroup { get => slotGroup; set => slotGroup = value; }
-        public EquipmentSlotGroup EquipmentSlotGroup { get => equipmentSlotGroup; set => equipmentSlotGroup = value; }
+        public SlotGroup SlotGroup { get => slotGroup; }
+        public EquipmentSlotGroup EquipmentSlotGroup { get => equipmentSlotGroup; }
+        public GameObject Holder { get => holder; }
 
         private void Awake()
         {
             slotGroup.GetSlots();
             slotGroup.SetSlotOccupation();
-            slotGroup.NotifyInventory = Handler;
-
+            slotGroup.NotifyInventoryAboutEquip = EquipHandler;
+            slotGroup.NotifyInventoryAboutUnequip = UnequipHanler;
         }
 
-        private void Handler(Item _item)
+        private void UnequipHanler(Item _item)
         {
-            NotifyPlayer.Invoke(_item);
+            NotifyPlayerAboutUnequip.Invoke(_item);
+        }
+
+        private void EquipHandler(Item _item)
+        {
+            NotifyPlayerAboutEquip.Invoke(_item);
         }
 
         private void Update()
@@ -44,7 +52,7 @@ namespace PixelAdventure
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            inv.SetActive(false);
+            holder.SetActive(false);
             isOpened = !isOpened;
         }
 
@@ -53,7 +61,7 @@ namespace PixelAdventure
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            inv.SetActive(true);
+            holder.SetActive(true);
             isOpened = !isOpened;
         }
     }

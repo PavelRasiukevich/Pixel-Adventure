@@ -31,10 +31,16 @@ namespace PixelAdventure
             frogMove.PlayerUsedDash = OnDashPlayerHandler;
             frogFastFall.FastFallUsed = OnFastFallPlayerHandler;
             frogDoubleJump.DoubleJumpUsed = OnDoubleJumpPlayerHandler;
-            inventory.NotifyPlayer = Handler;
+            inventory.NotifyPlayerAboutEquip = EquipHandler;
+            inventory.NotifyPlayerAboutUnequip = UnequipHadler;
         }
 
-        private void Handler(Item _item)
+        private void UnequipHadler(Item _item)
+        {
+            ItemUnEquiped.Invoke(_item);
+        }
+
+        private void EquipHandler(Item _item)
         {
             ItemEquiped.Invoke(_item);
         }
@@ -147,7 +153,7 @@ namespace PixelAdventure
                 slot.InputItemInSlot(item);
                 GameInfo.Instance.SetItemState(item.Index, ItemState.Picked);
                 GameInfo.Instance.SlotValues[slot.Index] = slot.IsEmptySlot;
-                GameInfo.Instance.ListOfSprites[slot.Index] = item.Spr;
+                GameInfo.Instance.ListOfSprites[slot.Index] = item.ItemSprite;
 
             }
             else

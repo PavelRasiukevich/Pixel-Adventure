@@ -7,27 +7,31 @@ namespace PixelAdventure
 {
     public class SlotContent : MonoBehaviour
     {
-        public Action<SlotContent> ItemClicked { get; set; } 
-        public Action<SlotContent> ItemDroped { get; set; } 
+        public Action<SlotContent> ItemClicked { get; set; }
+        public Action<SlotContent> ItemDroped { get; set; }
 
-        [SerializeField] Image itemImg;
+        [SerializeField] Image slotContentImage;
         [SerializeField] Item item;
 
-        public Sprite ContentSprite { get => itemImg.sprite; set => itemImg.sprite = value; }
+
         public Item Item { get => item; set => item = value; }
+        public Sprite SlotContentImage { get => slotContentImage.sprite; set => slotContentImage.sprite = value; }
+        public Slot ParentSlot { get => GetComponentInParent<Slot>(); }
+
+
 
         public void ShowSlotContent()
         {
-            var _color = itemImg.color;
+            var _color = slotContentImage.color;
             _color.a = 255;
-            itemImg.color = _color;
+            slotContentImage.color = _color;
         }
 
         public void HideSlotContent()
         {
-            var _color = itemImg.color;
+            var _color = slotContentImage.color;
             _color.a = 0;
-            itemImg.color = _color;
+            slotContentImage.color = _color;
         }
 
         public void OnPointerDown(BaseEventData _eventData)
@@ -35,15 +39,9 @@ namespace PixelAdventure
             ItemClicked.Invoke(this);
         }
 
-
         public void OnPointerUp(BaseEventData _eventData)
         {
             ItemDroped.Invoke(this);
-        }
-
-        public Slot GetParentSlot()
-        {
-           return transform.parent.GetComponent<Slot>();
         }
     }
 }

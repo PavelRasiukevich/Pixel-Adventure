@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -8,11 +6,15 @@ namespace PixelAdventure
     public class Slot : MonoBehaviour
     {
         public Action<Item> Equiped { get; set; }
+        public Action<Item> Unequiped { get; set; }
 
         [SerializeField] SlotContent slotContent;
+
         [SerializeField] bool isEmptySlot;
         [SerializeField] bool isEquipmentSlot;
+
         [SerializeField] int index;
+
 
         public SlotContent SlotContent { get => slotContent; set => slotContent = value; }
         public bool IsEmptySlot { get => isEmptySlot; set => isEmptySlot = value; }
@@ -20,6 +22,11 @@ namespace PixelAdventure
         public bool IsEquipmentSlot { get => isEquipmentSlot; }
 
         private void OnEnable()
+        {
+            RefreshslotDisplay();
+        }
+
+        public void RefreshslotDisplay()
         {
             if (IsEmptySlot == true)
                 slotContent.HideSlotContent();
@@ -30,36 +37,20 @@ namespace PixelAdventure
         public void InputItemInSlot(Item _item)
         {
             IsEmptySlot = false;
-            SlotContent.ContentSprite = _item.Spr;
+            SlotContent.SlotContentImage = _item.ItemSprite;
             SlotContent.Item = _item;
-            Debug.Log(slotContent.Item.ItemName);
-        }
-
-        public void CheckForEquipment()
-        {
-            if (isEquipmentSlot)
-            {
-                Debug.Log(gameObject.name);
-                Debug.Log(SlotContent.name);
-
-                var _item = SlotContent.Item;
-
-                if (IsEmptySlot == false)
-                {
-                    if (_item)
-                        EquipItem(_item);
-                }
-            }
         }
 
         public void EquipItem(Item _item)
         {
+            Debug.Log("EQUIPED");
             Equiped.Invoke(_item);
         }
 
-        public void UnEquipItem()
+        public void UnEquipItem(Item item)
         {
-
+            Debug.Log("UNEQUIPED");
+            Unequiped.Invoke(item);
         }
     }
 }

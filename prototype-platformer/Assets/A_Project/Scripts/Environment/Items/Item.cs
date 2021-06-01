@@ -11,6 +11,7 @@ namespace PixelAdventure
         [SerializeField] string itemName;
         [SerializeField] bool canBePicked;
         [SerializeField] GameObject display;
+        [SerializeField] Sprite itemSprite;
 
         [Header("Provided Ability Data")]
         [SerializeField] Sprite itemAbilitySprite;
@@ -23,11 +24,11 @@ namespace PixelAdventure
 
         private void OnEnable()
         {
-            sprR = GetComponent<SpriteRenderer>();
+            itemSprite = GetComponent<SpriteRenderer>().sprite;
         }
 
+        public Sprite ItemSprite { get => itemSprite; }
         public string ItemName { get => itemName; }
-        public Sprite Spr { get => sprR.sprite; }
         public ItemState ItemState { get => itemState; set => itemState = value; }
         public int Index { get => index; set => index = value; }
         public bool CanBePicked { get => canBePicked; set => canBePicked = value; }

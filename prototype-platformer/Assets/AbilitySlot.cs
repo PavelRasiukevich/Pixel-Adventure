@@ -19,9 +19,9 @@ namespace PixelAdventure
         public Image BackImg { get => backImg; set => backImg = value; }
 
 
-        public void SetupAbilitySlot(Sprite _spr, string _name)
+        public void SetupAbilitySlot(Sprite _spr, string _name, bool _value)
         {
-            IsEmpty = false;
+            IsEmpty = _value;
             fillImg.sprite = _spr;
             backImg.sprite = _spr;
             name = _name;
