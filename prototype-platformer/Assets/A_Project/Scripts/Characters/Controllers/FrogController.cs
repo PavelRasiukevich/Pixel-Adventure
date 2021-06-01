@@ -8,12 +8,14 @@ namespace PixelAdventure
     {
 
         [SerializeField] bool canPick;
+        [SerializeField] bool canSpeakWithNPC;
         [SerializeField] Item item;
         [SerializeField] Slot slot;
-
+      
         FrogMove frogMove;
         FrogFastFall frogFastFall;
         FrogDoubleJump frogDoubleJump;
+        InDialogState inDialog;
 
         private new void Awake()
         {
@@ -22,16 +24,24 @@ namespace PixelAdventure
             frogMove = listOfStates.Find(_s => _s.State.Equals(CharacterState.Move)) as FrogMove;
             frogFastFall = listOfStates.Find(_s => _s.State.Equals(CharacterState.FastFall)) as FrogFastFall;
             frogDoubleJump = listOfStates.Find(_s => _s.State.Equals(CharacterState.DoubleJump)) as FrogDoubleJump;
+            inDialog = listOfStates.Find(_s => _s.State.Equals(CharacterState.Dialog)) as InDialogState;
         }
 
         private new void OnEnable()
         {
             base.OnEnable();
+            inDialog.SkipFrase = OnSkipFraseHandler;
             frogMove.PlayerUsedDash = OnDashPlayerHandler;
             frogFastFall.FastFallUsed = OnFastFallPlayerHandler;
             frogDoubleJump.DoubleJumpUsed = OnDoubleJumpPlayerHandler;
             inventory.NotifyPlayerAboutEquip = EquipHandler;
             inventory.NotifyPlayerAboutUnequip = UnequipHadler;
+        }
+
+
+        private void OnSkipFraseHandler()
+        {
+            NextFrase.Invoke();
         }
 
         private void UnequipHadler(ItemModel _item)
@@ -97,40 +107,52 @@ namespace PixelAdventure
             }
         }
 
-        private new void OnTriggerEnter2D(Collider2D collision)
+        private new void OnTriggerEnter2D(Collider2D trigger)
         {
-            base.OnTriggerEnter2D(collision);
+            base.OnTriggerEnter2D(trigger);
 
-            if (collision.GetComponent<IPowerUp>() != null)
+            if (trigger.GetComponent<IPowerUp>() != null)
             {
-                var _power = collision.GetComponent<IPowerUp>();
+                var _power = trigger.GetComponent<IPowerUp>();
 
                 _power.AddBonusValue();
                 GetRewardPoints.Invoke();
                 PowerUpConsumed.Invoke(_power.GetName);
 
             }
-            else if (collision.GetComponent<CameraBoundSwitcher>() != null)
+            else if (trigger.GetComponent<CameraBoundSwitcher>() != null)
             {
-                var _col = collision.GetComponent<CameraBoundSwitcher>().Values;
+                var _col = trigger.GetComponent<CameraBoundSwitcher>().Values;
                 GameInfo.Instance.KeepCameraBounds(_col);
                 ChangeCameraBound.Invoke(_col);
             }
-            else if (collision.GetComponent<Item>() != null)
+            else if (trigger.GetComponent<Item>() != null)
             {
-                item = collision.GetComponent<Item>();
+                item = trigger.GetComponent<Item>();
                 item.ItemModel.canBePicked = true;
                 item.ShowDisplay(item.ItemModel.canBePicked);
             }
+
+            else if (trigger.GetComponent<NPC>() != null)
+            {
+                var _NPC = trigger.GetComponent<NPC>();
+                Npc = _NPC;
+                canSpeakWithNPC = true;
+            }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit2D(Collider2D trigger)
         {
-            if (collision.GetComponent<Item>() != null)
+            if (trigger.GetComponent<Item>() != null)
             {
-                item = collision.GetComponent<Item>();
+                item = trigger.GetComponent<Item>();
                 item.ItemModel.canBePicked = false;
                 item.ShowDisplay(item.ItemModel.canBePicked);
+            }
+            else if (trigger.GetComponent<NPC>() != null)
+            {
+                var _NPC = trigger.GetComponent<NPC>();
+                canSpeakWithNPC = false;
             }
         }
 
@@ -139,6 +161,15 @@ namespace PixelAdventure
             if (Input.GetAxis("Use") > 0 && item != null && item.ItemModel.canBePicked)
             {
                 PickUpItem();
+            }
+
+            if (canSpeakWithNPC)
+            {
+                if(Input.GetAxis("Use") > 0)
+                {
+                    OnNextStateRequest(CharacterState.Dialog);
+                    BeginConversation.Invoke();
+                }
             }
         }
 

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace PixelAdventure
         public const string EXIT_TO_MENU = "EXIT_TO_MENU";
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
+        public const string EXIT_TO_DIALOG = "EXIT_TO_DIALOG";
 
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] TextMeshProUGUI scoreAmountLabel;
@@ -39,6 +41,17 @@ namespace PixelAdventure
             character.PowerUpConsumed = OnPowerUpConsumedHandler;
             character.ItemEquiped = OnItemEquipedHandler;
             character.ItemUnEquiped = OnItemUnEquipHandler;
+            character.BeginConversation = OnConversationHandler;
+        }
+
+        private void OnDisable()
+        {
+            character.LifeLost -= LifeLostHandler;
+        }
+
+        private void OnConversationHandler()
+        {
+            Exit(EXIT_TO_DIALOG);
         }
 
         private void OnItemUnEquipHandler(ItemModel _item)
@@ -60,11 +73,6 @@ namespace PixelAdventure
                 _abilitySlot.SetupAbilitySlot(_item.itemAbilitySprite, _item.itemAbilityName, false);
                 _abilitySlot.SetPropsToDataManager();
             }
-        }
-
-        private void OnDisable()
-        {
-            character.LifeLost -= LifeLostHandler;
         }
 
         private void OnPowerUpConsumedHandler(string _name)
