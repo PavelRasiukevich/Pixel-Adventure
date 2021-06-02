@@ -232,5 +232,14 @@ namespace PixelAdventure
             return userData.CameraBoundValues;
         }
 
+        public void InspectQuestItemInInventory(string _itemName)
+        {
+            switch (_itemName)
+            {
+                case Values.GEAR:
+                    charData.HasGear = true;
+                    break;
+            }
+        }
     }
 }

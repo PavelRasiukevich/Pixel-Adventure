@@ -9,5 +9,7 @@ namespace PixelAdventure.Interfaces
         Action<Transform> OnPlayerEnable { get; set; }
 
         Vector3 SpawnPosition { get; set; }
+
+        public Inventory Inventory { get; }
     }
 }

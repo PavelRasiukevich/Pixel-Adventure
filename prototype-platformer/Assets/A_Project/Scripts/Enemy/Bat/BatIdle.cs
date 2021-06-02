@@ -6,7 +6,7 @@ namespace PixelAdventure
 {
     public class BatIdle : State
     {
-
+         
         public BatIdle(Bat _bat, StateMachine _stateMachine) : base(_bat, _stateMachine)
         {
         }

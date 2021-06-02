@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class Item : MonoBehaviour, IEquipable
+    public class Item : MonoBehaviour
     {
-        [Header("ITEM MODEL")]
-        [SerializeField] ItemModel itemModel;
+        [Header("ITEM MODEL")] 
+        [SerializeField]  ItemModel itemModel;
 
         [Header("ITEM")]
         [SerializeField] GameObject display;
@@ -39,13 +39,7 @@ namespace PixelAdventure
             display.SetActive(_value);
         }
 
-        public virtual void ApplyAbility()
-        {
-        }
-
-        public virtual void LoseAbility()
-        {
-        }
+       
     }
 }
 

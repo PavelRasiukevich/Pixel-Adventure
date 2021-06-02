@@ -127,17 +127,22 @@ namespace PixelAdventure
                 PowerUpConsumed.Invoke(_power.GetName);
 
             }
+
             else if (trigger.GetComponent<CameraBoundSwitcher>() != null)
             {
                 var _col = trigger.GetComponent<CameraBoundSwitcher>().Values;
                 GameInfo.Instance.KeepCameraBounds(_col);
                 ChangeCameraBound.Invoke(_col);
             }
+
             else if (trigger.GetComponent<Item>() != null)
             {
                 item = trigger.GetComponent<Item>();
                 item.ItemModel.canBePicked = true;
                 item.ShowDisplay(item.ItemModel.canBePicked);
+
+
+
             }
 
             else if (trigger.GetComponent<NPC>() != null)
@@ -187,6 +192,9 @@ namespace PixelAdventure
         private void PickUpItem()
         {
             slot = inventory.SlotGroup.FindEmptySlot();
+
+            if (item.ItemModel.isQuestItem)
+                GameInfo.Instance.InspectQuestItemInInventory(item.ItemModel.itemName);
 
             if (slot)
             {

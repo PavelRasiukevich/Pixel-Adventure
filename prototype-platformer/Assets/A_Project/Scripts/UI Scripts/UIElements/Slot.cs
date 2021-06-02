@@ -38,9 +38,7 @@ namespace PixelAdventure
         {
             IsEmptySlot = false;
             SlotContent.SlotContentImage = _item.ItemModel.itemSprite;
-            SlotContent.Item = _item.ItemModel;
-
-            //save to appprefs
+            SlotContent.ItemModel = _item.ItemModel;
         }
 
         public void EquipItem(ItemModel _item)

@@ -51,6 +51,8 @@ namespace PixelAdventure
         public Vector3 SpawnPosition { get; set; }
         public Rigidbody2D CharRb { get => charRb; }
         public float PushForceValue { get; set; }
+
+        public Inventory Inventory => inventory;
         #endregion
 
         protected void Awake()

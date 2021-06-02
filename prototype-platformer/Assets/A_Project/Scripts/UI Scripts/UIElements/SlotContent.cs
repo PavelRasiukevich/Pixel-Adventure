@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 namespace PixelAdventure
 {
-    public class SlotContent : MonoBehaviour
+    public class SlotContent : MonoBehaviour 
     {
         public Action<SlotContent> ItemClicked { get; set; }
         public Action<SlotContent> ItemDroped { get; set; }
 
         [SerializeField] Image slotContentImage;
-        [SerializeField] ItemModel item;
+        [SerializeField] ItemModel itemModel;
 
 
-        public ItemModel Item { get => item; set => item = value; }
+        public ItemModel ItemModel { get => itemModel; set => itemModel = value; }
         public Sprite SlotContentImage { get => slotContentImage.sprite; set => slotContentImage.sprite = value; }
         public Slot ParentSlot { get => GetComponentInParent<Slot>(); }
 
