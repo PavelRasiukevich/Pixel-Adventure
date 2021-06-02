@@ -41,12 +41,13 @@ namespace PixelAdventure
             character.PowerUpConsumed = OnPowerUpConsumedHandler;
             character.ItemEquiped = OnItemEquipedHandler;
             character.ItemUnEquiped = OnItemUnEquipHandler;
-            character.BeginConversation = OnConversationHandler;
+            character.BeginConversation += OnConversationHandler;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
+            character.BeginConversation -= OnConversationHandler;
         }
 
         private void OnConversationHandler()

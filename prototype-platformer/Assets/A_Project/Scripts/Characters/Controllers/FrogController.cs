@@ -11,11 +11,13 @@ namespace PixelAdventure
         [SerializeField] bool canSpeakWithNPC;
         [SerializeField] Item item;
         [SerializeField] Slot slot;
-      
+
         FrogMove frogMove;
         FrogFastFall frogFastFall;
         FrogDoubleJump frogDoubleJump;
         InDialogState inDialog;
+
+        public bool CanSpeakWithNPC { get => canSpeakWithNPC; set => canSpeakWithNPC = value; }
 
         private new void Awake()
         {
@@ -31,6 +33,7 @@ namespace PixelAdventure
         {
             base.OnEnable();
             inDialog.SkipFrase = OnSkipFraseHandler;
+            inDialog.EndDialog = OnDialogEnded;
             frogMove.PlayerUsedDash = OnDashPlayerHandler;
             frogFastFall.FastFallUsed = OnFastFallPlayerHandler;
             frogDoubleJump.DoubleJumpUsed = OnDoubleJumpPlayerHandler;
@@ -38,6 +41,10 @@ namespace PixelAdventure
             inventory.NotifyPlayerAboutUnequip = UnequipHadler;
         }
 
+        private void OnDialogEnded()
+        {
+            NotifyCameraAboutDialogEnd.Invoke();
+        }
 
         private void OnSkipFraseHandler()
         {
@@ -137,6 +144,7 @@ namespace PixelAdventure
             {
                 var _NPC = trigger.GetComponent<NPC>();
                 Npc = _NPC;
+                _NPC.ShowDisplay();
                 canSpeakWithNPC = true;
             }
         }
@@ -152,6 +160,7 @@ namespace PixelAdventure
             else if (trigger.GetComponent<NPC>() != null)
             {
                 var _NPC = trigger.GetComponent<NPC>();
+                _NPC.HideDisplay();
                 canSpeakWithNPC = false;
             }
         }
@@ -165,8 +174,10 @@ namespace PixelAdventure
 
             if (canSpeakWithNPC)
             {
-                if(Input.GetAxis("Use") > 0)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Npc.HideDisplay();
+                    canSpeakWithNPC = false;
                     OnNextStateRequest(CharacterState.Dialog);
                     BeginConversation.Invoke();
                 }

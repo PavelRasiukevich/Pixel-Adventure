@@ -17,7 +17,8 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
-            text.text = character.Npc.Dialog.Frases[index];
+            text.text = $"{character.Npc.NpcName.ChangeStringColor(ColorValues.LIGHT_PINK)}: " +
+                $"{character.Npc.Dialog.Frases[index].ChangeStringColor(ColorValues.WHITE)}";
         }
 
         private void OnEnable()
@@ -30,7 +31,8 @@ namespace PixelAdventure
             index++;
 
             if (index < character.Npc.Dialog.Frases.Count)
-                text.text = character.Npc.Dialog.Frases[index];
+                text.text = $"{character.Npc.NpcName.ChangeStringColor(ColorValues.LIGHT_PINK)}: " +
+                    $"{character.Npc.Dialog.Frases[index].ChangeStringColor(ColorValues.WHITE)}";
             else
                 Reset();
         }
@@ -38,6 +40,9 @@ namespace PixelAdventure
         private void Reset()
         {
             index = 0;
+            var _c = character as FrogController;
+            _c.CanSpeakWithNPC = true;
+            character.Npc.ShowDisplay();
             character.OnNextStateRequest(CharacterState.Idle);
             Exit(EXIT_TO_GAMESCREEN);
         }

@@ -39,6 +39,7 @@ namespace PixelAdventure
         public Action DoubleJumpHandled { get; set; }
         public Action BeginConversation { get; set; }
         public Action NextFrase { get; set; }
+        public Action NotifyCameraAboutDialogEnd { get; set; }
         public Action<ItemModel> ItemEquiped { get; set; }
         public Action<ItemModel> ItemUnEquiped { get; set; }
         public Action<string> PowerUpConsumed { get; set; }

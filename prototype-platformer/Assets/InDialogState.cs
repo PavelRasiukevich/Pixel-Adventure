@@ -7,6 +7,7 @@ namespace PixelAdventure
     {
 
         public Action SkipFrase { get; set; }
+        public Action EndDialog { get; set; }
 
         public override CharacterState State => CharacterState.Dialog;
 
@@ -19,6 +20,12 @@ namespace PixelAdventure
         public override void ActivateState()
         {
             base.ActivateState();
+        }
+
+        public override void DeactivateState()
+        {
+            base.DeactivateState();
+            EndDialog.Invoke();
         }
     }
 }
