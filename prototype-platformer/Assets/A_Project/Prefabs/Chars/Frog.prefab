@@ -788,7 +788,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSounds: {fileID: 11400000, guid: ac18df41a65de9047b22656e30ef37f2, type: 2}
   inventory: {fileID: 0}
+  npc: {fileID: 0}
   canPick: 0
+  canSpeakWithNPC: 0
   item: {fileID: 0}
   slot: {fileID: 0}
 --- !u!1 &8811168689805166892
@@ -835,7 +837,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019130737, y: -0.30609196}
+  m_Offset: {x: 0.026558518, y: -0.31351972}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -846,7 +848,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9234769, y: 1.4017457}
+  m_Size: {x: 0.9531877, y: 1.3868902}
   m_EdgeRadius: 0
 --- !u!1 &8811168689926317484
 GameObject:
