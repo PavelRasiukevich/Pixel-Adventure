@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class NPC : MonoBehaviour
+    public class NPC : MonoBehaviour 
     {
         [SerializeField] List<FraseSet_SO> dialogs;
         [SerializeField] string npcName;
         [SerializeField] Canvas display;
         [SerializeField] bool lastWords;
+        [SerializeField] int d_Index;
 
         BoxCollider2D col2D;
         SpriteRenderer sprRend;
@@ -18,6 +19,7 @@ namespace PixelAdventure
         public Canvas Display { get => display; }
         public SpriteRenderer SprRend { get => sprRend; }
         public bool LastWords { get => lastWords; set => lastWords = value; }
+        public int D_Index { get => d_Index; set => d_Index = value; }
 
         private void Awake()
         {

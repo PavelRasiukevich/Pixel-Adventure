@@ -16,6 +16,7 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
+            dialogsIndex = character.Npc.D_Index;
             text.text = $"{character.Npc.Dialogs[dialogsIndex].Frases[index]}";
         }
 
@@ -37,7 +38,10 @@ namespace PixelAdventure
         private void Reset()
         {
             if (dialogsIndex < character.Npc.Dialogs.Count - 1)
+            {
                 dialogsIndex++;
+                character.Npc.D_Index = dialogsIndex;
+            }
 
             if (character.Npc.NpcName.Equals("Astroguy"))
             {
@@ -57,7 +61,6 @@ namespace PixelAdventure
         private void LastWords()
         {
             Exit(EXIT_TO_END);
-            Debug.Log("After exit invoke");
         }
     }
 }

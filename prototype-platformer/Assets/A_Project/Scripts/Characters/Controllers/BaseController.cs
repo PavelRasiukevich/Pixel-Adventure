@@ -53,6 +53,7 @@ namespace PixelAdventure
         public float PushForceValue { get; set; }
 
         public Inventory Inventory => inventory;
+
         #endregion
 
         protected void Awake()
