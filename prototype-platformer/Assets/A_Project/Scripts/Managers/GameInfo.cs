@@ -17,6 +17,7 @@ namespace PixelAdventure
         ItemData itemData;
         SlotData slotData;
         AbilitySlotData abilitySlotData;
+        EnvironmentData environmentData;
 
         public bool isInGodMod;
 
@@ -41,12 +42,17 @@ namespace PixelAdventure
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         public bool HasTransited { get => hasTransited; set => hasTransited = value; }
         public AbilitySlotData AbilitySlotData { get => abilitySlotData; }
+        public EnvironmentData EnvironmentData { get => environmentData; }
         #endregion
 
         public void NewGameSetup()
         {
             powerData = null;
             itemData = null;
+
+            environmentData = new EnvironmentData();
+
+            AppPrefs.SetObject(PrefsKeys.ENVIRONMENT_DATA, environmentData);
 
             //iconUIData
             abilityUIData = new AbilityUIData();
@@ -130,7 +136,7 @@ namespace PixelAdventure
 
         public void LoadGameProgress()
         {
-
+            environmentData = AppPrefs.GetObject<EnvironmentData>(PrefsKeys.ENVIRONMENT_DATA);
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
@@ -156,6 +162,7 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, abilityUIData);
             AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
             AppPrefs.SetObject(PrefsKeys.ABILITY_SLOT_DATA, abilitySlotData);
+            AppPrefs.SetObject(PrefsKeys.ENVIRONMENT_DATA, environmentData);
         }
 
         public void Retry()

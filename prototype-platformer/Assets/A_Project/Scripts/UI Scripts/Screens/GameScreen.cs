@@ -61,6 +61,7 @@ namespace PixelAdventure
 
             _item.Lose(_item.itemAbilityName);
             _abilitySlot.SetupAbilitySlot(null, string.Empty, true);
+            _abilitySlot.VisualizeAbilitySlotContent();
             _abilitySlot.SetPropsToDataManager();
         }
 
@@ -72,6 +73,7 @@ namespace PixelAdventure
             {
                 _item.Apply(_item.itemAbilityName);
                 _abilitySlot.SetupAbilitySlot(_item.itemAbilitySprite, _item.itemAbilityName, false);
+                _abilitySlot.VisualizeAbilitySlotContent();
                 _abilitySlot.SetPropsToDataManager();
             }
         }

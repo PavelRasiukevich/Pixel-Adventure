@@ -20,5 +20,6 @@ namespace PixelAdventure
         public const string MASTER = "MASTER";
         public const string CHECKPOINT_DATA_ = "CHECKPOINT_";
         public const string AUDIO_DATA = "AUDIO_DATA";
+        public const string ENVIRONMENT_DATA = "ENVIRONMENT_DATA";
     }
 }

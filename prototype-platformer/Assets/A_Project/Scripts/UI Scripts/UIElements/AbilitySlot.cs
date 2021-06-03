@@ -18,6 +18,10 @@ namespace PixelAdventure
         public Image FillImg { get => fillImg; set => fillImg = value; }
         public Image BackImg { get => backImg; set => backImg = value; }
 
+        private void Awake()
+        {
+            VisualizeAbilitySlotContent();
+        }
 
         public void SetupAbilitySlot(Sprite _spr, string _name, bool _value)
         {
@@ -25,6 +29,36 @@ namespace PixelAdventure
             fillImg.sprite = _spr;
             backImg.sprite = _spr;
             name = _name;
+        }
+
+        public void VisualizeAbilitySlotContent()
+        {
+            if (isEmpty)
+                HideContent();
+            else
+                ShowContent();
+        }
+
+        private void HideContent()
+        {
+            var _fillColor = fillImg.color;
+            _fillColor.a = 0;
+            fillImg.color = _fillColor;
+
+            var _backColor = backImg.color;
+            _backColor.a = 0;
+            backImg.color = _backColor;
+        }
+
+        private void ShowContent()
+        {
+            var _fillColor = fillImg.color;
+            _fillColor.a = 255;
+            fillImg.color = _fillColor;
+
+            var _backColor = backImg.color;
+            _backColor.a = 255;
+            backImg.color = _backColor;
         }
 
         public void SetPropsToDataManager()

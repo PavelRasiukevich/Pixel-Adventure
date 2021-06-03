@@ -44,6 +44,7 @@ namespace PixelAdventure
         private void OnDialogEnded()
         {
             NotifyCameraAboutDialogEnd.Invoke();
+            Npc.TriggerOn();
         }
 
         private void OnSkipFraseHandler()
@@ -140,9 +141,6 @@ namespace PixelAdventure
                 item = trigger.GetComponent<Item>();
                 item.ItemModel.canBePicked = true;
                 item.ShowDisplay(item.ItemModel.canBePicked);
-
-
-
             }
 
             else if (trigger.GetComponent<NPC>() != null)
@@ -162,6 +160,7 @@ namespace PixelAdventure
                 item.ItemModel.canBePicked = false;
                 item.ShowDisplay(item.ItemModel.canBePicked);
             }
+
             else if (trigger.GetComponent<NPC>() != null)
             {
                 var _NPC = trigger.GetComponent<NPC>();
@@ -182,6 +181,7 @@ namespace PixelAdventure
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Npc.HideDisplay();
+                    Npc.TriggerOff();
                     canSpeakWithNPC = false;
                     OnNextStateRequest(CharacterState.Dialog);
                     BeginConversation.Invoke();

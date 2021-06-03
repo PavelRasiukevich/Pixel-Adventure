@@ -6,16 +6,17 @@ namespace PixelAdventure
     public class DialogScreen : BaseScreen
     {
         public const string EXIT_TO_GAMESCREEN = "EXIT_TO_GAMESCREEN";
+        public const string EXIT_TO_END = "EXIT_TO_END";
 
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] BaseController character;
         [SerializeField] int index;
+        [SerializeField] int dialogsIndex;
 
         public override void ShowScreen()
         {
             base.ShowScreen();
-            text.text = $"{character.Npc.NpcName.ChangeStringColor(ColorValues.LIGHT_PINK)}: " +
-                $"{character.Npc.Dialog.Frases[index].ChangeStringColor(ColorValues.WHITE)}";
+            text.text = $"{character.Npc.Dialogs[dialogsIndex].Frases[index]}";
         }
 
         private void OnEnable()
@@ -27,21 +28,36 @@ namespace PixelAdventure
         {
             index++;
 
-            if (index < character.Npc.Dialog.Frases.Count)
-                text.text = $"{character.Npc.NpcName.ChangeStringColor(ColorValues.LIGHT_PINK)}: " +
-                    $"{character.Npc.Dialog.Frases[index].ChangeStringColor(ColorValues.WHITE)}";
+            if (index < character.Npc.Dialogs[dialogsIndex].Frases.Count)
+                text.text = $"{$"{character.Npc.Dialogs[dialogsIndex].Frases[index]}"}";
             else
                 Reset();
         }
 
         private void Reset()
         {
-            index = 0;
-            var _c = character as FrogController;
-            _c.CanSpeakWithNPC = true;
-            character.Npc.ShowDisplay();
-            character.OnNextStateRequest(CharacterState.Idle);
-            Exit(EXIT_TO_GAMESCREEN);
+            if (dialogsIndex < character.Npc.Dialogs.Count - 1)
+                dialogsIndex++;
+
+            if (character.Npc.NpcName.Equals("Astroguy"))
+            {
+                LastWords();
+            }
+            else
+            {
+                index = 0;
+                var _c = character as FrogController;
+                _c.CanSpeakWithNPC = true;
+                character.Npc.ShowDisplay();
+                character.OnNextStateRequest(CharacterState.Idle);
+                Exit(EXIT_TO_GAMESCREEN);
+            }
+        }
+
+        private void LastWords()
+        {
+            Exit(EXIT_TO_END);
+            Debug.Log("After exit invoke");
         }
     }
 }

@@ -79,8 +79,25 @@ namespace PixelAdventure
             }
             else if (_screenType == typeof(DialogScreen))
             {
-                if (_exitCode.Equals(DialogScreen.EXIT_TO_GAMESCREEN))
+                if (_exitCode.Equals(DialogScreen.EXIT_TO_END))
+                    SetCurrentScreen<EndGameScreen>().ShowScreen();
+                else if (_exitCode.Equals(DialogScreen.EXIT_TO_GAMESCREEN))
                     SetCurrentScreen<GameScreen>().ShowScreen();
+
+            }
+            else if (_screenType == typeof(EndGameScreen))
+            {
+                if (_exitCode.Equals(EndGameScreen.EXIT_TO_MAIN_MENU))
+                {
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+                }
+
+                else if (_exitCode.Equals(EndGameScreen.EXIT_TO_DESKTOP))
+                    Application.Quit();
             }
         }
     }

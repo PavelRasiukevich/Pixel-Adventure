@@ -23,7 +23,7 @@ namespace PixelAdventure
         public CameraBoundValues InitializeDefault()
         {
             minX = -65.0f;
-            maxX = 60.0f;
+            maxX = 59.0f;
             minY = maxY = -1.0f;
 
             return this;
