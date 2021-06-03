@@ -9,6 +9,7 @@ namespace PixelAdventure
         public const string DOUBLEJUMP = "DOUBLEJUMP";
         public const string FASTFALL = "FASTFALL";
         public const string DASH = "DASH";
+        public const string GEAR = "GEAR";
 
     }
 }

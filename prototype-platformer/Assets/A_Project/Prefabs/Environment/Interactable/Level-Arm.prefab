@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6993476886014703695}
   - component: {fileID: 931766331}
   m_Layer: 0
-  m_Name: leveler_middle
+  m_Name: Level-Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,10 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcfe0ffcccd2be4f9f45ffa9eed98f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hint: {fileID: 3642368220351004829}
   bridge: {fileID: 0}
-  msg_1: Level Arm is defective! Find <color=#00FF00>cogwheel <color=#FFFFFF>to repair.
-  msg_2: Press <color=#00FF00>'E' <color=#FFFFFF>to use.
+  display: {fileID: 5682866069284134786}
+  text: {fileID: 3642368220351004829}
 --- !u!61 &931766331
 BoxCollider2D:
   m_ObjectHideFlags: 0

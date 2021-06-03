@@ -1,7 +1,3 @@
-using PixelAdventure.Interfaces;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PixelAdventure
@@ -9,13 +5,27 @@ namespace PixelAdventure
     public class CameraFollow : MonoBehaviour
     {
         [SerializeField] float followSpeed;
+        [SerializeField] float changeSizeSpeed;
         [SerializeField] Vector3 offset;
         [SerializeField] Vector2 vectorMin, vectorMax;
 
-        public Transform target;
+        [SerializeField] Transform target;
+        [SerializeField] Camera _camera;
+        [SerializeField] float reconfiguratedCameraSize;
+
+        float _minX, _minY, _maxX, _maxy;
+        float size;
+
+        bool canChangeSize;
 
         void Awake()
         {
+            _camera = GetComponent<Camera>();
+
+            var _player = target.GetComponentInParent<BaseController>();
+            _player.BeginConversation += DialogBeginHandler;
+            _player.NotifyCameraAboutDialogEnd = DialogEndHandler;
+
             var _val = GameInfo.Instance.GetCameraBounds();
 
             vectorMin.x = _val.MinX;
@@ -27,6 +37,50 @@ namespace PixelAdventure
         void OnEnable()
         {
             target.GetComponentInParent<BaseController>().ChangeCameraBound = SwitchBound;
+        }
+
+        private void DialogEndHandler()
+        {
+            canChangeSize = false;
+            LoadSavedCameraValues();
+        }
+
+        private void DialogBeginHandler()
+        {
+            ReconfigureCameraForDialog();
+        }
+
+        private void ReconfigureCameraForDialog()
+        {
+            SaveCurrentCameraValues();
+
+            vectorMin.x = -Mathf.Infinity;
+            vectorMin.y = -Mathf.Infinity;
+            vectorMax.x = Mathf.Infinity;
+            vectorMax.y = Mathf.Infinity;
+
+            canChangeSize = true;
+
+        }
+
+        private void SaveCurrentCameraValues()
+        {
+            size = _camera.orthographicSize;
+
+            _minX = vectorMin.x;
+            _minY = vectorMin.y;
+            _maxX = vectorMax.x;
+            _maxy = vectorMax.y;
+        }
+
+        private void LoadSavedCameraValues()
+        {
+            vectorMin.x = _minX;
+            vectorMin.y = _minY;
+            vectorMax.x = _maxX;
+            vectorMax.y = _maxy;
+
+            _camera.orthographicSize = size;
         }
 
         private void SwitchBound(CameraBoundValues _struct)
@@ -43,6 +97,15 @@ namespace PixelAdventure
             smoothPosition.x = Mathf.Clamp(smoothPosition.x, vectorMin.x, vectorMax.x);
             smoothPosition.y = Mathf.Clamp(smoothPosition.y, vectorMin.y, vectorMax.y);
             transform.position = smoothPosition;
+        }
+
+        private void Update()
+        {
+            if (canChangeSize)
+                if (_camera.orthographicSize > reconfiguratedCameraSize)
+                    _camera.orthographicSize -= changeSizeSpeed * Time.deltaTime;
+                else
+                    canChangeSize = false;
         }
 
         public void SetTargetToFollow(Transform transform)

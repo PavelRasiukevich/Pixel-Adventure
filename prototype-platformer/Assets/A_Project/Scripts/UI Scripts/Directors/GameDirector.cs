@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -12,11 +10,6 @@ namespace PixelAdventure
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }
-
-        private void OnEnable()
-        {
-
         }
 
         protected override void Start()
@@ -34,6 +27,8 @@ namespace PixelAdventure
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
                 else if (_exitCode.Equals(GameScreen.EXIT_TO_GAMEOVER))
                     SetCurrentScreen<GameOverScreen>().ShowScreen();
+                else if (_exitCode.Equals(GameScreen.EXIT_TO_DIALOG))
+                    SetCurrentScreen<DialogScreen>().ShowScreen();
 
             }
             else if (_screenType == typeof(InGameMenuScreen))
@@ -81,6 +76,28 @@ namespace PixelAdventure
                         GameInfo.Instance.HasTransited = true;
                     }
                 }
+            }
+            else if (_screenType == typeof(DialogScreen))
+            {
+                if (_exitCode.Equals(DialogScreen.EXIT_TO_END))
+                    SetCurrentScreen<EndGameScreen>().ShowScreen();
+                else if (_exitCode.Equals(DialogScreen.EXIT_TO_GAMESCREEN))
+                    SetCurrentScreen<GameScreen>().ShowScreen();
+
+            }
+            else if (_screenType == typeof(EndGameScreen))
+            {
+                if (_exitCode.Equals(EndGameScreen.EXIT_TO_MAIN_MENU))
+                {
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+                }
+
+                else if (_exitCode.Equals(EndGameScreen.EXIT_TO_DESKTOP))
+                    Application.Quit();
             }
         }
     }

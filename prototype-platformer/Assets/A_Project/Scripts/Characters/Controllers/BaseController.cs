@@ -12,6 +12,7 @@ namespace PixelAdventure
         #region
         [SerializeField] protected CharacterSoundSO characterSounds;
         [SerializeField] protected Inventory inventory;
+        [SerializeField] NPC npc;
         #endregion
 
         #region Components
@@ -36,6 +37,9 @@ namespace PixelAdventure
         public Action DashHandled { get; set; }
         public Action FastFallHandled { get; set; }
         public Action DoubleJumpHandled { get; set; }
+        public Action BeginConversation { get; set; }
+        public Action NextFrase { get; set; }
+        public Action NotifyCameraAboutDialogEnd { get; set; }
         public Action<ItemModel> ItemEquiped { get; set; }
         public Action<ItemModel> ItemUnEquiped { get; set; }
         public Action<string> PowerUpConsumed { get; set; }
@@ -43,9 +47,12 @@ namespace PixelAdventure
         #endregion
 
         #region Properties
+        public NPC Npc { get => npc; set => npc = value; }
         public Vector3 SpawnPosition { get; set; }
         public Rigidbody2D CharRb { get => charRb; }
         public float PushForceValue { get; set; }
+
+        public Inventory Inventory => inventory;
         #endregion
 
         protected void Awake()

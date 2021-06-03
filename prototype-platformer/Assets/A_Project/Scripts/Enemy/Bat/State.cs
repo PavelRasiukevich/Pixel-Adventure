@@ -8,7 +8,7 @@ namespace PixelAdventure
     {
         protected StateMachine stateMachine;
         protected Bat bat;
-
+         
         protected State(Bat _bat, StateMachine _stateMachine)
         {
             bat = _bat;

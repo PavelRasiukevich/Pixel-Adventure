@@ -7,6 +7,8 @@ namespace PixelAdventure
     public class ItemModel
     {
         [Header("Item Data")]
+        [SerializeField] public bool isEquipableItem;
+        [SerializeField] public bool isQuestItem;
         [SerializeField] public string itemName;
         [SerializeField] public bool canBePicked;
         [SerializeField] public Sprite itemSprite;

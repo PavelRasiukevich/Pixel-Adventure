@@ -19,7 +19,8 @@ namespace PixelAdventure
         Float,
         Die,
         WaterFloat,
-        TrampolineJump
+        TrampolineJump,
+        Dialog
     }
 
     public enum BatState

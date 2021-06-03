@@ -5,6 +5,8 @@ namespace PixelAdventure
         private void Awake()
         {
             ItemModel.itemAbilityName = Values.DOUBLEJUMP;
+            ItemModel.isQuestItem = false;
+            ItemModel.isEquipableItem = true;
         }
     }
 }
