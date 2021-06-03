@@ -17,8 +17,8 @@ TagManager:
   - CharCheck
   - Trampoline
   - Back
-  - 
-  - 
+  - RollingBall
+  - SlimeEnemy
   - 
   - 
   - 
@@ -58,4 +58,7 @@ TagManager:
     locked: 0
   - name: ChainSaw
     uniqueID: 3922466845
+    locked: 0
+  - name: Top
+    uniqueID: 1896488239
     locked: 0

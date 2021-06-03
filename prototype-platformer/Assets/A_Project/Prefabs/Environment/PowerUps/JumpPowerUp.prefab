@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8272158058260105616, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab43b5449aabc884faa9439a63aa2035, type: 2}
     - target: {fileID: 8993283076192457840, guid: 51356eb694dcf7e4ba7bf9fe41361f2d, type: 3}
       propertyPath: m_Name
       value: JumpPowerUp

@@ -1,13 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PixelAdventure
 {
     public class GameDirector : SceneDirector
     {
-        [SerializeField] LevelID id;
 
         private void Awake()
         {
@@ -18,8 +15,8 @@ namespace PixelAdventure
         protected override void Start()
         {
             base.Start();
-            
             SetCurrentScreen<GameScreen>().ShowScreen();
+            GameInfo.Instance.HasTransited = false;
         }
 
         protected override void OnScreenExit(Type _screenType, string _exitCode)
@@ -28,10 +25,10 @@ namespace PixelAdventure
             {
                 if (_exitCode.Equals(GameScreen.EXIT_TO_MENU))
                     SetCurrentScreen<InGameMenuScreen>().ShowScreen();
-                else if (_exitCode.Equals(GameScreen.EXIT_TO_NEXT_LVL))
-                    SceneManager.LoadScene(id.ToString());
                 else if (_exitCode.Equals(GameScreen.EXIT_TO_GAMEOVER))
                     SetCurrentScreen<GameOverScreen>().ShowScreen();
+                else if (_exitCode.Equals(GameScreen.EXIT_TO_DIALOG))
+                    SetCurrentScreen<DialogScreen>().ShowScreen();
 
             }
             else if (_screenType == typeof(InGameMenuScreen))
@@ -41,7 +38,14 @@ namespace PixelAdventure
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_OPTIONS))
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_TO_MAIN_MENU))
-                    SceneManager.LoadScene(SceneID.LOADER_ID);
+                {
+                    Time.timeScale = 1;
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+                }
                 else if (_exitCode.Equals(InGameMenuScreen.EXIT_FROM_APP))
                     Application.Quit();
             }
@@ -53,12 +57,47 @@ namespace PixelAdventure
             else if (_screenType == typeof(GameOverScreen))
             {
                 if (_exitCode.Equals(GameOverScreen.EXIT_TO_MAIN_MENU))
-                    SceneManager.LoadScene(SceneID.LOADER_ID);
+                {
+                    Time.timeScale = 1;
+
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+
+                }
                 else if (_exitCode.Equals(GameOverScreen.RETRY))
                 {
-                    SceneManager.LoadScene(SceneID.START_GAME_ID);
-                    GameInfo.Instance.Retry();
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        GameInfo.Instance.Retry();
+                        TransitionManager.Instance.ApplyTransition(SceneID.START_GAME_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
                 }
+            }
+            else if (_screenType == typeof(DialogScreen))
+            {
+                if (_exitCode.Equals(DialogScreen.EXIT_TO_END))
+                    SetCurrentScreen<EndGameScreen>().ShowScreen();
+                else if (_exitCode.Equals(DialogScreen.EXIT_TO_GAMESCREEN))
+                    SetCurrentScreen<GameScreen>().ShowScreen();
+
+            }
+            else if (_screenType == typeof(EndGameScreen))
+            {
+                if (_exitCode.Equals(EndGameScreen.EXIT_TO_MAIN_MENU))
+                {
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.MAIN_MENU_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
+                }
+
+                else if (_exitCode.Equals(EndGameScreen.EXIT_TO_DESKTOP))
+                    Application.Quit();
             }
         }
     }

@@ -1,10 +1,6 @@
-using Cinemachine;
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -13,19 +9,17 @@ namespace PixelAdventure
         public const string EXIT_TO_MENU = "EXIT_TO_MENU";
         public const string EXIT_TO_NEXT_LVL = "EXIT_TO_NEXT_LVL";
         public const string EXIT_TO_GAMEOVER = "EXIT_TO_GAMEOVER";
+        public const string EXIT_TO_DIALOG = "EXIT_TO_DIALOG";
 
-        [SerializeField] CinemachineConfiner confiner;
         [SerializeField] TextMeshProUGUI lifeAmountLabel;
         [SerializeField] TextMeshProUGUI scoreAmountLabel;
         [SerializeField] BaseController character;
-        [SerializeField] Image dash;
-        [SerializeField] Image doubleJump;
-        [SerializeField] Image fastFall;
 
-        [SerializeField] GameObject dashUIContainer;
-        [SerializeField] GameObject fastFallUIContainer;
-        [SerializeField] GameObject doubleJumpUIContainer;
-        [SerializeField] GameObject itemsUIContainer;
+        [SerializeField] AbilityGroup abilityGroup;
+
+        AbilitySlot doubleJump;
+        AbilitySlot fastFall;
+        AbilitySlot dash;
 
         public override void ShowScreen()
         {
@@ -35,9 +29,6 @@ namespace PixelAdventure
             lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
             scoreAmountLabel.text = $"Score: {GameInfo.Instance.GetScore()}";
 
-            dashUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsDashIconVisible);
-            fastFallUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsFastFallIconVisible);
-            doubleJumpUIContainer.SetActive(GameInfo.Instance.AbilityUIData.IsDoubleJumpIconVisible);
         }
 
         private void OnEnable()
@@ -48,54 +39,71 @@ namespace PixelAdventure
             character.FastFallHandled = OnFastFallReloadTimer;
             character.DoubleJumpHandled = OnDoubleJumpReloadTimer;
             character.PowerUpConsumed = OnPowerUpConsumedHandler;
-            character.ExiteFromBoundingShape = OnShapeBoundingExitHandler;
+            character.ItemEquiped = OnItemEquipedHandler;
+            character.ItemUnEquiped = OnItemUnEquipHandler;
+            character.BeginConversation += OnConversationHandler;
         }
 
         private void OnDisable()
         {
             character.LifeLost -= LifeLostHandler;
+            character.BeginConversation -= OnConversationHandler;
         }
 
-        private void OnShapeBoundingExitHandler(PolygonCollider2D _polygonShape)
+        private void OnConversationHandler()
         {
-            confiner.m_BoundingShape2D = _polygonShape;
+            Exit(EXIT_TO_DIALOG);
+        }
+
+        private void OnItemUnEquipHandler(ItemModel _item)
+        {
+            var _abilitySlot = abilityGroup.GetAbilitySlotByName(_item.itemAbilityName);
+
+            _item.Lose(_item.itemAbilityName);
+            _abilitySlot.SetupAbilitySlot(null, string.Empty, true);
+            _abilitySlot.VisualizeAbilitySlotContent();
+            _abilitySlot.SetPropsToDataManager();
+        }
+
+        private void OnItemEquipedHandler(ItemModel _item)
+        {
+            var _abilitySlot = abilityGroup.FindEmptyAbilitySlot();
+
+            if (_abilitySlot)
+            {
+                _item.Apply(_item.itemAbilityName);
+                _abilitySlot.SetupAbilitySlot(_item.itemAbilitySprite, _item.itemAbilityName, false);
+                _abilitySlot.VisualizeAbilitySlotContent();
+                _abilitySlot.SetPropsToDataManager();
+            }
         }
 
         private void OnPowerUpConsumedHandler(string _name)
         {
             switch (_name)
             {
-                case Values.FAST_FALL:
-                    fastFallUIContainer.SetActive(true);
-                    GameInfo.Instance.AbilityUIData.IsFastFallIconVisible = true;
-                    break;
-                case Values.DOUBLE_JUMP:
-                    doubleJumpUIContainer.SetActive(true);
-                    GameInfo.Instance.AbilityUIData.IsDoubleJumpIconVisible = true;
-                    break;
-                case Values.DASH:
-                    dashUIContainer.SetActive(true);
-                    GameInfo.Instance.AbilityUIData.IsDashIconVisible = true;
-                    break;
-                case Values.GEAR_ITEM:
-                    itemsUIContainer.SetActive(true);
+                case Values.PEARL:
+                    lifeAmountLabel.text = GameInfo.Instance.CharData.LiveAmount.ToString();
                     break;
             }
         }
 
         private void OnFastFallReloadTimer()
         {
-            fastFall.fillAmount = 0;
+            fastFall = abilityGroup.GetAbilitySlotByName(Values.FASTFALL);
+            fastFall.FillImg.fillAmount = 0;
         }
 
         private void OnDashReloadTimer()
         {
-            dash.fillAmount = 0;
+            dash = abilityGroup.GetAbilitySlotByName(Values.DASH);
+            dash.FillImg.fillAmount = 0;
         }
 
         private void OnDoubleJumpReloadTimer()
         {
-            doubleJump.fillAmount = 0;
+            doubleJump = abilityGroup.GetAbilitySlotByName(Values.DOUBLEJUMP);
+            doubleJump.FillImg.fillAmount = 0;
         }
 
         private void OnRewarded()
@@ -111,15 +119,17 @@ namespace PixelAdventure
 
         private void Update()
         {
+            if (doubleJump)
+                if (doubleJump.FillImg.fillAmount < 1)
+                    doubleJump.FillImg.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DoubleJumpReloadTime;
 
-            if (dash.fillAmount < 1)
-                dash.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DashReloadTime;
+            if (fastFall)
+                if (fastFall.FillImg.fillAmount < 1)
+                    fastFall.FillImg.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.FastFallReloadTime;
 
-            if (fastFall.fillAmount < 1)
-                fastFall.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.FastFallReloadTime;
-
-            if (doubleJump.fillAmount < 1)
-                doubleJump.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DoubleJumpReloadTime;
+            if (dash)
+                if (dash.FillImg.fillAmount < 1)
+                    dash.FillImg.fillAmount += Time.deltaTime / GameInfo.Instance.CharData.DashReloadTime;
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

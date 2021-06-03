@@ -11,6 +11,8 @@ namespace PixelAdventure
 
         #region
         [SerializeField] protected CharacterSoundSO characterSounds;
+        [SerializeField] protected Inventory inventory;
+        [SerializeField] NPC npc;
         #endregion
 
         #region Components
@@ -35,14 +37,22 @@ namespace PixelAdventure
         public Action DashHandled { get; set; }
         public Action FastFallHandled { get; set; }
         public Action DoubleJumpHandled { get; set; }
+        public Action BeginConversation { get; set; }
+        public Action NextFrase { get; set; }
+        public Action NotifyCameraAboutDialogEnd { get; set; }
+        public Action<ItemModel> ItemEquiped { get; set; }
+        public Action<ItemModel> ItemUnEquiped { get; set; }
         public Action<string> PowerUpConsumed { get; set; }
-        public Action<PolygonCollider2D> ExiteFromBoundingShape { get; set; }
+        public Action<CameraBoundValues> ChangeCameraBound { get; set; }
         #endregion
 
         #region Properties
+        public NPC Npc { get => npc; set => npc = value; }
         public Vector3 SpawnPosition { get; set; }
         public Rigidbody2D CharRb { get => charRb; }
         public float PushForceValue { get; set; }
+
+        public Inventory Inventory => inventory;
         #endregion
 
         protected void Awake()
@@ -93,6 +103,7 @@ namespace PixelAdventure
                     charBoxCollider.enabled = true;
                     OnNextStateRequest(CharacterState.Idle);
                     charRb.bodyType = RigidbodyType2D.Dynamic;
+                    ChangeCameraBound.Invoke(GameInfo.Instance.GetCameraBounds());
                 }
                 else
                 {
@@ -121,13 +132,16 @@ namespace PixelAdventure
         protected void OnTriggerEnter2D(Collider2D other)
         {
             var obstacle = other.gameObject.GetComponent<IDamaging>();
-#if !UNITY_EDITOR
-            if (obstacle != null)
+
+            if (!GameInfo.Instance.isInGodMod)
             {
-                LifeLost.Invoke();
-                OnNextStateRequest(CharacterState.Die);
+                if (obstacle != null)
+                {
+                    LifeLost.Invoke();
+                    OnNextStateRequest(CharacterState.Die);
+                }
             }
-#endif
+
         }
 
         public void OnNextStateRequest(CharacterState state)

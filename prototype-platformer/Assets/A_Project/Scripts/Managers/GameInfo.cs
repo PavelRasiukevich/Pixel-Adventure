@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +5,21 @@ namespace PixelAdventure
 {
     public class GameInfo : BaseManager<GameInfo>
     {
-        [SerializeField] CheckPointConfig_SO checkPointConfig_SO;
         [SerializeField] CharacterStatsSO charStatsSO;
 
-        float timer;
         bool isPlaying;
+        bool hasTransited;
 
         UserData userData;
         CharacterData charData;
         PowerUpData powerData;
         AbilityUIData abilityUIData;
+        ItemData itemData;
+        SlotData slotData;
+        AbilitySlotData abilitySlotData;
+        EnvironmentData environmentData;
+
+        public bool isInGodMod;
 
         #region Properties
         public string LevelName { get; set; }
@@ -26,15 +29,30 @@ namespace PixelAdventure
         public CharacterData CharData { get => charData; }
 
         public List<PowerUpStates> PowerUps => powerData.PowerUps;
+        public List<ItemState> ItemStates => itemData.ListOfItemStates;
+
+        public List<bool> SlotFullness => slotData.ListOfFullness;
+        public List<Sprite> ListOfSprites => slotData.ListOfSprites;
+        public List<ItemModel> ListOfItems => slotData.ListOfItems;
+
+
         public CharacterStatsSO CharStatsSO { get => charStatsSO; }
 
         public AbilityUIData AbilityUIData { get => abilityUIData; }
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
+        public bool HasTransited { get => hasTransited; set => hasTransited = value; }
+        public AbilitySlotData AbilitySlotData { get => abilitySlotData; }
+        public EnvironmentData EnvironmentData { get => environmentData; }
         #endregion
 
         public void NewGameSetup()
         {
             powerData = null;
+            itemData = null;
+
+            environmentData = new EnvironmentData();
+
+            AppPrefs.SetObject(PrefsKeys.ENVIRONMENT_DATA, environmentData);
 
             //iconUIData
             abilityUIData = new AbilityUIData();
@@ -66,8 +84,22 @@ namespace PixelAdventure
 
             //userData
             userData = new UserData();
+            KeepCameraBounds(userData.KeepedValues.InitializeDefault());
+            userData.SetBoundsValues();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
+
+            //inventory slots
+            slotData = new SlotData();
+            slotData.InitSlotValues();
+
+            AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
+
+
+            abilitySlotData = new AbilitySlotData();
+            abilitySlotData.InitSlotValues();
+
+            AppPrefs.SetObject(PrefsKeys.ABILITY_SLOT_DATA, abilitySlotData);
 
             isPlaying = true;
         }
@@ -88,20 +120,37 @@ namespace PixelAdventure
 
         }
 
+        public void InitItemData(int _itemsCount)
+        {
+            if (itemData == null)
+            {
+                itemData = new ItemData();
+
+                for (int i = 0; i < _itemsCount; i++)
+                {
+                    itemData.ListOfItemStates.Add(ItemState.Avaliable);
+                }
+                AppPrefs.SetObject(PrefsKeys.ITEM_DATA, itemData);
+            }
+        }
+
         public void LoadGameProgress()
         {
-
+            environmentData = AppPrefs.GetObject<EnvironmentData>(PrefsKeys.ENVIRONMENT_DATA);
             userData = AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA);
             charData = AppPrefs.GetObject<CharacterData>(PrefsKeys.CHARACTER_DATA);
             powerData = AppPrefs.GetObject<PowerUpData>(PrefsKeys.POWERUPS_DATA);
+            itemData = AppPrefs.GetObject<ItemData>(PrefsKeys.ITEM_DATA);
             abilityUIData = AppPrefs.GetObject<AbilityUIData>(PrefsKeys.ABILITY_UI_DATA);
+            slotData = AppPrefs.GetObject<SlotData>(PrefsKeys.SLOT_DATA);
+            abilitySlotData = AppPrefs.GetObject<AbilitySlotData>(PrefsKeys.ABILITY_SLOT_DATA);
 
             if (userData == null || charData == null || powerData == null)
             {
                 NewGameSetup();
             }
 
-            charData.ReserCoolDown();
+            charData.ResetCooldown();
         }
 
         public void SaveGameProgress()
@@ -109,7 +158,11 @@ namespace PixelAdventure
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
             AppPrefs.SetObject(PrefsKeys.POWERUPS_DATA, powerData);
+            AppPrefs.SetObject(PrefsKeys.ITEM_DATA, itemData);
             AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, abilityUIData);
+            AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
+            AppPrefs.SetObject(PrefsKeys.ABILITY_SLOT_DATA, abilitySlotData);
+            AppPrefs.SetObject(PrefsKeys.ENVIRONMENT_DATA, environmentData);
         }
 
         public void Retry()
@@ -126,6 +179,16 @@ namespace PixelAdventure
         public int GetScore()
         {
             return userData.Score;
+        }
+
+        public ItemState GetItemState(int _index)
+        {
+            return itemData.ListOfItemStates[_index];
+        }
+
+        public void SetItemState(int _index, ItemState _state)
+        {
+            itemData.ListOfItemStates[_index] = _state;
         }
 
         public PowerUpStates GetPowerUpState(int _index)
@@ -164,6 +227,26 @@ namespace PixelAdventure
                 return AppPrefs.GetObject<UserData>(PrefsKeys.USER_DATA).IsLoadAvaliable;
 
             return false;
+        }
+
+        public void KeepCameraBounds(CameraBoundValues _values)
+        {
+            userData.KeepedValues = _values;
+        }
+
+        public CameraBoundValues GetCameraBounds()
+        {
+            return userData.CameraBoundValues;
+        }
+
+        public void InspectQuestItemInInventory(string _itemName)
+        {
+            switch (_itemName)
+            {
+                case Values.GEAR:
+                    charData.HasGear = true;
+                    break;
+            }
         }
     }
 }

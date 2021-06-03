@@ -19,7 +19,8 @@ namespace PixelAdventure
         Float,
         Die,
         WaterFloat,
-        TrampolineJump
+        TrampolineJump,
+        Dialog
     }
 
     public enum BatState
@@ -60,6 +61,12 @@ namespace PixelAdventure
     {
         Avaliable,
         Consumed
+    }
+
+    public enum ItemState
+    {
+        Avaliable,
+        Picked
     }
 
     public enum CameraTriggers

@@ -1,4 +1,3 @@
-using PixelAdventure.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -7,9 +6,18 @@ namespace PixelAdventure
 {
     public class FrogController : BaseController
     {
+
+        [SerializeField] bool canPick;
+        [SerializeField] bool canSpeakWithNPC;
+        [SerializeField] Item item;
+        [SerializeField] Slot slot;
+
         FrogMove frogMove;
         FrogFastFall frogFastFall;
         FrogDoubleJump frogDoubleJump;
+        InDialogState inDialog;
+
+        public bool CanSpeakWithNPC { get => canSpeakWithNPC; set => canSpeakWithNPC = value; }
 
         private new void Awake()
         {
@@ -18,14 +26,40 @@ namespace PixelAdventure
             frogMove = listOfStates.Find(_s => _s.State.Equals(CharacterState.Move)) as FrogMove;
             frogFastFall = listOfStates.Find(_s => _s.State.Equals(CharacterState.FastFall)) as FrogFastFall;
             frogDoubleJump = listOfStates.Find(_s => _s.State.Equals(CharacterState.DoubleJump)) as FrogDoubleJump;
+            inDialog = listOfStates.Find(_s => _s.State.Equals(CharacterState.Dialog)) as InDialogState;
         }
 
         private new void OnEnable()
         {
             base.OnEnable();
+            inDialog.SkipFrase = OnSkipFraseHandler;
+            inDialog.EndDialog = OnDialogEnded;
             frogMove.PlayerUsedDash = OnDashPlayerHandler;
             frogFastFall.FastFallUsed = OnFastFallPlayerHandler;
             frogDoubleJump.DoubleJumpUsed = OnDoubleJumpPlayerHandler;
+            inventory.NotifyPlayerAboutEquip = EquipHandler;
+            inventory.NotifyPlayerAboutUnequip = UnequipHadler;
+        }
+
+        private void OnDialogEnded()
+        {
+            NotifyCameraAboutDialogEnd.Invoke();
+            Npc.TriggerOn();
+        }
+
+        private void OnSkipFraseHandler()
+        {
+            NextFrase.Invoke();
+        }
+
+        private void UnequipHadler(ItemModel _item)
+        {
+            ItemUnEquiped.Invoke(_item);
+        }
+
+        private void EquipHandler(ItemModel _item)
+        {
+            ItemEquiped.Invoke(_item);
         }
 
         private void OnDashPlayerHandler()
@@ -70,44 +104,110 @@ namespace PixelAdventure
         private void OnCollisionEnter2D(Collision2D collision)
         {
             var _trampoline = collision.gameObject.GetComponent<Trampoline>();
+            var _enemy = collision.gameObject.GetComponent<IDamaging>();
 
             if (_trampoline)
-            {
                 OnNextStateRequest(CharacterState.TrampolineJump);
+            else if (_enemy != null)
+            {
+                LifeLost.Invoke();
+                OnNextStateRequest(CharacterState.Die);
             }
         }
 
-        private new void OnTriggerEnter2D(Collider2D collision)
+        private new void OnTriggerEnter2D(Collider2D trigger)
         {
-            base.OnTriggerEnter2D(collision);
+            base.OnTriggerEnter2D(trigger);
 
-            if (collision.GetComponent<IPowerUp>() != null)
+            if (trigger.GetComponent<IPowerUp>() != null)
             {
-                var _power = collision.GetComponent<IPowerUp>();
+                var _power = trigger.GetComponent<IPowerUp>();
 
                 _power.AddBonusValue();
                 GetRewardPoints.Invoke();
                 PowerUpConsumed.Invoke(_power.GetName);
 
             }
-            else if (collision.GetComponent<PolygonBoundingShape>() != null)
+
+            else if (trigger.GetComponent<CameraBoundSwitcher>() != null)
             {
-                var _shape = collision.GetComponent<PolygonBoundingShape>();
+                var _col = trigger.GetComponent<CameraBoundSwitcher>().Values;
+                GameInfo.Instance.KeepCameraBounds(_col);
+                ChangeCameraBound.Invoke(_col);
+            }
 
-                if (CharRb.velocity.x > 0)
-                {
-                    var _position = transform.position;
-                    _position.x += 1;
-                    transform.position = _position;
-                }
-                if (CharRb.velocity.x < 0)
-                {
-                    var _position = transform.position;
-                    _position.x -= 1;
-                    transform.position = _position;
-                }
+            else if (trigger.GetComponent<Item>() != null)
+            {
+                item = trigger.GetComponent<Item>();
+                item.ItemModel.canBePicked = true;
+                item.ShowDisplay(item.ItemModel.canBePicked);
+            }
 
-                ExiteFromBoundingShape.Invoke(_shape.GetBoundingShape());
+            else if (trigger.GetComponent<NPC>() != null)
+            {
+                var _NPC = trigger.GetComponent<NPC>();
+                Npc = _NPC;
+                _NPC.ShowDisplay();
+                canSpeakWithNPC = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D trigger)
+        {
+            if (trigger.GetComponent<Item>() != null)
+            {
+                item = trigger.GetComponent<Item>();
+                item.ItemModel.canBePicked = false;
+                item.ShowDisplay(item.ItemModel.canBePicked);
+            }
+
+            else if (trigger.GetComponent<NPC>() != null)
+            {
+                var _NPC = trigger.GetComponent<NPC>();
+                _NPC.HideDisplay();
+                canSpeakWithNPC = false;
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetAxis("Use") > 0 && item != null && item.ItemModel.canBePicked)
+            {
+                PickUpItem();
+            }
+
+            if (canSpeakWithNPC)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Npc.HideDisplay();
+                    Npc.TriggerOff();
+                    canSpeakWithNPC = false;
+                    OnNextStateRequest(CharacterState.Dialog);
+                    BeginConversation.Invoke();
+                }
+            }
+        }
+
+        private void PickUpItem()
+        {
+            slot = inventory.SlotGroup.FindEmptySlot();
+
+            if (item.ItemModel.isQuestItem)
+                GameInfo.Instance.InspectQuestItemInInventory(item.ItemModel.itemName);
+
+            if (slot)
+            {
+                item.Off();
+                slot.InputItemInSlot(item);
+                GameInfo.Instance.SetItemState(item.Index, ItemState.Picked);
+                GameInfo.Instance.SlotFullness[slot.Index] = slot.IsEmptySlot;
+                GameInfo.Instance.ListOfSprites[slot.Index] = item.ItemModel.itemSprite;
+                GameInfo.Instance.ListOfItems[slot.Index] = item.ItemModel;
+            }
+            else
+            {
+                throw new Exception("No empty slots in inventory");
             }
         }
     }

@@ -7,6 +7,7 @@ namespace PixelAdventure
 {
     public class MainMenuDirector : SceneDirector
     {
+        bool hasApplayedTransition;
 
         private void Awake()
         {
@@ -14,11 +15,16 @@ namespace PixelAdventure
             Cursor.visible = false;
         }
 
+        private void OnEnable()
+        {
+
+            GameInfo.Instance.HasTransited = false;
+        }
+
         protected override void Start()
         {
             base.Start();
             SetCurrentScreen<MainMenuScreen>().ShowScreen();
-
             AudioManager.Instance.PlayMusic();
         }
 
@@ -29,10 +35,17 @@ namespace PixelAdventure
                 if (_exitCode.Equals(MainMenuScreen.EXIT_TO_GAME))
                 {
                     GameInfo.Instance.NewGameSetup();
-                    SceneManager.LoadScene(SceneID.START_GAME_ID);
+
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        GameInfo.Instance.HasTransited = true;
+                        TransitionManager.Instance.ApplyTransition(SceneID.START_GAME_ID);
+                    }
                 }
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_OPTIONS))
+                {
                     SetCurrentScreen<OptionsScreen>().ShowScreen();
+                }
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_TO_CREDITS))
                     SetCurrentScreen<CreditsScreen>().ShowScreen();
                 else if (_exitCode.Equals(MainMenuScreen.EXIT_FROM_APP))
@@ -40,7 +53,12 @@ namespace PixelAdventure
                 else if (_exitCode.Equals(MainMenuScreen.LOAD_GAME))
                 {
                     GameInfo.Instance.LoadGameProgress();
-                    SceneManager.LoadScene(SceneID.START_GAME_ID);
+
+                    if (!GameInfo.Instance.HasTransited)
+                    {
+                        TransitionManager.Instance.ApplyTransition(SceneID.START_GAME_ID);
+                        GameInfo.Instance.HasTransited = true;
+                    }
                 }
             }
             else if (_screenType == typeof(OptionsScreen))

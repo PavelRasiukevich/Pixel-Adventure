@@ -14,7 +14,6 @@ namespace PixelAdventure
         {
             base.ShowScreen();
             Time.timeScale = 1;
-
         }
 
         public void OnStartPressed()

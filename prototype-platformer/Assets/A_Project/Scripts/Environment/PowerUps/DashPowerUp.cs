@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PixelAdventure
 {
-    public class DashPowerUp : BasePower
+    public class DashPowerUp : BasePowerUp
     {
         public override void AddBonusValue()
         {

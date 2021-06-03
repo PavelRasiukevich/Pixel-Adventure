@@ -12,14 +12,15 @@ namespace PixelAdventure
         public override void ShowScreen()
         {
             base.ShowScreen();
+
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Time.timeScale = 1;
-                Exit(EXIT_TO_BACK_SCREEN);
+                    Time.timeScale = 1;
+                    Exit(EXIT_TO_BACK_SCREEN);
             }
         }
 
