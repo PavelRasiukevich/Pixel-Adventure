@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace PixelAdventure
 {
@@ -17,7 +15,6 @@ namespace PixelAdventure
 
         private void OnEnable()
         {
-
             GameInfo.Instance.HasTransited = false;
         }
 

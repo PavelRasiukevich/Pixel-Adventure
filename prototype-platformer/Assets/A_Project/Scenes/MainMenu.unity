@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 1579447201}
   - component: {fileID: 1579447202}
   m_Layer: 0
-  m_Name: MainMenuScreenManager
+  m_Name: MainMenuScreenDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279810574467409589, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -262.59
+      value: -260.072
       objectReference: {fileID: 0}
     - target: {fileID: 6279810574467409590, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279810574809978886, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -52.517998
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6279810574809978887, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279810575653876869, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -367.62598
+      value: -365.10797
       objectReference: {fileID: 0}
     - target: {fileID: 6279810575653876870, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -567,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6502695832455331442, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -157.55399
+      value: -155.036
       objectReference: {fileID: 0}
     - target: {fileID: 6742791935160192892, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -611,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6847500466169430521, guid: d740516851be23f438307d8867f55a3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -472.662
+      value: -470.14398
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d740516851be23f438307d8867f55a3e, type: 3}

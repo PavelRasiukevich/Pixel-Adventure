@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -22,7 +20,6 @@ namespace PixelAdventure
         {
             musicSource.clip = Clip;
             musicSource.Play();
-
         }
 
         public void SetupVolume()

@@ -110,8 +110,11 @@ namespace PixelAdventure
                 OnNextStateRequest(CharacterState.TrampolineJump);
             else if (_enemy != null)
             {
-                LifeLost.Invoke();
-                OnNextStateRequest(CharacterState.Die);
+                if(GameInfo.Instance.isInGodMod == false)
+                {
+                    LifeLost.Invoke();
+                    OnNextStateRequest(CharacterState.Die);
+                }
             }
         }
 
