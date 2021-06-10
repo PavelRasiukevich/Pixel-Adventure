@@ -5,7 +5,6 @@ namespace PixelAdventure
 {
     public class GameDirector : SceneDirector
     {
-
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;

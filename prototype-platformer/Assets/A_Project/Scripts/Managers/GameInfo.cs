@@ -54,12 +54,12 @@ namespace PixelAdventure
 
             AppPrefs.SetObject(PrefsKeys.ENVIRONMENT_DATA, environmentData);
 
-            //iconUIData
+            //
             abilityUIData = new AbilityUIData();
 
             AppPrefs.SetObject(PrefsKeys.ABILITY_UI_DATA, AbilityUIData);
 
-            //charData
+            //
             charData = new CharacterData
             {
                 LiveAmount = CharStatsSO.LiveAmount,
@@ -82,20 +82,20 @@ namespace PixelAdventure
 
             AppPrefs.SetObject(PrefsKeys.CHARACTER_DATA, charData);
 
-            //userData
+            //
             userData = new UserData();
             KeepCameraBounds(userData.KeepedValues.InitializeDefault());
             userData.SetBoundsValues();
 
             AppPrefs.SetObject(PrefsKeys.USER_DATA, userData);
 
-            //inventory slots
+            //
             slotData = new SlotData();
             slotData.InitSlotValues();
 
             AppPrefs.SetObject(PrefsKeys.SLOT_DATA, slotData);
 
-
+            //
             abilitySlotData = new AbilitySlotData();
             abilitySlotData.InitSlotValues();
 
