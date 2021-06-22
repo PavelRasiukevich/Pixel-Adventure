@@ -24,7 +24,6 @@ namespace PixelAdventure
         protected Animator characterAnimator;
         protected SpriteRenderer characterSpriteRenderer;
         protected BoxCollider2D charBoxCollider;
-        protected TrailRenderer charTrailRenderer;
         #endregion
 
         #region Properties
@@ -60,10 +59,8 @@ namespace PixelAdventure
 
         public void Setup(Rigidbody2D _charRb,
             Animator _charAnim, SpriteRenderer _charSr,
-            BoxCollider2D _charBoxCollider, CharacterSoundSO _characterSounds,
-            TrailRenderer _charTrailRenderer)
+            BoxCollider2D _charBoxCollider, CharacterSoundSO _characterSounds)
         {
-            charTrailRenderer = _charTrailRenderer;
             characterSounds = _characterSounds;
             characterRigidBody = _charRb;
             charBoxCollider = _charBoxCollider;

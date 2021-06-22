@@ -69,7 +69,7 @@ namespace PixelAdventure
 
             listOfStates.ForEach(_state =>
             {
-                _state.Setup(charRb, charAnim, charSr, charBoxCollider, characterSounds, charTrailRenderer);
+                _state.Setup(charRb, charAnim, charSr, charBoxCollider, characterSounds);
             });
         }
 
